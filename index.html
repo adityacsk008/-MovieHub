@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieHub - Your Film Destination</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">🎬 MovieHub</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#movie-gallery">Popular OTT</a></li>
+                    <li><a href="#categories-overview">Categories</a></li>
+                    <li><a href="#tags-section">Tags</a></li>
+                    <li><a href="#latest">Latest</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-controls">
+                <button id="theme-toggle" aria-label="Switch to Night Mode" title="Switch to Night Mode">
+                    <span class="icon-sun">☀️</span>
+                    <span class="icon-moon">🌙</span>
+                </button>
+                <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <h1>Discover Your Next Favorite Movie</h1>
+                <p>Explore a vast collection of films across all genres.</p>
+            </div>
+        </section>
+
+        <!-- Popular OTT Movies Section -->
+        <section id="movie-gallery" class="movie-gallery-section">
+            <div class="container">
+                <h2>Popular OTT Movies</h2>
+                <div class="gallery-grid">
+                    <script>
+                        const popularOttMovies = [
+                            { title: "RRR", genre: "Action, Drama", imgSrc: "https://iili.io/F2ziUOJ.jpg", altText: "RRR Movie Poster" },
+                            { title: "Darlings", genre: "Dark Comedy", imgSrc: "https://iili.io/F2ziDRs.jpg", altText: "Darlings Movie Poster" },
+                            { title: "Choked", genre: "Drama", imgSrc: "https://iili.io/F2ziSRa.jpg", altText: "Choked Movie Poster" },
+                            { title: "Shershaah", genre: "Biographical War", imgSrc: "https://iili.io/F2zi8Hg.jpg", altText: "Shershaah Movie Poster" },
+                            { title: "Drishyam 2", genre: "Thriller", imgSrc: "https://iili.io/F2zikUF.jpg", altText: "Drishyam 2 Movie Poster" },
+                            { title: "Jai Bhim", genre: "Legal Drama", imgSrc: "https://iili.io/F2zigDv.jpg", altText: "Jai Bhim Movie Poster" },
+                            { title: "Freddy", genre: "Thriller", imgSrc: "https://iili.io/F2z1RHJ.jpg", altText: "Freddy Movie Poster" },
+                            { title: "Brahmāstra: Part One – Shiva", genre: "Fantasy Adventure", imgSrc: "https://iili.io/F2zi6Vp.jpg", altText: "Brahmāstra Movie Poster" },
+                            { title: "Tanhaji: The Unsung Warrior", genre: "Historical Action", imgSrc: "https://iili.io/F2ziPiN.jpg", altText: "Tanhaji Movie Poster" },
+                            { title: "Sita Ramam", genre: "Romantic Drama", imgSrc: "https://iili.io/F2zisfI.jpg", altText: "Sita Ramam Movie Poster" },
+                            { title: "Sirf Ek Bandaa Kaafi Hai", genre: "Courtroom Drama", imgSrc: "https://iili.io/F2ziLlt.jpg", altText: "Sirf Ek Bandaa Kaafi Hai Movie Poster" },
+                            { title: "12th Fail", genre: "Biographical Drama", imgSrc: "https://iili.io/F2ziQUX.jpg", altText: "12th Fail Movie Poster" },  
+                            { title: "HOUSEFULL 5", genre: " Drama", imgSrc: "https://iili.io/F2I2FNp.jpg", altText: "housefull 5 Movie Poster" },
+                            { title: "TIATINIC", genre: "Disaster,Tragic Romance", imgSrc: "https://iili.io/F2InRMQ.jpg", altText: "Darlings Movie Poster" },
+                            { title: "OMG", genre: "Comedy,drama", imgSrc: "https://iili.io/F2I1CLN.jpg", altText: "Darlings Movie Poster" }              
+                        ];
+                        popularOttMovies.forEach(movie => {
+                            document.write(`
+                                <a href="https://mmsmoviebazzar.blogspot.com/" target="_blank" class="movie-card-link">
+                                    <div class="movie-card">
+                                        <img src="${movie.imgSrc}" alt="${movie.altText}" loading="lazy">
+                                        <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
+                                    </div>
+                                </a>
+                            `);
+                        });
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Overview Section -->
+        <section id="categories-overview" class="placeholder-section categories-list-section">
+            <div class="container">
+                <h2>Explore Categories</h2>
+                <ul class="category-links">
+                    <li><a href="#hindi-movies">Hindi Movies</a></li>
+                    <li><a href="#south-movies">South Indian Movies</a></li>
+                    <li><a href="#bollywood-movies">Bollywood Blockbusters</a></li>
+                    <li><a href="#web-series">Trending Web Series</a></li>
+                    <li><a href="#indian-crime-movies">Indian Crime Movies</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Tags Section -->
+        <section id="tags-section" class="movie-gallery-section">
+            <div class="container">
+                <h2>Popular Tags</h2>
+                <div class="tags-container">
+                    <a href="#bollywood-movies" class="tag-link">Bollywood Hits</a>
+                    <a href="#south-movies" class="tag-link">South Indian Movies</a>
+                    <a href="#movie-gallery" class="tag-link">OTT Releases</a>
+                    <a href="#web-series" class="tag-link">Trending Web Series</a>
+                    <a href="#latest" class="tag-link">New Movie Releases</a>
+                    <a href="javascript:void(0);" class="tag-link">Action Movies</a>
+                    <a href="javascript:void(0);" class="tag-link">Romantic Movies</a>
+                    <a href="javascript:void(0);" class="tag-link">Latest Trailers</a>
+                    <a href="javascript:void(0);" class="tag-link">Comedy Movies</a>
+                    <a href="javascript:void(0);" class="tag-link">Thriller Movies</a>
+                    <a href="javascript:void(0);" class="tag-link">Sci-Fi Movies</a>
+                    <a href="javascript:void(0);" class="tag-link">Family Movies</a>
+                    <a href="#hindi-movies" class="tag-link">Hindi Cinema</a>
+                    <a href="#indian-crime-movies" class="tag-link">Crime Movies</a>
+                    <a href="javascript:void(0);" class="tag-link">Must Watch 2024</a>
+                </div>
+            </div>
+        </section>
+
+       <!-- Hindi Movies Section -->
+        <section id="hindi-movies" class="movie-gallery-section">
+            <div class="container">
+                <h2>Hindi Movies</h2>
+                <h3>Classic Hindi Movies</h3>
+                <div class="gallery-grid">
+                    <script>
+                        const classicHindiMovies = [
+                            { title: "Sholay", genre: "Action, Adventure", imgSrc: "https://iili.io/F2IW15X.jpg" },
+                            { title: "Mughal-e-Azam", genre: "Historical Drama", imgSrc: "https://iili.io/F2IUrQI.jpg" },
+                            { title: "Mother India", genre: "Drama", imgSrc: "https://iili.io/F2I6Ywx.jpg" },
+                            { title: "Amar Akbar Anthony", genre: "Comedy, Action", imgSrc: "https://iili.io/F2IicrP.jpg" },
+                            { title: "Pakeezah", genre: "Musical, Romance", imgSrc: "https://iili.io/F2IsBwJ.jpg" },
+                            { title: "Deewar", genre: "Crime, Drama", imgSrc: "https://iili.io/F2ILSs4.jpg" },
+                            { title: "Guide", genre: "Musical, Romance", imgSrc: "https://iili.io/F2IZyR1.jpg" },
+                            { title: "Chupke Chupke", genre: "Comedy", imgSrc: "https://iili.io/F2IDi6x.jpg" },
+                            { title: "Anand", genre: "Drama", imgSrc: "https://iili.io/F2T9Wqg.jpg" },
+                            { title: "Kaagaz Ke Phool", genre: "Drama, Musical", imgSrc: "https://iili.io/F2THe3b.jpg" }
+                        ];
+
+                        classicHindiMovies.forEach(movie => {
+                            document.write(`
+                                <a href="https://mmsmoviebazzar.blogspot.com/" target="_blank" class="movie-card-link">
+                                    <div class="movie-card">
+                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <div class="movie-info">
+                                            <h3>${movie.title}</h3>
+                                            <p>${movie.genre}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            `);
+                        });
+                    </script>
+                </div>
+                 <h3 style="margin-top: 2rem;">Latest Movies</h3> 
+                <div class="gallery-grid">
+                    <script>
+                        const latestHindiMovies = [
+                            { title: "Animal", genre: "Action, Crime", imgSrc: "https://iili.io/F2TIfZg.jpg" },
+                            { title: "Jawan", genre: "Action, Thriller", imgSrc: "https://iili.io/F2TIKwF.jpg" },
+                            { title: "Pathaan", genre: "Action, Thriller", imgSrc: "https://iili.io/F2TExXR.jpg" },
+                            { title: "12th Fail", genre: "Biographical Drama", imgSrc: "https://iili.io/F2TzDZu.jpg" },
+                            { title: "Gadar 2", genre: "Action, Drama", imgSrc: "https://iili.io/F2Tzy6x.jpg" },
+                            { title: "Article 370", genre: "Political Thriller", imgSrc: "https://iili.io/F2TzLy7.jpg" },
+                            { title: "Bhediya", genre: "Comedy Horror", imgSrc: "https://iili.io/F2TIBna.jpg" },
+                            { title: "Zara Hatke Zara Bachke", genre: "Romantic Comedy", imgSrc: "https://iili.io/F2TI2yP.jpg" },
+                            { title: "Bhool Bhulaiyaa 2", genre: "Comedy Horror", imgSrc: "https://iili.io/F2TIH3Q.jpg" },
+                            { title: "Rocky Aur Rani Kii Prem Kahaani", genre: "Romantic Comedy", imgSrc: "https://iili.io/F2TIFu1.jpg" }
+                        ];
+
+                        latestHindiMovies.forEach(movie => {
+                            document.write(`
+                                <a href="https://mmsmoviebazzar.blogspot.com/" target="_blank" class="movie-card-link">
+                                    <div class="movie-card">
+                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
+                                    </div>
+                                </a>
+                            `);
+                        });
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <!-- South Indian Movies Section -->
+        <section id="south-movies" class="movie-gallery-section">
+            <div class="container">
+                <h2>South Indian Movies</h2>
+                <h3>Popular South Movies</h3>
+                <div class="gallery-grid">
+                    <script>
+                        const popularSouthMovies = [
+                            { title: "Baahubali: The Beginning", genre: "Action, Fantasy", imgSrc: "https://iili.io/F2TtA6x.jpg" },
+                            { title: "Baahubali 2: The Conclusion", genre: "Action, Fantasy", imgSrc: "https://iili.io/F2Tt1Zg.jpg" },
+                            { title: "RRR", genre: "Action, Drama", imgSrc: "https://iili.io/F2Ttxje.jpg" },
+                            { title: "Pushpa: The Rise", genre: "Action, Crime", imgSrc: "https://iili.io/F2TtCy7.jpg" },
+                            { title: "KGF Chapter 1", genre: "Action, Crime", imgSrc: "https://iili.io/F2TtBvS.jpg" },
+                            { title: "KGF Chapter 2", genre: "Action, Crime", imgSrc: "https://iili.io/F2Ttqa2.jpg" },
+                            { title: "Sita Ramam", genre: "Romantic Drama", imgSrc: "https://iili.io/F2TtzZu.jpg" },
+                            { title: "Jai Bhim", genre: "Legal Drama", imgSrc: "https://iili.io/F2TtTCb.jpg" },
+                            { title: "Master", genre: "Action, Thriller", imgSrc: "https://iili.io/F2TtuGj.jpg" },
+                            { title: "Vikram", genre: "Action, Thriller", imgSrc: "https://iili.io/F2Tt53Q.jpg" },
+                            { title: "Eega", genre: "Fantasy, Action", imgSrc: "https://iili.io/F2Tt7aV.jpg" },
+                            { title: "Varisu", genre: "Action, Drama", imgSrc: "https://iili.io/F2TtayP.jpg" },
+                            { title: "Dasara", genre: "Action, Drama", imgSrc: "https://iili.io/F2Ttlu1.jpg" },
+                            { title: "Mersal", genre: "Action, Thriller", imgSrc: "https://iili.io/F2Tt0wF.jpg" },
+                            { title: "Ala Vaikunthapurramuloo", genre: "Action, Comedy", imgSrc: "https://iili.io/F2TtGna.jpg" }
+                        ];
+                         popularSouthMovies.forEach(movie => {
+                            document.write(`
+                                <a href="https://mmsmoviebazzar.blogspot.com/" target="_blank" class="movie-card-link">
+                                    <div class="movie-card">
+                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
+                                    </div>
+                                </a>
+                            `);
+                        });
+                    </script>
+                </div>
+                <h3 style="margin-top: 2rem;">New Hero / Lesser-known South Movies</h3>
+                <div class="gallery-grid">
+                     <script>
+                        const newSouthMovies = [
+                            { title: "Dragon", genre: "Action (Placeholder)", imgSrc: "https://iili.io/F2AHY6F.jpg" },
+                            { title: "Tillu Square", genre: "Comedy", imgSrc: "https://iili.io/F2AH7G1.jpg" },
+                            { title: "Hanu-Man", genre: "Superhero", imgSrc: "https://iili.io/F2AHAZB.jpg" },
+                            { title: "Love Today", genre: "Romantic Comedy", imgSrc: "https://iili.io/F2AHujV.jpg" },
+                            { title: "Agent", genre: "Spy Action", imgSrc: "https://iili.io/F2AH5CP.jpg" }
+                        ];
+                        newSouthMovies.forEach(movie => {
+                            document.write(`
+                                <a href="https://mmsmoviebazzar.blogspot.com/" target="_blank" class="movie-card-link">
+                                    <div class="movie-card">
+                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
+                                    </div>
+                                </a>
+                            `);
+                        });
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bollywood Blockbusters Section -->
+        <section id="bollywood-movies" class="movie-gallery-section">
+            <div class="container">
+                <h2>Bollywood Blockbusters</h2>
+                <h3>Famous Blockbusters</h3>
+                 <div class="gallery-grid">
+                    <script>
+                        const famousBollywood = [
+                            { title: "Mission Mangal", genre: "Drama, Sci-Fi", imgSrc: "https://iili.io/F2AfPzG.jpg" },
+                            { title: "Gadar 2", genre: "Action, Drama", imgSrc: "https://iili.io/F2AqdLx.jpg" },
+                            { title: "BHARAT", genre: "Drama", imgSrc: "https://iili.io/F2Aq3qQ.webp" },
+                            { title: "War", genre: "Action, Thriller", imgSrc: "https://iili.io/F2Af4bs.jpg" },
+                            { title: "Kabir Singh", genre: "Romantic Drama", imgSrc: "https://iili.io/F2Afg5X.jpg" },
+                            { title: "FIGHTER", genre: "Action, Aerial", imgSrc: "https://iili.io/F2AfUJt.jpg" },
+                            { title: "Dangal", genre: "Biographical Sport", imgSrc: "https://iili.io/F2AfiXf.jpg" },
+                            { title: "Sultan", genre: "Sport, Drama", imgSrc: "https://iili.io/F2Afss4.jpg" },
+                            { title: "Tanhaji", genre: "Historical Action", imgSrc: "https://iili.io/F2AfQql.jpg" },
+                            { title: "Brahmāstra", genre: "Fantasy Adventure", imgSrc: "https://iili.io/F2AfZ12.jpg" },
+                            { title: "Raazi", genre: "Spy Thriller", imgSrc: "https://iili.io/F2AftgS.jpg" },
+                            { title: "Sanju", genre: "Biographical Drama", imgSrc: "https://iili.io/F2Afbd7.jpg" },
+                            { title: "PK", genre: "Comedy, Sci-Fi", imgSrc: "https://iili.io/F2Afpee.jpg" },
+                            { title: "Jawan", genre: "Action, Thriller", imgSrc: "https://iili.io/F2AqHzb.jpg" },
+                            { title: "Chak De India", genre: "Sport, Drama", imgSrc: "https://iili.io/F2AqJXj.jpg" }
+                        ];
+                        famousBollywood.forEach(movie => {
+                            document.write(`
+                                <a href="https://mmsmoviebazzar.blogspot.com/" target="_blank" class="movie-card-link">
+                                    <div class="movie-card">
+                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
+                                    </div>
+                                </a>
+                            `);
+                        });
+                    </script>
+                </div>
+                <h3 style="margin-top: 2rem;">Rising Actors / Lesser-known Hits</h3>
+                <div class="gallery-grid">
+                     <script>
+                        const newBollywood = [
+                            { title: "The Kerala Story", genre: "Drama", imgSrc: "https://iili.io/F25rYjs.jpg" },
+                            { title: "URI: The Surgical Strike", genre: "Military Action", imgSrc: "https://iili.io/F25r16l.jpg" },
+                            { title: "Ra.One", genre: "Sci-Fi, Action", imgSrc: "https://iili.io/F25r0G4.jpg" },
+                            { title: "Dobaaraa", genre: "Sci-Fi Thriller", imgSrc: "https://iili.io/F25rlnf.jpg" },
+                            { title: "The Kashmir Files", genre: "Drama", imgSrc: "https://iili.io/F25raZG.jpg" }
+                        ];
+                        newBollywood.forEach(movie => {
+                             document.write(`
+                                <a href="https://mmsmoviebazzar.blogspot.com/" target="_blank" class="movie-card-link">
+                                    <div class="movie-card">
+                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
+                                    </div>
+                                </a>
+                            `);
+                        });
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trending Web Series Section -->
+        <section id="web-series" class="movie-gallery-section">
+            <div class="container">
+                <h2>Trending Web Series</h2>
+                <h3>Top Trending Shows</h3>
+                <div class="gallery-grid">
+                    <script>
+                        const popularWebSeries = [
+                            { title: "Mirzapur", genre: "Crime Thriller", imgSrc: "https://iili.io/F27Hhgt.jpg" },
+                            { title: "The Family Man", genre: "Spy Thriller", imgSrc: "https://iili.io/F27HyrP.jpg" },
+                            { title: "Asur 2", genre: "Crime Thriller", imgSrc: "https://iili.io/F27HOes.jpg" },
+                            { title: "Sacred Games", genre: "Crime Thriller", imgSrc: "https://iili.io/F27HN7n.jpg" },
+                            { title: "Paatal Lok", genre: "Crime Thriller", imgSrc: "https://iili.io/F27HSLl.jpg" },
+                            { title: "FARZI", genre: "Crime thiler ", imgSrc: "https://iili.io/F2e76JV.jpg" },
+                            { title: "Scam 1992", genre: "Biographical Crime", imgSrc: "https://iili.io/F27Hr1S.jpg" },
+                            { title: "Panchayat", genre: "Comedy Drama", imgSrc: "https://iili.io/F27HgB2.jpg" },
+                            { title: "Rocket Boys", genre: "Biographical Drama", imgSrc: "https://iili.io/F27H4r7.jpg" },
+                            { title: "Made in Heaven", genre: "Drama", imgSrc: "https://iili.io/F27Hsku.jpg" },
+                            { title: "Delhi Crime", genre: "Crime Drama", imgSrc: "https://iili.io/F27HLmb.jpg" },
+                            { title: "Criminal Justice", genre: "Legal Drama", imgSrc: "https://iili.io/F27HZIj.jpg" },
+                            { title: "Breathe", genre: "Crime Thriller", imgSrc: "https://iili.io/F27Hthx.jpg" },
+                            { title: "Special OPS", genre: "Spy Thriller", imgSrc: "https://iili.io/F2YqPjt.jpg" },
+                            { title: "SHE", genre: "Crime drama", imgSrc: "https://iili.io/F2YfN1f.jpg" },
+                        ];
+                         popularWebSeries.forEach(series => {
+                            document.write(`
+                                <a href="https://mmsmoviebazzar.blogspot.com/" target="_blank" class="movie-card-link">
+                                    <div class="movie-card">
+                                        <img src="${series.imgSrc}" alt="${series.title} Poster" loading="lazy">
+                                        <div class="movie-info"><h3>${series.title}</h3><p>${series.genre}</p></div>
+                                    </div>
+                                </a>
+                            `);
+                        });
+                    </script>
+                </div>
+               <!-- <h3 style="margin-top: 2rem;">New / Underrated Series</h3>
+                <div class="gallery-grid">
+                    <script>
+                        const newWebSeries = [
+                            { title: "Choona", genre: "Heist Comedy", imgSrc: "https://iili.io/F2ekWZu.jpg" },
+                            { title: "Bambai Meri Jaan", genre: "Crime Drama", imgSrc: "https://iili.io/F2ekO3Q.jpg" },
+                            { title: "Undekhi", genre: "Crime Thriller", imgSrc: "https://iili.io/F2ekjGj.jpg" },
+                            { title: "Taaza Khabar", genre: "Fantasy Drama", imgSrc: "https://iili.io/F2ekw6x.jpg" },
+                            { title: "Inspector Avinash", genre: "Crime Drama", imgSrc: "https://iili.io/F2ekVje.jpg" }
+                        ];
+                        newWebSeries.forEach(series => {
+                            document.write(`
+                                <a href="https://mmsmoviebazzar.blogspot.com/" target="_blank" class="movie-card-link">
+                                    <div class="movie-card">
+                                        <img src="${series.imgSrc}" alt="${series.title} Poster" loading="lazy">
+                                        <div class="movie-info"><h3>${series.title}</h3><p>${series.genre}</p></div>
+                                    </div>
+                                </a>
+                            `);
+                        });
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <!-- START: INDIAN CRIME MOVIES SECTION -->
+        <section id="indian-crime-movies" class="movie-gallery-section">
+            <div class="container">
+                <h2>🎥 Top Indian Movies & Web Series Based on Crime, Scam, and Corruption</h2>
+        
+                <!-- Financial / Corporate Scam -->
+                <h3>🔸 Financial / Corporate Scam</h3>
+                <div class="gallery-grid">
+                    <script>
+                        const financialScamMovies = [
+                            { title: "Scam 1992", genre: "Financial Scam", imgSrc: "https://iili.io/F2ksuPS.jpg" },
+                            { title: "The Big Bull", genre: "Financial Scam", imgSrc: "https://iili.io/F2ksfcX.jpg" },
+                            { title: "Baazaar", genre: "Financial Thriller", imgSrc: "https://iili.io/F2ksKFt.jpg" },
+                            { title: "Special 26", genre: "Heist", imgSrc: "https://iili.io/F2ks3PI.jpg" },
+                            { title: "Guru", genre: "Biographical Drama", imgSrc: "https://iili.io/F2ks2MN.jpg" },
+                            { title: "Rocket Singh: Salesman of the Year", genre: "Comedy Drama", imgSrc: "https://iili.io/F2ksC9s.jpg" },
+                            { title: "Tigers", genre: "Drama", imgSrc: "https://iili.io/F2ksoNf.jpg" },
+                            { title: "Tamanchey", genre: "Romantic Crime", imgSrc: "https://iili.io/F2ksxt4.jpg" },
+                            { title: "Jamtara: Sabka Number Ayega", genre: "Cyber Crime", imgSrc: "https://iili.io/F2ksTV2.jpg" },
+                          { title: "NH10", genre: " Scam", imgSrc: "https://iili.io/F2UFyqN.jpg" }
+                        ];
+                        financialScamMovies.forEach(movie => {
+                            document.write(`
+                                <a href="https://mmsmoviebazzar.blogspot.com/" target="_blank" class="movie-card-link">
+                                    <div class="movie-card">
+                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <div class="movie-info">
+                                            <h3>${movie.title}</h3>
+                                            <p>${movie.genre}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            `);
+                        });
+                    </script>
+                </div>
+        
+                <!-- Government/Political Crime & Corruption -->
+                <h3>🔸 Government/Political Crime & Corruption</h3>
+                <div class="gallery-grid">
+                    <script>
+                        const politicalCrimeMovies = [
+                            { title: "Raid", genre: "Political Crime", imgSrc: "https://iili.io/F2vk5Ga.jpg" },
+                            { title: "Satyagraha", genre: "Political Crime", imgSrc: "https://iili.io/F2vklvp.jpg" },
+                            { title: "Madras Cafe", genre: "Political Crime", imgSrc: "https://iili.io/F2vk3Qe.jpg" },
+                            { title: "Article 15", genre: "Political Crime", imgSrc: "https://iili.io/F2vkKCu.jpg" },
+                            { title: "Section 375", genre: "Political Crime", imgSrc: "https://iili.io/F2vk2j9.jpg" },
+                            { title: "Shool", genre: "Political Crime", imgSrc: "https://iili.io/F2vkdT7.jpg" },
+                            { title: "No One Killed Jessica", genre: "Political Crime", imgSrc: "https://iili.io/F2vkC3x.jpg" },
+                            { title: "Indu Sarkar", genre: "Political Crime", imgSrc: "https://iili.io/F2vknYQ.jpg" },
+                            { title: "Rajneeti", genre: "Political Crime", imgSrc: "https://iili.io/F2vkovV.jpg" },
+                            { title: "Talvar", genre: "Political Crime", imgSrc: "https://iili.io/F2vkxyB.jpg" },
+                            { title: "Court", genre: "Political Crime", imgSrc: "https://iili.io/F2vkTj1.jpg" },
+                            { title: "Accidental Prime Minister", genre: "Political Crime", imgSrc: "https://iili.io/F2vkuZF.jpg" },
+                            { title: "Batla House", genre: "Political Crime", imgSrc: "https://iili.io/F2vkRCg.jpg" }
+                        ];
+                        politicalCrimeMovies.forEach(movie => {
+                            document.write(`
+                                <a href="https://mmsmoviebazzar.blogspot.com/" target="_blank" class="movie-card-link">
+                                    <div class="movie-card">
+                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <div class="movie-info">
+                                            <h3>${movie.title}</h3>
+                                            <p>${movie.genre}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            `);
+                        });
+                    </script>
+                </div>
+        
+                <!-- Underworld / Mafia / Gangster Crime (UPDATED) -->
+                <h3>🔸 Underworld / Mafia / Gangster Crime</h3>
+                <div class="gallery-grid">
+                    <script>
+                        const gangsterCrimeMovies = [
+                            { title: "Gangs of Wasseypur (1 & 2)", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LbQj.jpg" },
+                            { title: "Satya", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LpCx.jpg" },
+                            { title: "Company", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LrB4.jpg" },
+                            { title: "D-Day", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LShG.jpg" },
+                            { title: "Raees", genre: "Gangster Crime", imgSrc: "https://iili.io/F28L8Is.jpg" },
+                            { title: "Kaala", genre: "Gangster Crime", imgSrc: "https://iili.io/F28Lkpn.jpg" },
+                            { title: "Shootout at Lokhandwala", genre: "Gangster Crime", imgSrc: "https://iili.io/F28L642.jpg" },
+                            { title: "Shootout at Wadala", genre: "Gangster Crime", imgSrc: "https://iili.io/F28Li2S.jpg" },
+                            { title: "Black Friday", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LsY7.jpg" },
+                            { title: "Vaastav", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LLv9.jpg" },
+                            { title: "Once Upon A Time in Mumbaai", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LQpe.jpg" },
+                            { title: "Monica, O My Darling", genre: "Neo-Noir", imgSrc: "https://iili.io/F28LtTu.jpg" },
+                            { title: "Ugly", genre: "Thriller", imgSrc: "https://iili.io/F28LDhb.jpg" }
+                        ];
+                        gangsterCrimeMovies.forEach(movie => {
+                            document.write(`
+                                <a href="https://mmsmoviebazzar.blogspot.com/" target="_blank" class="movie-card-link">
+                                    <div class="movie-card">
+                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <div class="movie-info">
+                                            <h3>${movie.title}</h3>
+                                            <p>${movie.genre}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            `);
+                        });
+                    </script>
+                </div>
+        
+                <!-- Cyber / Tech & Digital Crime (UPDATED) -->
+                <h3>🔸 Cyber / Tech & Digital Crime</h3>
+                <div class="gallery-grid">
+                    <script>
+                        const cyberCrimeMovies = [
+                            { title: "Hacked", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWFta.jpg" },
+                            { title: "Hello Mini", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWocN.jpg" },
+                            { title: "Chakravyuh – Inspector Virkar", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWBPR.jpg" },
+                            { title: "Breathe: Into the Shadows", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWqMv.jpg" },
+                            { title: "Rudra: The Edge of Darkness", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWfoJ.jpg" }
+                        ];
+                        cyberCrimeMovies.forEach(movie => {
+                            document.write(`
+                                <a href="https://mmsmoviebazzar.blogspot.com/" target="_blank" class="movie-card-link">
+                                    <div class="movie-card">
+                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <div class="movie-info">
+                                            <h3>${movie.title}</h3>
+                                            <p>${movie.genre}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            `);
+                        });
+                    </script>
+                </div>
+        
+                <!-- True Crime / Real Events Inspired 
+                <h3>🔸 True Crime / Real Events Inspired</h3>
+                <div class="gallery-grid">
+                    <script>
+                        const trueCrimeMovies = [
+                            { title: "Talvar", genre: "True Crime", imgText: "Talvar", color: "FF1493" },
+                            { title: "NH10", genre: "True Crime", imgText: "NH10", color: "FF69B4" },
+                            { title: "No One Killed Jessica", genre: "True Crime", imgText: "No+One+Killed+Jessica", color: "FFB6C1" },
+                            { title: "Monica, O My Darling", genre: "True Crime", imgText: "Monica+O+My+Darling", color: "FFC0CB" },
+                            { title: "Black Friday", genre: "True Crime", imgText: "Black+Friday", color: "DB7093" },
+                            { title: "Batla House", genre: "True Crime", imgText: "Batla+House", color: "C71585" },
+                            { title: "The Big Bull", genre: "True Crime", imgText: "The+Big+Bull", color: "FF69B4" },
+                            { title: "Scam 1992", genre: "True Crime", imgText: "Scam+1992", color: "FF1493" },
+                            { title: "Tigers", genre: "True Crime", imgText: "Tigers", color: "FF69B4" }
+                        ];
+                        trueCrimeMovies.forEach(movie => {
+                            document.write(`
+                                <a href="https://mmsmoviebazzar.blogspot.com/" target="_blank" class="movie-card-link">
+                                    <div class="movie-card">
+                                        <img src="https://via.placeholder.com/480x270/${movie.color}/000000?text=${movie.imgText.replace(/ /g, '+')}" alt="${movie.title} Poster" loading="lazy">
+                                        <div class="movie-info">
+                                            <h3>${movie.title}</h3>
+                                            <p>${movie.genre}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            `);
+                        });
+                    </script>
+                </div>
+        
+            </div>
+        </section>
+        <!-- END: INDIAN CRIME MOVIES SECTION -->
+
+        <!-- Latest Releases Section (UPDATED) -->
+        <section id="latest" class="movie-gallery-section">
+            <div class="container">
+                <h2>Latest Releases</h2>
+                <h3>High-Profile Latest Releases</h3>
+                <div class="gallery-grid">
+                    <script>
+                        const latestPopularReleases = [
+                            { title: "12th Fail", genre: "Biographical Drama", imgSrc: "https://iili.io/F2SgEE7.jpg" },
+                            { title: "Article 370", genre: "Political Thriller", imgSrc: "https://iili.io/F2SPjcP.jpg" },
+                            { title: "Animal", genre: "Action, Crime", imgSrc: "https://iili.io/F2SglQ2.jpg" },
+                            { title: "Jawan", genre: "Action, Thriller", imgSrc: "https://iili.io/F2Sgchl.jpg" },
+                            { title: "Fighter", genre: "Action, Aerial", imgSrc: "https://iili.io/F2SgaI4.jpg" },
+                            { title: "Crew", genre: "Comedy", imgSrc: "https://iili.io/F2SgWYu.jpg" },
+                            { title: "Maharaja", genre: "Action", imgSrc: "https://iili.io/F2SgXkb.jpg" },
+                            { title: "Bhool Bhulaiyaa 3", genre: "Comedy Horror (Upcoming)", imgSrc: "https://iili.io/F2Sghpj.jpg" },
+                            { title: "Bade Miyan Chote Miyan", genre: "Action Comedy", imgSrc: "https://iili.io/F2SgNhQ.jpg" },
+                            { title: "Laapataa Ladies", genre: "Comedy Drama", imgSrc: "https://iili.io/F2Sg841.jpg" },
+                            { title: "Manjummel Boys", genre: "Survival Thriller", imgSrc: "https://iili.io/F2SgU3F.jpg" },
+                            { title: "Mr. & Mrs. Mahi", genre: "Sports Drama", imgSrc: "https://iili.io/F2SggYg.jpg" },
+                            { title: "Srikanth", genre: "Biographical", imgSrc: "https://iili.io/F2Sgrva.jpg" },
+                            { title: "Chandu Champion", genre: "Sports Biographical", imgSrc: "https://iili.io/F2SgsQp.jpg" },
+                            { title: "Yodha", genre: "Action Thriller", imgSrc: "https://iili.io/F2SgQCN.jpg" }
+                        ];
+                        latestPopularReleases.forEach(movie => {
+                            document.write(`
+                                <a href="https://mmsmoviebazzar.blogspot.com/" target="_blank" class="movie-card-link">
+                                    <div class="movie-card">
+                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
+                                    </div>
+                                </a>
+                            `);
+                        });
+                    </script>
+                </div>
+                <h3 style="margin-top: 2rem;">Lesser-Known / New Actor Releases</h3>
+                 <div class="gallery-grid">
+                    <script>
+                        const latestNewReleases = [
+                            { title: "Tillu Square", genre: "Comedy", imgSrc: "https://iili.io/F2SecXt.jpg" },
+                            { title: "Dragon", genre: "Action", imgSrc: "https://iili.io/F2Se1Bn.jpg" },
+                            { title: "Razakar", genre: "Historical Drama", imgSrc: "https://iili.io/F2SelLX.jpg" },
+                            { title: "Amar Singh Chamkila", genre: "Biographical Musical", imgSrc: "https://iili.io/F2SeE1s.jpg" },
+                            { title: "Madgaon Express", genre: "Comedy", imgSrc: "https://iili.io/F2SeGrG.jpg" }
+                        ];
+                        latestNewReleases.forEach(movie => {
+                            document.write(`
+                                <a href="https://mmsmoviebazzar.blogspot.com/" target="_blank" class="movie-card-link">
+                                    <div class="movie-card">
+                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
+                                    </div>
+                                </a>
+                            `);
+                        });
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>Have questions or suggestions? Reach out!</p>
+                <p>Email: <a href="mailto:info@moviehub.com">crommatoons@gmail.com</a></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2024 MovieHub. All Rights Reserved. Designed By Aditya ❤️.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
