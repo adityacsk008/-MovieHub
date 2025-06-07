@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MovieHub - Your Film Destination</title>
+    <title>MovieX - Your Film Destination</title> <!-- Updated Title -->
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+    <!-- Favicon (aap yahan apne logo ka chhota version bhi laga sakte hain) -->
+    <link rel="icon" href="images/moviex_logo.png" type="image/png">
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="container">
-            <a href="index.html" class="logo">🎬 MovieHub</a>
+            <a href="index.html" class="logo-link">
+                <img src="https://iili.io/F33LXDv.png alt="MovieX Logo" id="site-logo">
+            </a>
             <nav class="main-nav">
                 <ul>
                     <li><a href="#home" class="active">Home</a></li>
@@ -52,6 +55,8 @@
                 <h2>Popular OTT Movies</h2>
                 <div class="gallery-grid">
                     <script>
+                        // IMPORTANT: Verify these are DIRECT image links ending in .jpg, .png etc.
+                        // OR use local paths like "images/rrr_poster.jpg" if you download them.
                         const popularOttMovies = [
                             { title: "RRR", genre: "Action, Drama", imgSrc: "https://iili.io/F2ziUOJ.jpg", link: "https://www.netflix.com/title/81476453", altText: "RRR Movie Poster" },
                             { title: "Darlings", genre: "Dark Comedy", imgSrc: "https://iili.io/F2ziDRs.jpg", link: "https://www.netflix.com/title/81227894", altText: "Darlings Movie Poster" },
