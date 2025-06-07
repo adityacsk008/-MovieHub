@@ -9,8 +9,8 @@
     --text-color: #212529;
     --header-bg: var(--primary-color);
     --header-text: #FFFFFF;
-    --logo-text-color: var(--header-text);
-    --logo-hover-color: #E0F0E3;
+    --logo-text-color: var(--header-text); 
+    --logo-hover-color: #E0F0E3; 
     --nav-link-text: var(--header-text);
     --nav-link-hover-bg: #8BCAA0;
     --nav-link-active-bg: #79B48F;
@@ -76,7 +76,7 @@ a:hover { color: var(--link-hover-color); }
 h1, h2, h3 { margin-bottom: 0.75em; line-height: 1.2; transition: color var(--transition-speed) ease; }
 h1 { font-size: 2.5rem; }
 h2 { font-size: 2rem; }
-h3 { font-size: 1.25rem; } /* Base h3, will be overridden for subheadings */
+h3 { font-size: 1.25rem; } 
 
 /* Animation Keyframes */
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -86,8 +86,21 @@ h3 { font-size: 1.25rem; } /* Base h3, will be overridden for subheadings */
 /* Header & Navigation */
 header { background-color: var(--header-bg); color: var(--header-text); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease; }
 header .container { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-size: 1.8rem; font-weight: bold; color: var(--logo-text-color); transition: color var(--transition-speed) ease; animation: fadeIn 0.5s ease-out; }
-.logo:hover { color: var(--logo-hover-color); }
+
+.logo-link {
+    display: flex; 
+    align-items: center;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+.logo-link:hover {
+    opacity: 0.85;
+}
+#site-logo {
+    height: 50px; /* Adjusted Height for the new logo */
+    width: auto;  
+}
+
 .main-nav ul { list-style: none; display: flex; }
 .main-nav ul li { margin-left: 20px; opacity: 0; animation: fadeInUp 0.5s ease-out forwards; }
 .main-nav ul li:nth-child(1) { animation-delay: 0.1s; }
@@ -95,7 +108,7 @@ header .container { display: flex; justify-content: space-between; align-items: 
 .main-nav ul li:nth-child(3) { animation-delay: 0.3s; }
 .main-nav ul li:nth-child(4) { animation-delay: 0.4s; }
 .main-nav ul li:nth-child(5) { animation-delay: 0.5s; }
-.main-nav ul li:nth-child(6) { animation-delay: 0.6s; } /* For potential 6th nav item */
+.main-nav ul li:nth-child(6) { animation-delay: 0.6s; }
 .main-nav ul li a { color: var(--nav-link-text); padding: 0.5rem 0.75rem; border-radius: 4px; transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease; }
 .main-nav ul li a:hover { background-color: var(--nav-link-hover-bg); color: var(--nav-link-active-text); }
 .main-nav ul li a.active { background-color: var(--nav-link-active-bg); color: var(--nav-link-active-text); }
@@ -108,7 +121,6 @@ body.night-mode #theme-toggle .icon-moon { display: inline; }
 .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 10px; position: relative; z-index: 1001; }
 .menu-toggle span { display: block; width: 25px; height: 3px; background-color: var(--menu-toggle-icon-color); margin: 5px 0; transition: all var(--transition-speed) ease-in-out, background-color var(--transition-speed) ease; }
 
-
 /* Hero Section */
 .hero-section {
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://image.tmdb.org/t/p/original/8YFL5QQVPy3AgrEQxNYVSgiPEbe.jpg') no-repeat center center/cover;
@@ -120,26 +132,14 @@ body.night-mode #theme-toggle .icon-moon { display: inline; }
     align-items: center;
     justify-content: center;
     transition: color var(--transition-speed) ease;
-    overflow: hidden; /* Prevent content from spilling during animation */
+    overflow: hidden;
 }
-.hero-section h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5em;
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out 0.2s forwards; /* Animate hero h1 */
-}
-.hero-section p {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto;
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out 0.4s forwards; /* Animate hero p */
-}
-
+.hero-section h1 { font-size: 3rem; margin-bottom: 0.5em; opacity: 0; animation: fadeInUp 0.8s ease-out 0.2s forwards; }
+.hero-section p { font-size: 1.2rem; max-width: 600px; margin: 0 auto; opacity: 0; animation: fadeInUp 0.8s ease-out 0.4s forwards; }
 
 /* Generic Section Styles */
 .movie-gallery-section, .placeholder-section, .contact-section, .categories-list-section { padding: 3rem 0; }
-.movie-gallery-section > .container > h2, /* Direct child H2 for main section title */
+.movie-gallery-section > .container > h2,
 .placeholder-section > .container > h2,
 .contact-section > .container > h2,
 .categories-list-section > .container > h2 {
@@ -151,9 +151,9 @@ body.night-mode #theme-toggle .icon-moon { display: inline; }
 }
 .placeholder-section .container, .categories-list-section .container { text-align: center; max-width: 900px; }
 
-/* Styles for Section Subheadings (e.g., Classic Hindi Movies) */
-.movie-gallery-section .container > h3 { /* H3 directly under .container for subheadings */
-    font-size: 1.7rem; /* Slightly larger subheading */
+/* Styles for Section Subheadings */
+.movie-gallery-section .container > h3 {
+    font-size: 1.7rem;
     color: var(--text-color);
     margin-top: 2.5rem;
     margin-bottom: 1.5rem;
@@ -161,11 +161,10 @@ body.night-mode #theme-toggle .icon-moon { display: inline; }
     padding-left: 5px; 
     border-bottom: 2px solid var(--primary-color);
     display: inline-block;
-    opacity: 0; /* For animation */
-    transform: translateY(20px); /* For animation */
+    opacity: 0; 
+    transform: translateY(20px);
 }
 body.night-mode .movie-gallery-section .container > h3 { border-bottom-color: var(--primary-color); }
-
 
 /* Categories Overview Section Links */
 .category-links { list-style: none; padding: 0; margin-top: 1rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
@@ -177,33 +176,34 @@ body.night-mode .category-links li a:hover { background-color: var(--primary-hov
 /* Tags Section */
 #tags-section .container { text-align: center; }
 .tags-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 1.5rem; padding: 0 10px; }
-.tag-link { display: inline-block; padding: 0.6rem 1.2rem; background-color: var(--secondary-color); color: var(--card-background); border-radius: 20px; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: background-color var(--transition-speed) ease, transform 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1); opacity: 0; transform: translateY(10px); /* For animation */ }
+.tag-link { display: inline-block; padding: 0.6rem 1.2rem; background-color: var(--secondary-color); color: var(--card-background); border-radius: 20px; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: background-color var(--transition-speed) ease, transform 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1); opacity: 0; transform: translateY(10px); }
 .tag-link:hover { background-color: var(--primary-color); color: var(--header-text); transform: translateY(-2px) scale(1.02); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
 body.night-mode .tag-link { background-color: var(--secondary-color); color: var(--background-color); }
 body.night-mode .tag-link:hover { background-color: var(--primary-color); color: var(--background-color); }
 
 /* Gallery Grid & Movie Card Styles */
-.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; } /* Adjusted minmax for 2:3 posters */
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; }
 
 .movie-card-link { display: block; text-decoration: none; color: inherit; border-radius: var(--border-radius); transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease; }
-.movie-card { background-color: var(--card-background); border-radius: var(--border-radius); box-shadow: var(--box-shadow); overflow: hidden; transition: var(--transition-property) var(--transition-speed) ease; display: flex; flex-direction: column; opacity: 0; transform: translateY(30px); height: 100%; /* Ensure cards in a row are same height if text varies */ }
+.movie-card { background-color: var(--card-background); border-radius: var(--border-radius); box-shadow: var(--box-shadow); overflow: hidden; transition: var(--transition-property) var(--transition-speed) ease; display: flex; flex-direction: column; opacity: 0; transform: translateY(30px); height: 100%; }
 .movie-card.animate-in { opacity: 1; transform: translateY(0); animation: scaleIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
 .movie-card-link:hover .movie-card { transform: translateY(-8px) scale(1.03); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); }
 body.night-mode .movie-card-link:hover .movie-card { box-shadow: 0 10px 30px rgba(255, 179, 71, 0.2); }
 
 .movie-card img {
     width: 100%;
-    height: auto; /* Height will be determined by aspect-ratio and width */
-    aspect-ratio: 2 / 3; /* IMPORTANT: Changed to 2:3 for portrait posters */
-    object-fit: cover; /* Crop image to fit, maintaining aspect ratio */
+    height: auto;
+    aspect-ratio: 2 / 3; 
+    object-fit: cover;
     border-bottom: 1px solid var(--card-image-border-color);
     transition: border-color var(--transition-speed) ease, transform 0.4s ease;
+    background-color: #e0e0e0; 
 }
 .movie-card-link:hover .movie-card img { transform: scale(1.05); }
 
-.movie-card .movie-info { padding: 0.8rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; } /* Adjusted padding */
-.movie-card .movie-info h3 { font-size: 1rem; margin-bottom: 0.25em; color: var(--text-color); line-height: 1.3; } /* Adjusted font size & line height */
-.movie-card .movie-info p { font-size: 0.8rem; color: var(--secondary-color); transition: color var(--transition-speed) ease; line-height: 1.4; } /* Adjusted font size */
+.movie-card .movie-info { padding: 0.8rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.movie-card .movie-info h3 { font-size: 1rem; margin-bottom: 0.25em; color: var(--text-color); line-height: 1.3; }
+.movie-card .movie-info p { font-size: 0.8rem; color: var(--secondary-color); transition: color var(--transition-speed) ease; line-height: 1.4; }
 
 /* Contact Section */
 .contact-section .container { text-align: center; max-width: 600px; opacity: 0; transform: translateY(20px); }
@@ -214,11 +214,10 @@ footer { background-color: var(--footer-bg); color: var(--footer-text-color); te
 @media (max-width: 992px) {
     .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
 }
-
 @media (max-width: 768px) {
     h1 { font-size: 2rem; }
     h2 { font-size: 1.75rem; }
-    .movie-gallery-section .container > h3 { font-size: 1.5rem; } /* Responsive subheading */
+    .movie-gallery-section .container > h3 { font-size: 1.5rem; }
     .hero-section h1 { font-size: 2.2rem; }
     .hero-section p { font-size: 1rem; }
     .main-nav { position: fixed; top: 0; left: -100%; width: 70%; max-width: 300px; height: 100vh; background-color: var(--header-bg); display: flex; flex-direction: column; align-items: center; padding-top: 60px; box-shadow: 2px 0 10px rgba(0,0,0,0.2); transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1), background-color var(--transition-speed) ease; z-index: 999; }
@@ -231,7 +230,7 @@ footer { background-color: var(--footer-bg); color: var(--footer-text-color); te
     .main-nav.active ul li:nth-child(3) { animation-delay: 0.2s; }
     .main-nav.active ul li:nth-child(4) { animation-delay: 0.25s; }
     .main-nav.active ul li:nth-child(5) { animation-delay: 0.3s; }
-    .main-nav.active ul li:nth-child(6) { animation-delay: 0.35s; } /* For 6th nav item */
+    .main-nav.active ul li:nth-child(6) { animation-delay: 0.35s; }
     .main-nav ul li a { display: block; padding: 1rem; border-bottom: 1px solid var(--nav-link-hover-bg); transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease; }
     .main-nav ul li:last-child a { border-bottom: none; }
     .main-nav ul li a:hover, .main-nav ul li a.active { background-color: var(--nav-link-active-bg); color: var(--nav-link-active-text); }
@@ -244,11 +243,11 @@ footer { background-color: var(--footer-bg); color: var(--footer-text-color); te
     .movie-card .movie-info p { font-size: 0.75rem; }
     .header-controls { gap: 5px; }
     #theme-toggle { font-size: 1.3rem; }
+    #site-logo { height: 60px; } /* Responsive logo for tablets */
 }
-
 @media (max-width: 480px) {
-    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); } /* Further adjust for smaller screens */
-    .logo { font-size: 1.5rem; }
+    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+    #site-logo { height: 50px; } /* Responsive logo for mobile */
     .main-nav { width: 85%; }
     .movie-card .movie-info { padding: 0.6rem; }
     .movie-card .movie-info h3 { font-size: 0.8rem; }
