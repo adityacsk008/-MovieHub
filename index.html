@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MovieX - Your Film Destination</title> <!-- Updated Title -->
+    <title>MovieX - Your Film Destination</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Favicon (aap yahan apne logo ka chhota version bhi laga sakte hain) -->
-    <link rel="icon" href="images/moviex_logo.png" type="image/png">
+    <link rel="icon" href="https://iili.io/F33LXDv.png" type="image/png"> 
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="container">
             <a href="index.html" class="logo-link">
-                <img src="https://iili.io/F33LXDv.png alt="MovieX Logo" id="site-logo">
+                <img src="https://iili.io/F33LXDv.png" alt="MovieX Logo" id="site-logo">
             </a>
             <nav class="main-nav">
                 <ul>
@@ -55,28 +54,33 @@
                 <h2>Popular OTT Movies</h2>
                 <div class="gallery-grid">
                     <script>
-                        // IMPORTANT: Verify these are DIRECT image links ending in .jpg, .png etc.
-                        // OR use local paths like "images/rrr_poster.jpg" if you download them.
+                        const adLinkGlobal = "https://www.profitableratecpm.com/z4vzhe9yf?key=2aae0b5a490218035de8b7cef1ff5aba";
                         const popularOttMovies = [
-                            { title: "RRR", genre: "Action, Drama", imgSrc: "https://iili.io/F2ziUOJ.jpg", link: "https://www.netflix.com/title/81476453", altText: "RRR Movie Poster" },
-                            { title: "Darlings", genre: "Dark Comedy", imgSrc: "https://iili.io/F2ziDRs.jpg", link: "https://www.netflix.com/title/81227894", altText: "Darlings Movie Poster" },
-                            { title: "Choked", genre: "Drama", imgSrc: "https://iili.io/F2ziSRa.jpg", link: "https://www.netflix.com/title/81069677", altText: "Choked Movie Poster" },
-                            { title: "Shershaah", genre: "Biographical War", imgSrc: "https://iili.io/F2zi8Hg.jpg", link: "https://www.primevideo.com/detail/0H38982D6Y4F11M29029Y152I0/", altText: "Shershaah Movie Poster" },
-                            { title: "Drishyam 2", genre: "Thriller", imgSrc: "https://iili.io/F2zikUF.jpg", link: "https://www.primevideo.com/detail/0H33A25W0C0L419L5K2496IOV6/", altText: "Drishyam 2 Movie Poster" },
-                            { title: "Jai Bhim", genre: "Legal Drama", imgSrc: "https://iili.io/F2zigDv.jpg", link: "https://www.primevideo.com/detail/0O322529DR064893T0405R61A5/", altText: "Jai Bhim Movie Poster" },
-                            { title: "Freddy", genre: "Thriller", imgSrc: "https://iili.io/F2z1RHJ.jpg", link: "https://www.hotstar.com/in/movies/freddy/1260123568", altText: "Freddy Movie Poster" },
-                            { title: "Brahmāstra: Part One – Shiva", genre: "Fantasy Adventure", imgSrc: "https://iili.io/F2zi6Vp.jpg", link: "https://www.hotstar.com/in/movies/brahmastra-part-one-shiva/1260110224", altText: "Brahmāstra Movie Poster" },
-                            { title: "Tanhaji: The Unsung Warrior", genre: "Historical Action", imgSrc: "https://iili.io/F2ziPiN.jpg", link: "https://www.hotstar.com/in/movies/tanhaji/1260022117", altText: "Tanhaji Movie Poster" },
-                            { title: "Sita Ramam", genre: "Romantic Drama", imgSrc: "https://iili.io/F2zisfI.jpg", link: "https://www.primevideo.com/detail/0N48MVF32XI4YA1C38MS8S32C6/", altText: "Sita Ramam Movie Poster" },
-                            { title: "Sirf Ek Bandaa Kaafi Hai", genre: "Courtroom Drama", imgSrc: "https://iili.io/F2ziLlt.jpg", link: "https://www.zee5.com/movies/details/sirf-ek-bandaa-kaafi-hai/0-0-1z5353549", altText: "Sirf Ek Bandaa Kaafi Hai Movie Poster" },
-                            { title: "12th Fail", genre: "Biographical Drama", imgSrc: "https://iili.io/F2ziQUX.jpg", link: "https://www.hotstar.com/in/movies/12th-fail/1260161427", altText: "12th Fail Movie Poster" },  
-                            { title: "Housefull 5", genre: "Upcoming Drama", imgSrc: "https://iili.io/F2I2FNp.jpg", link: "https://www.google.com/search?q=Housefull+5+release+date", altText: "Housefull 5 Movie Poster" },
-                            { title: "Titanic", genre: "Disaster, Tragic Romance", imgSrc: "https://iili.io/F2InRMQ.jpg", link: "https://www.hotstar.com/in/movies/titanic/1770000521", altText: "Titanic Movie Poster" },
-                            { title: "OMG", genre: "Comedy, Drama", imgSrc: "https://iili.io/F2I1CLN.jpg", link: "https://www.jiocinema.com/movies/omg-oh-my-god/3472019", altText: "OMG Movie Poster" }              
+                            { title: "RRR", genre: "Action, Drama", imgSrc: "https://iili.io/F2ziUOJ.jpg", originalLink: "https://www.netflix.com/title/81476453", altText: "RRR Movie Poster" },
+                            { title: "Darlings", genre: "Dark Comedy", imgSrc: "https://iili.io/F2ziDRs.jpg", originalLink: "https://www.netflix.com/title/81227894", altText: "Darlings Movie Poster" },
+                            { title: "Choked", genre: "Drama", imgSrc: "https://iili.io/F2ziSRa.jpg", originalLink: "https://www.netflix.com/title/81069677", altText: "Choked Movie Poster" },
+                            { title: "Shershaah", genre: "Biographical War", imgSrc: "https://iili.io/F2zi8Hg.jpg", originalLink: "https://www.primevideo.com/detail/0H38982D6Y4F11M29029Y152I0/", altText: "Shershaah Movie Poster" },
+                            { title: "Drishyam 2", genre: "Thriller", imgSrc: "https://iili.io/F2zikUF.jpg", originalLink: "https://www.primevideo.com/detail/0H33A25W0C0L419L5K2496IOV6/", altText: "Drishyam 2 Movie Poster" },
+                            { title: "Jai Bhim", genre: "Legal Drama", imgSrc: "https://iili.io/F2zigDv.jpg", originalLink: "https://www.primevideo.com/detail/0O322529DR064893T0405R61A5/", altText: "Jai Bhim Movie Poster" },
+                            { title: "Freddy", genre: "Thriller", imgSrc: "https://iili.io/F2z1RHJ.jpg", originalLink: "https://www.hotstar.com/in/movies/freddy/1260123568", altText: "Freddy Movie Poster" },
+                            { title: "Brahmāstra: Part One – Shiva", genre: "Fantasy Adventure", imgSrc: "https://iili.io/F2zi6Vp.jpg", originalLink: "https://www.hotstar.com/in/movies/brahmastra-part-one-shiva/1260110224", altText: "Brahmāstra Movie Poster" },
+                            { title: "Tanhaji: The Unsung Warrior", genre: "Historical Action", imgSrc: "https://iili.io/F2ziPiN.jpg", originalLink: "https://www.hotstar.com/in/movies/tanhaji/1260022117", altText: "Tanhaji Movie Poster" },
+                            { title: "Sita Ramam", genre: "Romantic Drama", imgSrc: "https://iili.io/F2zisfI.jpg", originalLink: "https://www.primevideo.com/detail/0N48MVF32XI4YA1C38MS8S32C6/", altText: "Sita Ramam Movie Poster" },
+                            { title: "Sirf Ek Bandaa Kaafi Hai", genre: "Courtroom Drama", imgSrc: "https://iili.io/F2ziLlt.jpg", originalLink: "https://www.zee5.com/movies/details/sirf-ek-bandaa-kaafi-hai/0-0-1z5353549", altText: "Sirf Ek Bandaa Kaafi Hai Movie Poster" },
+                            { title: "12th Fail", genre: "Biographical Drama", imgSrc: "https://iili.io/F2ziQUX.jpg", originalLink: "https://www.hotstar.com/in/movies/12th-fail/1260161427", altText: "12th Fail Movie Poster" },  
+                            { title: "Housefull 5", genre: "Upcoming Drama", imgSrc: "https://iili.io/F2I2FNp.jpg", originalLink: "https://www.google.com/search?q=Housefull+5+release+date", altText: "Housefull 5 Movie Poster" },
+                            { title: "Titanic", genre: "Disaster, Tragic Romance", imgSrc: "https://iili.io/F2InRMQ.jpg", originalLink: "https://www.hotstar.com/in/movies/titanic/1770000521", altText: "Titanic Movie Poster" },
+                            { title: "OMG", genre: "Comedy, Drama", imgSrc: "https://iili.io/F2I1CLN.jpg", originalLink: "https://www.jiocinema.com/movies/omg-oh-my-god/3472019", altText: "OMG Movie Poster" }              
                         ];
                         popularOttMovies.forEach(movie => {
+                            const uniqueCardId = 'moviex_ott_' + movie.imgSrc.split('/').pop().split('.')[0]; 
                             document.write(`
-                                <a href="${movie.link}" target="_blank" class="movie-card-link">
+                                <a href="${adLinkGlobal}" 
+                                   target="_blank" 
+                                   class="movie-card-link" 
+                                   data-original-link="${movie.originalLink}" 
+                                   data-ad-link="${adLinkGlobal}"
+                                   data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.altText}" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
@@ -91,7 +95,7 @@
 
         <!-- Categories Overview Section -->
         <section id="categories-overview" class="placeholder-section categories-list-section">
-            <div class="container">
+             <div class="container">
                 <h2>Explore Categories</h2>
                 <ul class="category-links">
                     <li><a href="#hindi-movies">Hindi Movies</a></li>
@@ -134,22 +138,24 @@
                 <h3>Classic Hindi Movies</h3>
                 <div class="gallery-grid">
                     <script>
+                        // const adLinkGlobal = "..." // Already defined
                         const classicHindiMovies = [
-                            { title: "Sholay", genre: "Action, Adventure", imgSrc: "https://iili.io/F2IW15X.jpg", link: "https://www.primevideo.com/detail/0JMLN82E5FT9G6T8B0F2I8J4G7/" },
-                            { title: "Mughal-e-Azam", genre: "Historical Drama", imgSrc: "https://iili.io/F2IUrQI.jpg", link: "https://www.zee5.com/movies/details/mughal-e-azam/0-0-1z5123910" },
-                            { title: "Mother India", genre: "Drama", imgSrc: "https://iili.io/F2I6Ywx.jpg", link: "https://www.youtube.com/watch?v=4T1n2G_K7lI" },
-                            { title: "Amar Akbar Anthony", genre: "Comedy, Action", imgSrc: "https://iili.io/F2IicrP.jpg", link: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" },
-                            { title: "Pakeezah", genre: "Musical, Romance", imgSrc: "https://iili.io/F2IsBwJ.jpg", link: "https://www.primevideo.com/detail/0G45E7J7T8B0F2I8J4G7M2N8R9/" },
-                            { title: "Deewar", genre: "Crime, Drama", imgSrc: "https://iili.io/F2ILSs4.jpg", link: "https://www.zee5.com/movies/details/deewaar/0-0-1z5117972" },
-                            { title: "Guide", genre: "Musical, Romance", imgSrc: "https://iili.io/F2IZyR1.jpg", link: "https://www.primevideo.com/detail/0F8I6S3S4U8R9H2A2X8W5Y9E1I/" },
-                            { title: "Chupke Chupke", genre: "Comedy", imgSrc: "https://iili.io/F2IDi6x.jpg", link: "https://www.primevideo.com/detail/0F6H4S3S4U8R9H2A2X8W5Y9E1I/" },
-                            { title: "Anand", genre: "Drama", imgSrc: "https://iili.io/F2T9Wqg.jpg", link: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" },
-                            { title: "Kaagaz Ke Phool", genre: "Drama, Musical", imgSrc: "https://iili.io/F2THe3b.jpg", link: "https://www.zee5.com/movies/details/kaagaz-ke-phool/0-0-1z5113063" }
+                            { title: "Sholay", genre: "Action, Adventure", imgSrc: "https://iili.io/F2IW15X.jpg", originalLink: "https://www.primevideo.com/detail/0JMLN82E5FT9G6T8B0F2I8J4G7/" },
+                            { title: "Mughal-e-Azam", genre: "Historical Drama", imgSrc: "https://iili.io/F2IUrQI.jpg", originalLink: "https://www.zee5.com/movies/details/mughal-e-azam/0-0-1z5123910" },
+                            { title: "Mother India", genre: "Drama", imgSrc: "https://iili.io/F2I6Ywx.jpg", originalLink: "https://www.youtube.com/watch?v=4T1n2G_K7lI" },
+                            { title: "Amar Akbar Anthony", genre: "Comedy, Action", imgSrc: "https://iili.io/F2IicrP.jpg", originalLink: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" },
+                            { title: "Pakeezah", genre: "Musical, Romance", imgSrc: "https://iili.io/F2IsBwJ.jpg", originalLink: "https://www.primevideo.com/detail/0G45E7J7T8B0F2I8J4G7M2N8R9/" },
+                            { title: "Deewar", genre: "Crime, Drama", imgSrc: "https://iili.io/F2ILSs4.jpg", originalLink: "https://www.zee5.com/movies/details/deewaar/0-0-1z5117972" },
+                            { title: "Guide", genre: "Musical, Romance", imgSrc: "https://iili.io/F2IZyR1.jpg", originalLink: "https://www.primevideo.com/detail/0F8I6S3S4U8R9H2A2X8W5Y9E1I/" },
+                            { title: "Chupke Chupke", genre: "Comedy", imgSrc: "https://iili.io/F2IDi6x.jpg", originalLink: "https://www.primevideo.com/detail/0F6H4S3S4U8R9H2A2X8W5Y9E1I/" },
+                            { title: "Anand", genre: "Drama", imgSrc: "https://iili.io/F2T9Wqg.jpg", originalLink: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" },
+                            { title: "Kaagaz Ke Phool", genre: "Drama, Musical", imgSrc: "https://iili.io/F2THe3b.jpg", originalLink: "https://www.zee5.com/movies/details/kaagaz-ke-phool/0-0-1z5113063" }
                         ];
 
                         classicHindiMovies.forEach(movie => {
+                            const uniqueCardId = 'moviex_hindi_classic_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.link}" target="_blank" class="movie-card-link">
+                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info">
@@ -165,22 +171,24 @@
                  <h3 style="margin-top: 2rem;">Latest Movies</h3> 
                 <div class="gallery-grid">
                     <script>
+                        // const adLinkGlobal = "..."
                         const latestHindiMovies = [
-                            { title: "Animal", genre: "Action, Crime", imgSrc: "https://iili.io/F2TIfZg.jpg", link: "https://www.netflix.com/title/81634533" },
-                            { title: "Jawan", genre: "Action, Thriller", imgSrc: "https://iili.io/F2TIKwF.jpg", link: "https://www.netflix.com/title/81493214" },
-                            { title: "Pathaan", genre: "Action, Thriller", imgSrc: "https://iili.io/F2TExXR.jpg", link: "https://www.primevideo.com/detail/0SPI894P6W39446S81T6T43YI9/" },
-                            { title: "12th Fail", genre: "Biographical Drama", imgSrc: "https://iili.io/F2TzDZu.jpg", link: "https://www.hotstar.com/in/movies/12th-fail/1260161427" },
-                            { title: "Gadar 2", genre: "Action, Drama", imgSrc: "https://iili.io/F2Tzy6x.jpg", link: "https://www.zee5.com/movies/details/gadar-2/0-0-1z5432131" },
-                            { title: "Article 370", genre: "Political Thriller", imgSrc: "https://iili.io/F2TzLy7.jpg", link: "https://www.netflix.com/title/81723559" },
-                            { title: "Bhediya", genre: "Comedy Horror", imgSrc: "https://iili.io/F2TIBna.jpg", link: "https://www.jiocinema.com/movies/bhediya/3749372" },
-                            { title: "Zara Hatke Zara Bachke", genre: "Romantic Comedy", imgSrc: "https://iili.io/F2TI2yP.jpg", link: "https://www.jiocinema.com/movies/zara-hatke-zara-bachke/3762885" },
-                            { title: "Bhool Bhulaiyaa 2", genre: "Comedy Horror", imgSrc: "https://iili.io/F2TIH3Q.jpg", link: "https://www.netflix.com/title/81589712" },
-                            { title: "Rocky Aur Rani Kii Prem Kahaani", genre: "Romantic Comedy", imgSrc: "https://iili.io/F2TIFu1.jpg", link: "https://www.primevideo.com/detail/0S8A53P5Y1W5A2I6E1S8S32C6F/" }
+                            { title: "Animal", genre: "Action, Crime", imgSrc: "https://iili.io/F2TIfZg.jpg", originalLink: "https://www.netflix.com/title/81634533" },
+                            { title: "Jawan", genre: "Action, Thriller", imgSrc: "https://iili.io/F2TIKwF.jpg", originalLink: "https://www.netflix.com/title/81493214" },
+                            { title: "Pathaan", genre: "Action, Thriller", imgSrc: "https://iili.io/F2TExXR.jpg", originalLink: "https://www.primevideo.com/detail/0SPI894P6W39446S81T6T43YI9/" },
+                            { title: "12th Fail", genre: "Biographical Drama", imgSrc: "https://iili.io/F2TzDZu.jpg", originalLink: "https://www.hotstar.com/in/movies/12th-fail/1260161427" },
+                            { title: "Gadar 2", genre: "Action, Drama", imgSrc: "https://iili.io/F2Tzy6x.jpg", originalLink: "https://www.zee5.com/movies/details/gadar-2/0-0-1z5432131" },
+                            { title: "Article 370", genre: "Political Thriller", imgSrc: "https://iili.io/F2TzLy7.jpg", originalLink: "https://www.netflix.com/title/81723559" },
+                            { title: "Bhediya", genre: "Comedy Horror", imgSrc: "https://iili.io/F2TIBna.jpg", originalLink: "https://www.jiocinema.com/movies/bhediya/3749372" },
+                            { title: "Zara Hatke Zara Bachke", genre: "Romantic Comedy", imgSrc: "https://iili.io/F2TI2yP.jpg", originalLink: "https://www.jiocinema.com/movies/zara-hatke-zara-bachke/3762885" },
+                            { title: "Bhool Bhulaiyaa 2", genre: "Comedy Horror", imgSrc: "https://iili.io/F2TIH3Q.jpg", originalLink: "https://www.netflix.com/title/81589712" },
+                            { title: "Rocky Aur Rani Kii Prem Kahaani", genre: "Romantic Comedy", imgSrc: "https://iili.io/F2TIFu1.jpg", originalLink: "https://www.primevideo.com/detail/0S8A53P5Y1W5A2I6E1S8S32C6F/" }
                         ];
 
                         latestHindiMovies.forEach(movie => {
+                             const uniqueCardId = 'moviex_hindi_latest_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.link}" target="_blank" class="movie-card-link">
+                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
@@ -200,26 +208,28 @@
                 <h3>Popular South Movies</h3>
                 <div class="gallery-grid">
                     <script>
+                        // const adLinkGlobal = "..."
                         const popularSouthMovies = [
-                            { title: "Baahubali: The Beginning", genre: "Action, Fantasy", imgSrc: "https://iili.io/F2TtA6x.jpg", link: "https://www.hotstar.com/in/movies/baahubali-the-beginning/1000074368" },
-                            { title: "Baahubali 2: The Conclusion", genre: "Action, Fantasy", imgSrc: "https://iili.io/F2Tt1Zg.jpg", link: "https://www.hotstar.com/in/movies/baahubali-2-the-conclusion/1100000751" },
-                            { title: "RRR", genre: "Action, Drama", imgSrc: "https://iili.io/F2Ttxje.jpg", link: "https://www.netflix.com/title/81476453" },
-                            { title: "Pushpa: The Rise", genre: "Action, Crime", imgSrc: "https://iili.io/F2TtCy7.jpg", link: "https://www.primevideo.com/detail/0J3DS1W3B3S2J2F1I6E1S8S32C/" },
-                            { title: "KGF Chapter 1", genre: "Action, Crime", imgSrc: "https://iili.io/F2TtBvS.jpg", link: "https://www.primevideo.com/detail/0LHI8LLD6L4E1I7S3S4U8R9H2A/" },
-                            { title: "KGF Chapter 2", genre: "Action, Crime", imgSrc: "https://iili.io/F2Ttqa2.jpg", link: "https://www.primevideo.com/detail/0LHI8LLD6L4E1I7S3S4U8R9H2B/" },
-                            { title: "Sita Ramam", genre: "Romantic Drama", imgSrc: "https://iili.io/F2TtzZu.jpg", link: "https://www.primevideo.com/detail/0N48MVF32XI4YA1C38MS8S32C6/" },
-                            { title: "Jai Bhim", genre: "Legal Drama", imgSrc: "https://iili.io/F2TtTCb.jpg", link: "https://www.primevideo.com/detail/0O322529DR064893T0405R61A5/" },
-                            { title: "Master", genre: "Action, Thriller", imgSrc: "https://iili.io/F2TtuGj.jpg", link: "https://www.zee5.com/movies/details/master/0-0-281432" },
-                            { title: "Vikram", genre: "Action, Thriller", imgSrc: "https://iili.io/F2Tt53Q.jpg", link: "https://www.hotstar.com/in/movies/vikram/1260106599" },
-                            { title: "Eega", genre: "Fantasy, Action", imgSrc: "https://iili.io/F2Tt7aV.jpg", link: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" },
-                            { title: "Varisu", genre: "Action, Drama", imgSrc: "https://iili.io/F2TtayP.jpg", link: "https://www.primevideo.com/detail/0LHI8LLD6L4E1I7S3S4U8R9H2C/" },
-                            { title: "Dasara", genre: "Action, Drama", imgSrc: "https://iili.io/F2Ttlu1.jpg", link: "https://www.netflix.com/title/81673030" },
-                            { title: "Mersal", genre: "Action, Thriller", imgSrc: "https://iili.io/F2Tt0wF.jpg", link: "https://www.netflix.com/title/81000204" },
-                            { title: "Ala Vaikunthapurramuloo", genre: "Action, Comedy", imgSrc: "https://iili.io/F2TtGna.jpg", link: "https://www.netflix.com/title/81273899" }
+                            { title: "Baahubali: The Beginning", genre: "Action, Fantasy", imgSrc: "https://iili.io/F2TtA6x.jpg", originalLink: "https://www.hotstar.com/in/movies/baahubali-the-beginning/1000074368" },
+                            { title: "Baahubali 2: The Conclusion", genre: "Action, Fantasy", imgSrc: "https://iili.io/F2Tt1Zg.jpg", originalLink: "https://www.hotstar.com/in/movies/baahubali-2-the-conclusion/1100000751" },
+                            { title: "RRR", genre: "Action, Drama", imgSrc: "https://iili.io/F2Ttxje.jpg", originalLink: "https://www.netflix.com/title/81476453" },
+                            { title: "Pushpa: The Rise", genre: "Action, Crime", imgSrc: "https://iili.io/F2TtCy7.jpg", originalLink: "https://www.primevideo.com/detail/0J3DS1W3B3S2J2F1I6E1S8S32C/" },
+                            { title: "KGF Chapter 1", genre: "Action, Crime", imgSrc: "https://iili.io/F2TtBvS.jpg", originalLink: "https://www.primevideo.com/detail/0LHI8LLD6L4E1I7S3S4U8R9H2A/" },
+                            { title: "KGF Chapter 2", genre: "Action, Crime", imgSrc: "https://iili.io/F2Ttqa2.jpg", originalLink: "https://www.primevideo.com/detail/0LHI8LLD6L4E1I7S3S4U8R9H2B/" },
+                            { title: "Sita Ramam", genre: "Romantic Drama", imgSrc: "https://iili.io/F2TtzZu.jpg", originalLink: "https://www.primevideo.com/detail/0N48MVF32XI4YA1C38MS8S32C6/" },
+                            { title: "Jai Bhim", genre: "Legal Drama", imgSrc: "https://iili.io/F2TtTCb.jpg", originalLink: "https://www.primevideo.com/detail/0O322529DR064893T0405R61A5/" },
+                            { title: "Master", genre: "Action, Thriller", imgSrc: "https://iili.io/F2TtuGj.jpg", originalLink: "https://www.zee5.com/movies/details/master/0-0-281432" },
+                            { title: "Vikram", genre: "Action, Thriller", imgSrc: "https://iili.io/F2Tt53Q.jpg", originalLink: "https://www.hotstar.com/in/movies/vikram/1260106599" },
+                            { title: "Eega", genre: "Fantasy, Action", imgSrc: "https://iili.io/F2Tt7aV.jpg", originalLink: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" },
+                            { title: "Varisu", genre: "Action, Drama", imgSrc: "https://iili.io/F2TtayP.jpg", originalLink: "https://www.primevideo.com/detail/0LHI8LLD6L4E1I7S3S4U8R9H2C/" },
+                            { title: "Dasara", genre: "Action, Drama", imgSrc: "https://iili.io/F2Ttlu1.jpg", originalLink: "https://www.netflix.com/title/81673030" },
+                            { title: "Mersal", genre: "Action, Thriller", imgSrc: "https://iili.io/F2Tt0wF.jpg", originalLink: "https://www.netflix.com/title/81000204" },
+                            { title: "Ala Vaikunthapurramuloo", genre: "Action, Comedy", imgSrc: "https://iili.io/F2TtGna.jpg", originalLink: "https://www.netflix.com/title/81273899" }
                         ];
                          popularSouthMovies.forEach(movie => {
+                            const uniqueCardId = 'moviex_south_popular_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.link}" target="_blank" class="movie-card-link">
+                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
@@ -232,16 +242,18 @@
                 <h3 style="margin-top: 2rem;">New Hero / Lesser-known South Movies</h3>
                 <div class="gallery-grid">
                      <script>
+                        // const adLinkGlobal = "..."
                         const newSouthMovies = [
-                            { title: "Dragon", genre: "Action (Placeholder)", imgSrc: "https://iili.io/F2AHY6F.jpg", link: "https://www.google.com/search?q=Dragon+movie+ott" },
-                            { title: "Tillu Square", genre: "Comedy", imgSrc: "https://iili.io/F2AH7G1.jpg", link: "https://www.netflix.com/title/81729864" },
-                            { title: "Hanu-Man", genre: "Superhero", imgSrc: "https://iili.io/F2AHAZB.jpg", link: "https://www.zee5.com/movies/details/hanu-man/0-0-1z5435985" },
-                            { title: "Love Today", genre: "Romantic Comedy", imgSrc: "https://iili.io/F2AHujV.jpg", link: "https://www.netflix.com/title/81656341" },
-                            { title: "Agent", genre: "Spy Action", imgSrc: "https://iili.io/F2AH5CP.jpg", link: "https://www.sonyliv.com/movies/agent-1000236960" }
+                            { title: "Dragon", genre: "Action (Placeholder)", imgSrc: "https://iili.io/F2AHY6F.jpg", originalLink: "https://www.google.com/search?q=Dragon+movie+ott" },
+                            { title: "Tillu Square", genre: "Comedy", imgSrc: "https://iili.io/F2AH7G1.jpg", originalLink: "https://www.netflix.com/title/81729864" },
+                            { title: "Hanu-Man", genre: "Superhero", imgSrc: "https://iili.io/F2AHAZB.jpg", originalLink: "https://www.zee5.com/movies/details/hanu-man/0-0-1z5435985" },
+                            { title: "Love Today", genre: "Romantic Comedy", imgSrc: "https://iili.io/F2AHujV.jpg", originalLink: "https://www.netflix.com/title/81656341" },
+                            { title: "Agent", genre: "Spy Action", imgSrc: "https://iili.io/F2AH5CP.jpg", originalLink: "https://www.sonyliv.com/movies/agent-1000236960" }
                         ];
                         newSouthMovies.forEach(movie => {
+                             const uniqueCardId = 'moviex_south_new_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.link}" target="_blank" class="movie-card-link">
+                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
@@ -256,31 +268,33 @@
 
         <!-- Bollywood Blockbusters Section -->
         <section id="bollywood-movies" class="movie-gallery-section">
-            <div class="container">
+             <div class="container">
                 <h2>Bollywood Blockbusters</h2>
                 <h3>Famous Blockbusters</h3>
                  <div class="gallery-grid">
                     <script>
+                        // const adLinkGlobal = "..."
                         const famousBollywood = [
-                            { title: "Mission Mangal", genre: "Drama, Sci-Fi", imgSrc: "https://iili.io/F2AfPzG.jpg", link: "https://www.hotstar.com/in/movies/mission-mangal/1260011536" },
-                            { title: "Gadar 2", genre: "Action, Drama", imgSrc: "https://iili.io/F2AqdLx.jpg", link: "https://www.zee5.com/movies/details/gadar-2/0-0-1z5432131" },
-                            { title: "BHARAT", genre: "Drama", imgSrc: "https://iili.io/F2Aq3qQ.webp", link: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" },
-                            { title: "War", genre: "Action, Thriller", imgSrc: "https://iili.io/F2Af4bs.jpg", link: "https://www.primevideo.com/detail/0H38982D6Y4F11M29029Y152I0/" },
-                            { title: "Kabir Singh", genre: "Romantic Drama", imgSrc: "https://iili.io/F2Afg5X.jpg", link: "https://www.netflix.com/title/81107692" },
-                            { title: "Fighter", genre: "Action, Aerial", imgSrc: "https://iili.io/F2AfUJt.jpg", link: "https://www.netflix.com/title/81682540" },
-                            { title: "Dangal", genre: "Biographical Sport", imgSrc: "https://iili.io/F2AfiXf.jpg", link: "https://www.netflix.com/title/80166185" },
-                            { title: "Sultan", genre: "Sport, Drama", imgSrc: "https://iili.io/F2Afss4.jpg", link: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" },
-                            { title: "Tanhaji", genre: "Historical Action", imgSrc: "https://iili.io/F2AfQql.jpg", link: "https://www.hotstar.com/in/movies/tanhaji/1260022117" },
-                            { title: "Brahmāstra", genre: "Fantasy Adventure", imgSrc: "https://iili.io/F2AfZ12.jpg", link: "https://www.hotstar.com/in/movies/brahmastra-part-one-shiva/1260110224" },
-                            { title: "Raazi", genre: "Spy Thriller", imgSrc: "https://iili.io/F2AftgS.jpg", link: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" },
-                            { title: "Sanju", genre: "Biographical Drama", imgSrc: "https://iili.io/F2Afbd7.jpg", link: "https://www.netflix.com/title/80228360" },
-                            { title: "PK", genre: "Comedy, Sci-Fi", imgSrc: "https://iili.io/F2Afpee.jpg", link: "https://www.netflix.com/title/80049479" },
-                            { title: "Jawan", genre: "Action, Thriller", imgSrc: "https://iili.io/F2AqHzb.jpg", link: "https://www.netflix.com/title/81493214" },
-                            { title: "Chak De India", genre: "Sport, Drama", imgSrc: "https://iili.io/F2AqJXj.jpg", link: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" }
+                            { title: "Mission Mangal", genre: "Drama, Sci-Fi", imgSrc: "https://iili.io/F2AfPzG.jpg", originalLink: "https://www.hotstar.com/in/movies/mission-mangal/1260011536" },
+                            { title: "Gadar 2", genre: "Action, Drama", imgSrc: "https://iili.io/F2AqdLx.jpg", originalLink: "https://www.zee5.com/movies/details/gadar-2/0-0-1z5432131" },
+                            { title: "BHARAT", genre: "Drama", imgSrc: "https://iili.io/F2Aq3qQ.webp", originalLink: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" },
+                            { title: "War", genre: "Action, Thriller", imgSrc: "https://iili.io/F2Af4bs.jpg", originalLink: "https://www.primevideo.com/detail/0H38982D6Y4F11M29029Y152I0/" },
+                            { title: "Kabir Singh", genre: "Romantic Drama", imgSrc: "https://iili.io/F2Afg5X.jpg", originalLink: "https://www.netflix.com/title/81107692" },
+                            { title: "Fighter", genre: "Action, Aerial", imgSrc: "https://iili.io/F2AfUJt.jpg", originalLink: "https://www.netflix.com/title/81682540" },
+                            { title: "Dangal", genre: "Biographical Sport", imgSrc: "https://iili.io/F2AfiXf.jpg", originalLink: "https://www.netflix.com/title/80166185" },
+                            { title: "Sultan", genre: "Sport, Drama", imgSrc: "https://iili.io/F2Afss4.jpg", originalLink: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" },
+                            { title: "Tanhaji", genre: "Historical Action", imgSrc: "https://iili.io/F2AfQql.jpg", originalLink: "https://www.hotstar.com/in/movies/tanhaji/1260022117" },
+                            { title: "Brahmāstra", genre: "Fantasy Adventure", imgSrc: "https://iili.io/F2AfZ12.jpg", originalLink: "https://www.hotstar.com/in/movies/brahmastra-part-one-shiva/1260110224" },
+                            { title: "Raazi", genre: "Spy Thriller", imgSrc: "https://iili.io/F2AftgS.jpg", originalLink: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" },
+                            { title: "Sanju", genre: "Biographical Drama", imgSrc: "https://iili.io/F2Afbd7.jpg", originalLink: "https://www.netflix.com/title/80228360" },
+                            { title: "PK", genre: "Comedy, Sci-Fi", imgSrc: "https://iili.io/F2Afpee.jpg", originalLink: "https://www.netflix.com/title/80049479" },
+                            { title: "Jawan", genre: "Action, Thriller", imgSrc: "https://iili.io/F2AqHzb.jpg", originalLink: "https://www.netflix.com/title/81493214" },
+                            { title: "Chak De India", genre: "Sport, Drama", imgSrc: "https://iili.io/F2AqJXj.jpg", originalLink: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" }
                         ];
                         famousBollywood.forEach(movie => {
+                             const uniqueCardId = 'moviex_bollywood_famous_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.link}" target="_blank" class="movie-card-link">
+                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
@@ -293,16 +307,18 @@
                 <h3 style="margin-top: 2rem;">Rising Actors / Lesser-known Hits</h3>
                 <div class="gallery-grid">
                      <script>
+                        // const adLinkGlobal = "..."
                         const newBollywood = [
-                            { title: "The Kerala Story", genre: "Drama", imgSrc: "https://iili.io/F25rYjs.jpg", link: "https://www.zee5.com/movies/details/the-kerala-story/0-0-1z5430876" },
-                            { title: "URI: The Surgical Strike", genre: "Military Action", imgSrc: "https://iili.io/F25r16l.jpg", link: "https://www.zee5.com/movies/details/uri-the-surgical-strike/0-0-3279" },
-                            { title: "Ra.One", genre: "Sci-Fi, Action", imgSrc: "https://iili.io/F25r0G4.jpg", link: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" },
-                            { title: "Dobaaraa", genre: "Sci-Fi Thriller", imgSrc: "https://iili.io/F25rlnf.jpg", link: "https://www.netflix.com/title/81458266" },
-                            { title: "The Kashmir Files", genre: "Drama", imgSrc: "https://iili.io/F25raZG.jpg", link: "https://www.zee5.com/movies/details/the-kashmir-files/0-0-1z5123910" }
+                            { title: "The Kerala Story", genre: "Drama", imgSrc: "https://iili.io/F25rYjs.jpg", originalLink: "https://www.zee5.com/movies/details/the-kerala-story/0-0-1z5430876" },
+                            { title: "URI: The Surgical Strike", genre: "Military Action", imgSrc: "https://iili.io/F25r16l.jpg", originalLink: "https://www.zee5.com/movies/details/uri-the-surgical-strike/0-0-3279" },
+                            { title: "Ra.One", genre: "Sci-Fi, Action", imgSrc: "https://iili.io/F25r0G4.jpg", originalLink: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" },
+                            { title: "Dobaaraa", genre: "Sci-Fi Thriller", imgSrc: "https://iili.io/F25rlnf.jpg", originalLink: "https://www.netflix.com/title/81458266" },
+                            { title: "The Kashmir Files", genre: "Drama", imgSrc: "https://iili.io/F25raZG.jpg", originalLink: "https://www.zee5.com/movies/details/the-kashmir-files/0-0-1z5123910" }
                         ];
                         newBollywood.forEach(movie => {
+                            const uniqueCardId = 'moviex_bollywood_new_' + movie.imgSrc.split('/').pop().split('.')[0];
                              document.write(`
-                                <a href="${movie.link}" target="_blank" class="movie-card-link">
+                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
@@ -322,26 +338,28 @@
                 <h3>Top Trending Shows</h3>
                 <div class="gallery-grid">
                     <script>
+                        // const adLinkGlobal = "..."
                         const popularWebSeries = [
-                            { title: "Mirzapur", genre: "Crime Thriller", imgSrc: "https://iili.io/F27Hhgt.jpg", link: "https://www.primevideo.com/detail/0PDOKMV9CRLOMO5EUKNCUJY5DR/" },
-                            { title: "The Family Man", genre: "Spy Thriller", imgSrc: "https://iili.io/F27HyrP.jpg", link: "https://www.primevideo.com/detail/0S3QYI59BAZ5TM9I6VTYA8D59/" },
-                            { title: "Asur 2", genre: "Crime Thriller", imgSrc: "https://iili.io/F27HOes.jpg", link: "https://www.jiocinema.com/tv-shows/asur-welcome-to-your-dark-side/2/welcome-to-your-dark-side/3751717" },
-                            { title: "Sacred Games", genre: "Crime Thriller", imgSrc: "https://iili.io/F27HN7n.jpg", link: "https://www.netflix.com/title/80115328" },
-                            { title: "Paatal Lok", genre: "Crime Thriller", imgSrc: "https://iili.io/F27HSLl.jpg", link: "https://www.primevideo.com/detail/0G8726Y6H0M29029Y152I0Q6X6/" },
-                            { title: "Farzi", genre: "Crime Thriller", imgSrc: "https://iili.io/F39aGXj.jpg", link: "https://www.primevideo.com/detail/0S3QYI59BAZ5TM9I6VTYA8D59/" },
-                            { title: "Scam 1992", genre: "Biographical Crime", imgSrc: "https://iili.io/F27Hr1S.jpg", link: "https://www.sonyliv.com/shows/scam-1992-the-harshad-mehta-story-1700000292" },
-                            { title: "Panchayat", genre: "Comedy Drama", imgSrc: "https://iili.io/F27HgB2.jpg", link: "https://www.primevideo.com/detail/0S3QYI59BAZ5TM9I6VTYA8D59/" },
-                            { title: "Rocket Boys", genre: "Biographical Drama", imgSrc: "https://iili.io/F27H4r7.jpg", link: "https://www.sonyliv.com/shows/rocket-boys-1700000713" },
-                            { title: "Made in Heaven", genre: "Drama", imgSrc: "https://iili.io/F27Hsku.jpg", link: "https://www.primevideo.com/detail/0S3QYI59BAZ5TM9I6VTYA8D59/" },
-                            { title: "Delhi Crime", genre: "Crime Drama", imgSrc: "https://iili.io/F27HLmb.jpg", link: "https://www.netflix.com/title/81076756" },
-                            { title: "Criminal Justice", genre: "Legal Drama", imgSrc: "https://iili.io/F27HZIj.jpg", link: "https://www.hotstar.com/in/tv/criminal-justice/1260004183" },
-                            { title: "Breathe", genre: "Crime Thriller", imgSrc: "https://iili.io/F27Hthx.jpg", link: "https://www.primevideo.com/detail/0S3QYI59BAZ5TM9I6VTYA8D59/" },
-                            { title: "Special OPS", genre: "Spy Thriller", imgSrc: "https://iili.io/F2YqPjt.jpg", link: "https://www.hotstar.com/in/tv/special-ops/1260022894" },
-                            { title: "SHE", genre: "Crime drama", imgSrc: "https://iili.io/F2YfN1f.jpg", link: "https://www.netflix.com/title/81183494" },
+                            { title: "Mirzapur", genre: "Crime Thriller", imgSrc: "https://iili.io/F27Hhgt.jpg", originalLink: "https://www.primevideo.com/detail/0PDOKMV9CRLOMO5EUKNCUJY5DR/" },
+                            { title: "The Family Man", genre: "Spy Thriller", imgSrc: "https://iili.io/F27HyrP.jpg", originalLink: "https://www.primevideo.com/detail/0S3QYI59BAZ5TM9I6VTYA8D59/" },
+                            { title: "Asur 2", genre: "Crime Thriller", imgSrc: "https://iili.io/F27HOes.jpg", originalLink: "https://www.jiocinema.com/tv-shows/asur-welcome-to-your-dark-side/2/welcome-to-your-dark-side/3751717" },
+                            { title: "Sacred Games", genre: "Crime Thriller", imgSrc: "https://iili.io/F27HN7n.jpg", originalLink: "https://www.netflix.com/title/80115328" },
+                            { title: "Paatal Lok", genre: "Crime Thriller", imgSrc: "https://iili.io/F27HSLl.jpg", originalLink: "https://www.primevideo.com/detail/0G8726Y6H0M29029Y152I0Q6X6/" },
+                            { title: "Farzi", genre: "Crime Thriller", imgSrc: "https://iili.io/F39aGXj.jpg", originalLink: "https://www.primevideo.com/detail/0S3QYI59BAZ5TM9I6VTYA8D59/" },
+                            { title: "Scam 1992", genre: "Biographical Crime", imgSrc: "https://iili.io/F27Hr1S.jpg", originalLink: "https://www.sonyliv.com/shows/scam-1992-the-harshad-mehta-story-1700000292" },
+                            { title: "Panchayat", genre: "Comedy Drama", imgSrc: "https://iili.io/F27HgB2.jpg", originalLink: "https://www.primevideo.com/detail/0S3QYI59BAZ5TM9I6VTYA8D59/" },
+                            { title: "Rocket Boys", genre: "Biographical Drama", imgSrc: "https://iili.io/F27H4r7.jpg", originalLink: "https://www.sonyliv.com/shows/rocket-boys-1700000713" },
+                            { title: "Made in Heaven", genre: "Drama", imgSrc: "https://iili.io/F27Hsku.jpg", originalLink: "https://www.primevideo.com/detail/0S3QYI59BAZ5TM9I6VTYA8D59/" },
+                            { title: "Delhi Crime", genre: "Crime Drama", imgSrc: "https://iili.io/F27HLmb.jpg", originalLink: "https://www.netflix.com/title/81076756" },
+                            { title: "Criminal Justice", genre: "Legal Drama", imgSrc: "https://iili.io/F27HZIj.jpg", originalLink: "https://www.hotstar.com/in/tv/criminal-justice/1260004183" },
+                            { title: "Breathe", genre: "Crime Thriller", imgSrc: "https://iili.io/F27Hthx.jpg", originalLink: "https://www.primevideo.com/detail/0S3QYI59BAZ5TM9I6VTYA8D59/" },
+                            { title: "Special OPS", genre: "Spy Thriller", imgSrc: "https://iili.io/F2YqPjt.jpg", originalLink: "https://www.hotstar.com/in/tv/special-ops/1260022894" },
+                            { title: "SHE", genre: "Crime drama", imgSrc: "https://iili.io/F2YfN1f.jpg", originalLink: "https://www.netflix.com/title/81183494" },
                         ];
                          popularWebSeries.forEach(series => {
+                            const uniqueCardId = 'moviex_webseries_popular_' + series.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${series.link}" target="_blank" class="movie-card-link">
+                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${series.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${series.imgSrc}" alt="${series.title} Poster" loading="lazy">
                                         <div class="movie-info"><h3>${series.title}</h3><p>${series.genre}</p></div>
@@ -356,28 +374,29 @@
 
         <!-- START: INDIAN CRIME MOVIES SECTION -->
         <section id="indian-crime-movies" class="movie-gallery-section">
-            <div class="container">
+             <div class="container">
                 <h2>🎥 Top Indian Movies & Web Series Based on Crime, Scam, and Corruption</h2>
         
-                <!-- Financial / Corporate Scam -->
                 <h3>🔸 Financial / Corporate Scam</h3>
                 <div class="gallery-grid">
                     <script>
+                        // const adLinkGlobal = "..."
                         const financialScamMovies = [
-                            { title: "Scam 1992", genre: "Financial Scam", imgSrc: "https://iili.io/F2ksuPS.jpg", link: "https://www.sonyliv.com/shows/scam-1992-the-harshad-mehta-story-1700000292" },
-                            { title: "The Big Bull", genre: "Financial Scam", imgSrc: "https://iili.io/F2ksfcX.jpg", link: "https://www.hotstar.com/in/movies/the-big-bull/1260057538" },
-                            { title: "Baazaar", genre: "Financial Thriller", imgSrc: "https://iili.io/F2ksKFt.jpg", link: "https://www.netflix.com/title/81024361" },
-                            { title: "Special 26", genre: "Heist", imgSrc: "https://iili.io/F2ks3PI.jpg", link: "https://www.netflix.com/title/70268308" },
-                            { title: "Guru", genre: "Biographical Drama", imgSrc: "https://iili.io/F2ks2MN.jpg", link: "https://www.netflix.com/title/70059966" },
-                            { title: "Rocket Singh", genre: "Comedy Drama", imgSrc: "https://iili.io/F2ksC9s.jpg", link: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" },
-                            { title: "Tigers", genre: "Drama", imgSrc: "https://iili.io/F2ksoNf.jpg", link: "https://www.zee5.com/movies/details/tigers/0-0-2810" },
-                            { title: "Tamanchey", genre: "Romantic Crime", imgSrc: "https://iili.io/F2ksxt4.jpg", link: "https://www.youtube.com/watch?v=sS-bfjT-s7Y" },
-                            { title: "Jamtara", genre: "Cyber Crime", imgSrc: "https://iili.io/F2ksTV2.jpg", link: "https://www.netflix.com/title/81183491" },
-                            { title: "NH10", genre: "Thriller", imgSrc: "https://iili.io/F2UFyqN.jpg", link: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" }
+                            { title: "Scam 1992", genre: "Financial Scam", imgSrc: "https://iili.io/F2ksuPS.jpg", originalLink: "https://www.sonyliv.com/shows/scam-1992-the-harshad-mehta-story-1700000292" },
+                            { title: "The Big Bull", genre: "Financial Scam", imgSrc: "https://iili.io/F2ksfcX.jpg", originalLink: "https://www.hotstar.com/in/movies/the-big-bull/1260057538" },
+                            { title: "Baazaar", genre: "Financial Thriller", imgSrc: "https://iili.io/F2ksKFt.jpg", originalLink: "https://www.netflix.com/title/81024361" },
+                            { title: "Special 26", genre: "Heist", imgSrc: "https://iili.io/F2ks3PI.jpg", originalLink: "https://www.netflix.com/title/70268308" },
+                            { title: "Guru", genre: "Biographical Drama", imgSrc: "https://iili.io/F2ks2MN.jpg", originalLink: "https://www.netflix.com/title/70059966" },
+                            { title: "Rocket Singh", genre: "Comedy Drama", imgSrc: "https://iili.io/F2ksC9s.jpg", originalLink: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" },
+                            { title: "Tigers", genre: "Drama", imgSrc: "https://iili.io/F2ksoNf.jpg", originalLink: "https://www.zee5.com/movies/details/tigers/0-0-2810" },
+                            { title: "Tamanchey", genre: "Romantic Crime", imgSrc: "https://iili.io/F2ksxt4.jpg", originalLink: "https://www.youtube.com/watch?v=sS-bfjT-s7Y" },
+                            { title: "Jamtara", genre: "Cyber Crime", imgSrc: "https://iili.io/F2ksTV2.jpg", originalLink: "https://www.netflix.com/title/81183491" },
+                            { title: "NH10", genre: "Thriller", imgSrc: "https://iili.io/F2UFyqN.jpg", originalLink: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" }
                         ];
                         financialScamMovies.forEach(movie => {
+                            const uniqueCardId = 'moviex_crime_financial_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.link}" target="_blank" class="movie-card-link">
+                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info">
@@ -391,28 +410,29 @@
                     </script>
                 </div>
         
-                <!-- Government/Political Crime & Corruption -->
                 <h3>🔸 Government/Political Crime & Corruption</h3>
                 <div class="gallery-grid">
                     <script>
+                        // const adLinkGlobal = "..."
                         const politicalCrimeMovies = [
-                            { title: "Raid", genre: "Political Crime", imgSrc: "https://iili.io/F2vk5Ga.jpg", link: "https://www.hotstar.com/in/movies/raid/1100000782" },
-                            { title: "Satyagraha", genre: "Political Crime", imgSrc: "https://iili.io/F2vklvp.jpg", link: "https://www.netflix.com/title/70286716" },
-                            { title: "Madras Cafe", genre: "Political Crime", imgSrc: "https://iili.io/F2vk3Qe.jpg", link: "https://www.netflix.com/title/70286717" },
-                            { title: "Article 15", genre: "Political Crime", imgSrc: "https://iili.io/F2vkKCu.jpg", link: "https://www.netflix.com/title/81123415" },
-                            { title: "Section 375", genre: "Courtroom Drama", imgSrc: "https://iili.io/F2vk2j9.jpg", link: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" },
-                            { title: "Shool", genre: "Political Crime", imgSrc: "https://iili.io/F2vkdT7.jpg", link: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" },
-                            { title: "No One Killed Jessica", genre: "True Crime", imgSrc: "https://iili.io/F2vkC3x.jpg", link: "https://www.netflix.com/title/70189339" },
-                            { title: "Indu Sarkar", genre: "Political Crime", imgSrc: "https://iili.io/F2vknYQ.jpg", link: "https://www.zee5.com/movies/details/indu-sarkar/0-0-8022" },
-                            { title: "Raajneeti", genre: "Political Crime", imgSrc: "https://iili.io/F2vkovV.jpg", link: "https://www.netflix.com/title/70122080" },
-                            { title: "Talvar", genre: "True Crime", imgSrc: "https://iili.io/F2vkxyB.jpg", link: "https://www.netflix.com/title/80063283" },
-                            { title: "Court", genre: "Courtroom Drama", imgSrc: "https://iili.io/F2vkTj1.jpg", link: "https://www.netflix.com/title/80036322" },
-                            { title: "Accidental Prime Minister", genre: "Political Drama", imgSrc: "https://iili.io/F2vkuZF.jpg", link: "https://www.zee5.com/movies/details/the-accidental-prime-minister/0-0-3286" },
-                            { title: "Batla House", genre: "Action Thriller", imgSrc: "https://iili.io/F2vkRCg.jpg", link: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" }
+                            { title: "Raid", genre: "Political Crime", imgSrc: "https://iili.io/F2vk5Ga.jpg", originalLink: "https://www.hotstar.com/in/movies/raid/1100000782" },
+                            { title: "Satyagraha", genre: "Political Crime", imgSrc: "https://iili.io/F2vklvp.jpg", originalLink: "https://www.netflix.com/title/70286716" },
+                            { title: "Madras Cafe", genre: "Political Crime", imgSrc: "https://iili.io/F2vk3Qe.jpg", originalLink: "https://www.netflix.com/title/70286717" },
+                            { title: "Article 15", genre: "Political Crime", imgSrc: "https://iili.io/F2vkKCu.jpg", originalLink: "https://www.netflix.com/title/81123415" },
+                            { title: "Section 375", genre: "Courtroom Drama", imgSrc: "https://iili.io/F2vk2j9.jpg", originalLink: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" },
+                            { title: "Shool", genre: "Political Crime", imgSrc: "https://iili.io/F2vkdT7.jpg", originalLink: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" },
+                            { title: "No One Killed Jessica", genre: "True Crime", imgSrc: "https://iili.io/F2vkC3x.jpg", originalLink: "https://www.netflix.com/title/70189339" },
+                            { title: "Indu Sarkar", genre: "Political Crime", imgSrc: "https://iili.io/F2vknYQ.jpg", originalLink: "https://www.zee5.com/movies/details/indu-sarkar/0-0-8022" },
+                            { title: "Raajneeti", genre: "Political Crime", imgSrc: "https://iili.io/F2vkovV.jpg", originalLink: "https://www.netflix.com/title/70122080" },
+                            { title: "Talvar", genre: "True Crime", imgSrc: "https://iili.io/F2vkxyB.jpg", originalLink: "https://www.netflix.com/title/80063283" },
+                            { title: "Court", genre: "Courtroom Drama", imgSrc: "https://iili.io/F2vkTj1.jpg", originalLink: "https://www.netflix.com/title/80036322" },
+                            { title: "Accidental Prime Minister", genre: "Political Drama", imgSrc: "https://iili.io/F2vkuZF.jpg", originalLink: "https://www.zee5.com/movies/details/the-accidental-prime-minister/0-0-3286" },
+                            { title: "Batla House", genre: "Action Thriller", imgSrc: "https://iili.io/F2vkRCg.jpg", originalLink: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" }
                         ];
                         politicalCrimeMovies.forEach(movie => {
+                            const uniqueCardId = 'moviex_crime_political_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.link}" target="_blank" class="movie-card-link">
+                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info">
@@ -426,28 +446,29 @@
                     </script>
                 </div>
         
-                <!-- Underworld / Mafia / Gangster Crime (UPDATED) -->
                 <h3>🔸 Underworld / Mafia / Gangster Crime</h3>
                 <div class="gallery-grid">
                     <script>
+                        // const adLinkGlobal = "..."
                         const gangsterCrimeMovies = [
-                            { title: "Gangs of Wasseypur", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LbQj.jpg", link: "https://www.netflix.com/title/70259173" },
-                            { title: "Satya", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LpCx.jpg", link: "https://www.sonyliv.com/movies/satya-1000101683" },
-                            { title: "Company", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LrB4.jpg", link: "https://www.zee5.com/movies/details/company/0-0-1296" },
-                            { title: "D-Day", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LShG.jpg", link: "https://www.netflix.com/title/70286715" },
-                            { title: "Raees", genre: "Gangster Crime", imgSrc: "https://iili.io/F28L8Is.jpg", link: "https://www.netflix.com/title/80104924" },
-                            { title: "Kaala", genre: "Gangster Crime", imgSrc: "https://iili.io/F28Lkpn.jpg", link: "https://www.hotstar.com/in/movies/kaala/1100000843" },
-                            { title: "Shootout at Lokhandwala", genre: "Gangster Crime", imgSrc: "https://iili.io/F28L642.jpg", link: "https://www.hotstar.com/in/movies/shootout-at-lokhandwala/1000037130" },
-                            { title: "Shootout at Wadala", genre: "Gangster Crime", imgSrc: "https://iili.io/F28Li2S.jpg", link: "https://www.hotstar.com/in/movies/shootout-at-wadala/1000037131" },
-                            { title: "Black Friday", genre: "True Crime", imgSrc: "https://iili.io/F28LsY7.jpg", link: "https://www.hotstar.com/in/movies/black-friday/1000035049" },
-                            { title: "Vaastav", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LLv9.jpg", link: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" },
-                            { title: "Once Upon A Time in Mumbaai", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LQpe.jpg", link: "https://www.hotstar.com/in/movies/once-upon-a-time-in-mumbaai/1000037060" },
-                            { title: "Monica, O My Darling", genre: "Neo-Noir", imgSrc: "https://iili.io/F28LtTu.jpg", link: "https://www.netflix.com/title/81233741" },
-                            { title: "Ugly", genre: "Thriller", imgSrc: "https://iili.io/F28LDhb.jpg", link: "https://www.hotstar.com/in/movies/ugly/1000072314" }
+                            { title: "Gangs of Wasseypur", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LbQj.jpg", originalLink: "https://www.netflix.com/title/70259173" },
+                            { title: "Satya", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LpCx.jpg", originalLink: "https://www.sonyliv.com/movies/satya-1000101683" },
+                            { title: "Company", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LrB4.jpg", originalLink: "https://www.zee5.com/movies/details/company/0-0-1296" },
+                            { title: "D-Day", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LShG.jpg", originalLink: "https://www.netflix.com/title/70286715" },
+                            { title: "Raees", genre: "Gangster Crime", imgSrc: "https://iili.io/F28L8Is.jpg", originalLink: "https://www.netflix.com/title/80104924" },
+                            { title: "Kaala", genre: "Gangster Crime", imgSrc: "https://iili.io/F28Lkpn.jpg", originalLink: "https://www.hotstar.com/in/movies/kaala/1100000843" },
+                            { title: "Shootout at Lokhandwala", genre: "Gangster Crime", imgSrc: "https://iili.io/F28L642.jpg", originalLink: "https://www.hotstar.com/in/movies/shootout-at-lokhandwala/1000037130" },
+                            { title: "Shootout at Wadala", genre: "Gangster Crime", imgSrc: "https://iili.io/F28Li2S.jpg", originalLink: "https://www.hotstar.com/in/movies/shootout-at-wadala/1000037131" },
+                            { title: "Black Friday", genre: "True Crime", imgSrc: "https://iili.io/F28LsY7.jpg", originalLink: "https://www.hotstar.com/in/movies/black-friday/1000035049" },
+                            { title: "Vaastav", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LLv9.jpg", originalLink: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" },
+                            { title: "Once Upon A Time in Mumbaai", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LQpe.jpg", originalLink: "https://www.hotstar.com/in/movies/once-upon-a-time-in-mumbaai/1000037060" },
+                            { title: "Monica, O My Darling", genre: "Neo-Noir", imgSrc: "https://iili.io/F28LtTu.jpg", originalLink: "https://www.netflix.com/title/81233741" },
+                            { title: "Ugly", genre: "Thriller", imgSrc: "https://iili.io/F28LDhb.jpg", originalLink: "https://www.hotstar.com/in/movies/ugly/1000072314" }
                         ];
                         gangsterCrimeMovies.forEach(movie => {
+                            const uniqueCardId = 'moviex_crime_gangster_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.link}" target="_blank" class="movie-card-link">
+                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info">
@@ -461,20 +482,21 @@
                     </script>
                 </div>
         
-                <!-- Cyber / Tech & Digital Crime (UPDATED) -->
                 <h3>🔸 Cyber / Tech & Digital Crime</h3>
                 <div class="gallery-grid">
                     <script>
+                        // const adLinkGlobal = "..."
                         const cyberCrimeMovies = [
-                            { title: "Hacked", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWFta.jpg", link: "https://www.zee5.com/movies/details/hacked/0-0-10906" },
-                            { title: "Hello Mini", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWocN.jpg", link: "https://www.mxplayer.in/show/watch-hello-mini-series-online-314227f6f16f03a608149e29f39c7161" },
-                            { title: "Chakravyuh – Inspector Virkar", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWBPR.jpg", link: "https://www.mxplayer.in/show/watch-chakravyuh-inspector-virkar-online-b5a92a39b3b895697334751855e71495" },
-                            { title: "Breathe: Into the Shadows", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWqMv.jpg", link: "https://www.primevideo.com/detail/0S3QYI59BAZ5TM9I6VTYA8D59/" },
-                            { title: "Rudra: The Edge of Darkness", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWfoJ.jpg", link: "https://www.hotstar.com/in/tv/rudra-the-edge-of-darkness/1260081023" }
+                            { title: "Hacked", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWFta.jpg", originalLink: "https://www.zee5.com/movies/details/hacked/0-0-10906" },
+                            { title: "Hello Mini", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWocN.jpg", originalLink: "https://www.mxplayer.in/show/watch-hello-mini-series-online-314227f6f16f03a608149e29f39c7161" },
+                            { title: "Chakravyuh – Inspector Virkar", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWBPR.jpg", originalLink: "https://www.mxplayer.in/show/watch-chakravyuh-inspector-virkar-online-b5a92a39b3b895697334751855e71495" },
+                            { title: "Breathe: Into the Shadows", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWqMv.jpg", originalLink: "https://www.primevideo.com/detail/0S3QYI59BAZ5TM9I6VTYA8D59/" },
+                            { title: "Rudra: The Edge of Darkness", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWfoJ.jpg", originalLink: "https://www.hotstar.com/in/tv/rudra-the-edge-of-darkness/1260081023" }
                         ];
                         cyberCrimeMovies.forEach(movie => {
+                            const uniqueCardId = 'moviex_crime_cyber_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.link}" target="_blank" class="movie-card-link">
+                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info">
@@ -491,33 +513,35 @@
         </section>
         <!-- END: INDIAN CRIME MOVIES SECTION -->
 
-        <!-- Latest Releases Section (UPDATED) -->
+        <!-- Latest Releases Section -->
         <section id="latest" class="movie-gallery-section">
-            <div class="container">
+             <div class="container">
                 <h2>Latest Releases</h2>
                 <h3>High-Profile Latest Releases</h3>
                 <div class="gallery-grid">
                     <script>
+                        // const adLinkGlobal = "..."
                         const latestPopularReleases = [
-                            { title: "12th Fail", genre: "Biographical Drama", imgSrc: "https://iili.io/F2SgEE7.jpg", link: "https://www.hotstar.com/in/movies/12th-fail/1260161427" },
-                            { title: "Article 370", genre: "Political Thriller", imgSrc: "https://iili.io/F2SPjcP.jpg", link: "https://www.netflix.com/title/81723559" },
-                            { title: "Animal", genre: "Action, Crime", imgSrc: "https://iili.io/F2SglQ2.jpg", link: "https://www.netflix.com/title/81634533" },
-                            { title: "Jawan", genre: "Action, Thriller", imgSrc: "https://iili.io/F2Sgchl.jpg", link: "https://www.netflix.com/title/81493214" },
-                            { title: "Fighter", genre: "Action, Aerial", imgSrc: "https://iili.io/F2SgaI4.jpg", link: "https://www.netflix.com/title/81682540" },
-                            { title: "Crew", genre: "Comedy", imgSrc: "https://iili.io/F2SgWYu.jpg", link: "https://www.netflix.com/title/81731675" },
-                            { title: "Maharaja", genre: "Action", imgSrc: "https://iili.io/F2SgXkb.jpg", link: "https://www.netflix.com/title/81762164" },
-                            { title: "Bhool Bhulaiyaa 3", genre: "Upcoming", imgSrc: "https://iili.io/F2Sghpj.jpg", link: "https://www.google.com/search?q=bhool+bhulaiyaa+3+ott+release" },
-                            { title: "Bade Miyan Chote Miyan", genre: "Action Comedy", imgSrc: "https://iili.io/F2SgNhQ.jpg", link: "https://www.netflix.com/title/81723011" },
-                            { title: "Laapataa Ladies", genre: "Comedy Drama", imgSrc: "https://iili.io/F2Sg841.jpg", link: "https://www.netflix.com/title/81644781" },
-                            { title: "Manjummel Boys", genre: "Survival Thriller", imgSrc: "https://iili.io/F2SgU3F.jpg", link: "https://www.hotstar.com/in/movies/manjummel-boys/1260172351" },
-                            { title: "Mr. & Mrs. Mahi", genre: "Sports Drama", imgSrc: "https://iili.io/F2SggYg.jpg", link: "https://www.netflix.com/title/81691338" },
-                            { title: "Srikanth", genre: "Biographical", imgSrc: "https://iili.io/F2Sgrva.jpg", link: "https://www.netflix.com/title/81762544" },
-                            { title: "Chandu Champion", genre: "Sports Biographical", imgSrc: "https://iili.io/F2SgsQp.jpg", link: "https://www.primevideo.com/detail/0S8A53P5Y1W5A2I6E1S8S32C6F/" },
-                            { title: "Yodha", genre: "Action Thriller", imgSrc: "https://iili.io/F2SgQCN.jpg", link: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" }
+                            { title: "12th Fail", genre: "Biographical Drama", imgSrc: "https://iili.io/F2SgEE7.jpg", originalLink: "https://www.hotstar.com/in/movies/12th-fail/1260161427" },
+                            { title: "Article 370", genre: "Political Thriller", imgSrc: "https://iili.io/F2SPjcP.jpg", originalLink: "https://www.netflix.com/title/81723559" },
+                            { title: "Animal", genre: "Action, Crime", imgSrc: "https://iili.io/F2SglQ2.jpg", originalLink: "https://www.netflix.com/title/81634533" },
+                            { title: "Jawan", genre: "Action, Thriller", imgSrc: "https://iili.io/F2Sgchl.jpg", originalLink: "https://www.netflix.com/title/81493214" },
+                            { title: "Fighter", genre: "Action, Aerial", imgSrc: "https://iili.io/F2SgaI4.jpg", originalLink: "https://www.netflix.com/title/81682540" },
+                            { title: "Crew", genre: "Comedy", imgSrc: "https://iili.io/F2SgWYu.jpg", originalLink: "https://www.netflix.com/title/81731675" },
+                            { title: "Maharaja", genre: "Action", imgSrc: "https://iili.io/F2SgXkb.jpg", originalLink: "https://www.netflix.com/title/81762164" },
+                            { title: "Bhool Bhulaiyaa 3", genre: "Upcoming", imgSrc: "https://iili.io/F2Sghpj.jpg", originalLink: "https://www.google.com/search?q=bhool+bhulaiyaa+3+ott+release" },
+                            { title: "Bade Miyan Chote Miyan", genre: "Action Comedy", imgSrc: "https://iili.io/F2SgNhQ.jpg", originalLink: "https://www.netflix.com/title/81723011" },
+                            { title: "Laapataa Ladies", genre: "Comedy Drama", imgSrc: "https://iili.io/F2Sg841.jpg", originalLink: "https://www.netflix.com/title/81644781" },
+                            { title: "Manjummel Boys", genre: "Survival Thriller", imgSrc: "https://iili.io/F2SgU3F.jpg", originalLink: "https://www.hotstar.com/in/movies/manjummel-boys/1260172351" },
+                            { title: "Mr. & Mrs. Mahi", genre: "Sports Drama", imgSrc: "https://iili.io/F2SggYg.jpg", originalLink: "https://www.netflix.com/title/81691338" },
+                            { title: "Srikanth", genre: "Biographical", imgSrc: "https://iili.io/F2Sgrva.jpg", originalLink: "https://www.netflix.com/title/81762544" },
+                            { title: "Chandu Champion", genre: "Sports Biographical", imgSrc: "https://iili.io/F2SgsQp.jpg", originalLink: "https://www.primevideo.com/detail/0S8A53P5Y1W5A2I6E1S8S32C6F/" },
+                            { title: "Yodha", genre: "Action Thriller", imgSrc: "https://iili.io/F2SgQCN.jpg", originalLink: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" }
                         ];
                         latestPopularReleases.forEach(movie => {
+                            const uniqueCardId = 'moviex_latest_popular_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.link}" target="_blank" class="movie-card-link">
+                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
@@ -530,16 +554,18 @@
                 <h3 style="margin-top: 2rem;">Lesser-Known / New Actor Releases</h3>
                  <div class="gallery-grid">
                     <script>
+                        // const adLinkGlobal = "..."
                         const latestNewReleases = [
-                            { title: "Tillu Square", genre: "Comedy", imgSrc: "https://iili.io/F2SecXt.jpg", link: "https://www.netflix.com/title/81729864" },
-                            { title: "Dragon", genre: "Action", imgSrc: "https://iili.io/F2Se1Bn.jpg", link: "https://www.google.com/search?q=Dragon+Prabhas+movie+ott+release" },
-                            { title: "Razakar", genre: "Historical Drama", imgSrc: "https://iili.io/F2SelLX.jpg", link: "https://www.primevideo.com/detail/0S8A53P5Y1W5A2I6E1S8S32C6F/" },
-                            { title: "Amar Singh Chamkila", genre: "Biographical Musical", imgSrc: "https://iili.io/F2SeE1s.jpg", link: "https://www.netflix.com/title/81229428" },
-                            { title: "Madgaon Express", genre: "Comedy", imgSrc: "https://iili.io/F2SeGrG.jpg", link: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" }
+                            { title: "Tillu Square", genre: "Comedy", imgSrc: "https://iili.io/F2SecXt.jpg", originalLink: "https://www.netflix.com/title/81729864" },
+                            { title: "Dragon", genre: "Action", imgSrc: "https://iili.io/F2Se1Bn.jpg", originalLink: "https://www.google.com/search?q=Dragon+Prabhas+movie+ott+release" },
+                            { title: "Razakar", genre: "Historical Drama", imgSrc: "https://iili.io/F2SelLX.jpg", originalLink: "https://www.primevideo.com/detail/0S8A53P5Y1W5A2I6E1S8S32C6F/" },
+                            { title: "Amar Singh Chamkila", genre: "Biographical Musical", imgSrc: "https://iili.io/F2SeE1s.jpg", originalLink: "https://www.netflix.com/title/81229428" },
+                            { title: "Madgaon Express", genre: "Comedy", imgSrc: "https://iili.io/F2SeGrG.jpg", originalLink: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" }
                         ];
                         latestNewReleases.forEach(movie => {
+                            const uniqueCardId = 'moviex_latest_new_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.link}" target="_blank" class="movie-card-link">
+                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
@@ -565,7 +591,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© 2024 MovieHub. All Rights Reserved. Designed By Aditya ❤️.</p>
+            <p>© 2024 MovieX. All Rights Reserved. Designed By Aditya ❤️.</p>
         </div>
     </footer>
 
