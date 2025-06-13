@@ -700,8 +700,7 @@
                         latestNewReleases.forEach(movie => {
                             const uniqueCardId = 'moviex_latest_new_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
-                                    <div class="movie-card">
+                                
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
                                     </div>
