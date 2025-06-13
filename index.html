@@ -60,7 +60,7 @@
                 <h2>Popular OTT Movies</h2>
                 <div class="gallery-grid">
                     <script>
-                        const adLinkGlobal = "https://arolinks.com/VcT";
+                        const adLinkGlobal = "https://arolinks.com/VcT"; // This variable is no longer used for card links but kept for reference
                         const popularOttMovies = [
                             { title: "RRR", genre: "Action, Drama", imgSrc: "https://iili.io/F2ziUOJ.jpg", originalLink: "https://www.netflix.com/title/81476453", altText: "RRR Movie Poster" },
                             { title: "Darlings", genre: "Dark Comedy", imgSrc: "https://iili.io/F2ziDRs.jpg", originalLink: "https://www.netflix.com/title/81227894", altText: "Darlings Movie Poster" },
@@ -81,11 +81,10 @@
                         popularOttMovies.forEach(movie => {
                             const uniqueCardId = 'moviex_ott_' + movie.imgSrc.split('/').pop().split('.')[0]; 
                             document.write(`
-                                <a href="${adLinkGlobal}" 
+                                <a href="${movie.originalLink}" 
                                    target="_blank" 
                                    class="movie-card-link" 
                                    data-original-link="${movie.originalLink}" 
-                                   data-ad-link="${adLinkGlobal}"
                                    data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.altText}" loading="lazy">
@@ -136,19 +135,6 @@
                 </div>
             </div>
         </section>
-
-
-<script type="text/javascript">
-	atOptions = {
-		'key' : '2ac8a1bb6ff6ddf5a8a1656a6bad0bf3',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="/https://arolinks.com/VcT"></script>
-
 	    
        <!-- Hindi Movies Section -->
         <section id="hindi-movies" class="movie-gallery-section">
@@ -157,7 +143,6 @@
                 <h3>Classic Hindi Movies</h3>
                 <div class="gallery-grid">
                     <script>
-                        // const adLinkGlobal = "..." // Already defined
                         const classicHindiMovies = [
                             { title: "Sholay", genre: "Action, Adventure", imgSrc: "https://iili.io/F2IW15X.jpg", originalLink: "https://www.primevideo.com/detail/0JMLN82E5FT9G6T8B0F2I8J4G7/" },
                             { title: "Mughal-e-Azam", genre: "Historical Drama", imgSrc: "https://iili.io/F2IUrQI.jpg", originalLink: "https://www.zee5.com/movies/details/mughal-e-azam/0-0-1z5123910" },
@@ -174,7 +159,7 @@
                         classicHindiMovies.forEach(movie => {
                             const uniqueCardId = 'moviex_hindi_classic_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info">
@@ -187,24 +172,10 @@
                         });
                     </script>
                 </div>
-                 
-		    <script type="text/javascript">
-	atOptions = {
-		'key' : '2ac8a1bb6ff6ddf5a8a1656a6bad0bf3',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="/https://arolinks.com/VcT"></script>
-		    
-		    
 		    
 		    <h3 style="margin-top: 2rem;">Latest Movies</h3> 
                 <div class="gallery-grid">
                     <script>
-                        // const adLinkGlobal = "..."
                         const latestHindiMovies = [
                             { title: "Animal", genre: "Action, Crime", imgSrc: "https://iili.io/F2TIfZg.jpg", originalLink: "https://www.netflix.com/title/81634533" },
                             { title: "Jawan", genre: "Action, Thriller", imgSrc: "https://iili.io/F2TIKwF.jpg", originalLink: "https://www.netflix.com/title/81493214" },
@@ -221,7 +192,7 @@
                         latestHindiMovies.forEach(movie => {
                              const uniqueCardId = 'moviex_hindi_latest_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
@@ -233,19 +204,6 @@
                 </div>
             </div>
         </section>
-
-        
-	    <script type="text/javascript">
-	atOptions = {
-		'key' : '2ac8a1bb6ff6ddf5a8a1656a6bad0bf3',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="/https://arolinks.com/VcT"></script>
-	    
 	    
 	    <!-- South Indian Movies Section -->
         <section id="south-movies" class="movie-gallery-section">
@@ -254,7 +212,6 @@
                 <h3>Popular South Movies</h3>
                 <div class="gallery-grid">
                     <script>
-                        // const adLinkGlobal = "..."
                         const popularSouthMovies = [
                             { title: "Baahubali: The Beginning", genre: "Action, Fantasy", imgSrc: "https://iili.io/F2TtA6x.jpg", originalLink: "https://www.hotstar.com/in/movies/baahubali-the-beginning/1000074368" },
                             { title: "Baahubali 2: The Conclusion", genre: "Action, Fantasy", imgSrc: "https://iili.io/F2Tt1Zg.jpg", originalLink: "https://www.hotstar.com/in/movies/baahubali-2-the-conclusion/1100000751" },
@@ -275,7 +232,7 @@
                          popularSouthMovies.forEach(movie => {
                             const uniqueCardId = 'moviex_south_popular_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
@@ -288,7 +245,6 @@
                 <h3 style="margin-top: 2rem;">New Hero / Lesser-known South Movies</h3>
                 <div class="gallery-grid">
                      <script>
-                        // const adLinkGlobal = "..."
                         const newSouthMovies = [
                             { title: "Dragon", genre: "Action (Placeholder)", imgSrc: "https://iili.io/F2AHY6F.jpg", originalLink: "https://www.google.com/search?q=Dragon+movie+ott" },
                             { title: "Tillu Square", genre: "Comedy", imgSrc: "https://iili.io/F2AH7G1.jpg", originalLink: "https://www.netflix.com/title/81729864" },
@@ -299,7 +255,7 @@
                         newSouthMovies.forEach(movie => {
                              const uniqueCardId = 'moviex_south_new_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
@@ -312,34 +268,6 @@
             </div>
         </section>
 
-
-        <script type="text/javascript">
-	atOptions = {
-		'key' : '2ac8a1bb6ff6ddf5a8a1656a6bad0bf3',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="/https://arolinks.com/VcT"></script>
-
-
-
-                                                                                                     <script type="text/javascript">
-	atOptions = {
-		'key' : '2ac8a1bb6ff6ddf5a8a1656a6bad0bf3',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="/https://arolinks.com/VcT"></script>
-
-
-	    
-
         <!-- Bollywood Blockbusters Section -->
         <section id="bollywood-movies" class="movie-gallery-section">
              <div class="container">
@@ -347,7 +275,6 @@
                 <h3>Famous Blockbusters</h3>
                  <div class="gallery-grid">
                     <script>
-                        // const adLinkGlobal = "..."
                         const famousBollywood = [
                             { title: "Mission Mangal", genre: "Drama, Sci-Fi", imgSrc: "https://iili.io/F2AfPzG.jpg", originalLink: "https://www.hotstar.com/in/movies/mission-mangal/1260011536" },
                             { title: "Gadar 2", genre: "Action, Drama", imgSrc: "https://iili.io/F2AqdLx.jpg", originalLink: "https://www.zee5.com/movies/details/gadar-2/0-0-1z5432131" },
@@ -368,7 +295,7 @@
                         famousBollywood.forEach(movie => {
                              const uniqueCardId = 'moviex_bollywood_famous_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
@@ -381,7 +308,6 @@
                 <h3 style="margin-top: 2rem;">Rising Actors / Lesser-known Hits</h3>
                 <div class="gallery-grid">
                      <script>
-                        // const adLinkGlobal = "..."
                         const newBollywood = [
                             { title: "The Kerala Story", genre: "Drama", imgSrc: "https://iili.io/F25rYjs.jpg", originalLink: "https://www.zee5.com/movies/details/the-kerala-story/0-0-1z5430876" },
                             { title: "URI: The Surgical Strike", genre: "Military Action", imgSrc: "https://iili.io/F25r16l.jpg", originalLink: "https://www.zee5.com/movies/details/uri-the-surgical-strike/0-0-3279" },
@@ -392,7 +318,7 @@
                         newBollywood.forEach(movie => {
                             const uniqueCardId = 'moviex_bollywood_new_' + movie.imgSrc.split('/').pop().split('.')[0];
                              document.write(`
-                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
@@ -405,21 +331,6 @@
             </div>
         </section>
 
-
-<script type="text/javascript">
-	atOptions = {
-		'key' : '2ac8a1bb6ff6ddf5a8a1656a6bad0bf3',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="/https://arolinks.com/VcT"></script>
-
-
-
-	    
         <!-- Trending Web Series Section -->
         <section id="web-series" class="movie-gallery-section">
             <div class="container">
@@ -427,7 +338,6 @@
                 <h3>Top Trending Shows</h3>
                 <div class="gallery-grid">
                     <script>
-                        // const adLinkGlobal = "..."
                         const popularWebSeries = [
                             { title: "Mirzapur", genre: "Crime Thriller", imgSrc: "https://iili.io/F27Hhgt.jpg", originalLink: "https://www.primevideo.com/detail/0PDOKMV9CRLOMO5EUKNCUJY5DR/" },
                             { title: "The Family Man", genre: "Spy Thriller", imgSrc: "https://iili.io/F27HyrP.jpg", originalLink: "https://www.primevideo.com/detail/0S3QYI59BAZ5TM9I6VTYA8D59/" },
@@ -448,7 +358,7 @@
                          popularWebSeries.forEach(series => {
                             const uniqueCardId = 'moviex_webseries_popular_' + series.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${series.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
+                                <a href="${series.originalLink}" target="_blank" class="movie-card-link" data-original-link="${series.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${series.imgSrc}" alt="${series.title} Poster" loading="lazy">
                                         <div class="movie-info"><h3>${series.title}</h3><p>${series.genre}</p></div>
@@ -461,25 +371,6 @@
             </div>
         </section>
 
-
-
-                                                                                                                                              <script type="text/javascript">
-	atOptions = {
-		'key' : '2ac8a1bb6ff6ddf5a8a1656a6bad0bf3',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="/https://arolinks.com/VcT"></script>
-
-
-
-
-
-
-	    
         <!-- START: INDIAN CRIME MOVIES SECTION -->
         <section id="indian-crime-movies" class="movie-gallery-section">
              <div class="container">
@@ -488,7 +379,6 @@
                 <h3>🔸 Financial / Corporate Scam</h3>
                 <div class="gallery-grid">
                     <script>
-                        // const adLinkGlobal = "..."
                         const financialScamMovies = [
                             { title: "Scam 1992", genre: "Financial Scam", imgSrc: "https://iili.io/F2ksuPS.jpg", originalLink: "https://www.sonyliv.com/shows/scam-1992-the-harshad-mehta-story-1700000292" },
                             { title: "The Big Bull", genre: "Financial Scam", imgSrc: "https://iili.io/F2ksfcX.jpg", originalLink: "https://www.hotstar.com/in/movies/the-big-bull/1260057538" },
@@ -504,7 +394,7 @@
                         financialScamMovies.forEach(movie => {
                             const uniqueCardId = 'moviex_crime_financial_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info">
@@ -517,25 +407,10 @@
                         });
                     </script>
                 </div>
-        
-              
-		     <script type="text/javascript">
-	atOptions = {
-		'key' : '2ac8a1bb6ff6ddf5a8a1656a6bad0bf3',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="/https://arolinks.com/VcT"></script>
-		     
-		     
 		     
 		     <h3>🔸 Government/Political Crime & Corruption</h3>
                 <div class="gallery-grid">
                     <script>
-                        // const adLinkGlobal = "..."
                         const politicalCrimeMovies = [
                             { title: "Raid", genre: "Political Crime", imgSrc: "https://iili.io/F2vk5Ga.jpg", originalLink: "https://www.hotstar.com/in/movies/raid/1100000782" },
                             { title: "Satyagraha", genre: "Political Crime", imgSrc: "https://iili.io/F2vklvp.jpg", originalLink: "https://www.netflix.com/title/70286716" },
@@ -554,7 +429,7 @@
                         politicalCrimeMovies.forEach(movie => {
                             const uniqueCardId = 'moviex_crime_political_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info">
@@ -567,24 +442,10 @@
                         });
                     </script>
                 </div>
-        
-              
-		     <script type="text/javascript">
-	atOptions = {
-		'key' : '2ac8a1bb6ff6ddf5a8a1656a6bad0bf3',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="/https://arolinks.com/VcT"></script>
-		     
 		     
 		     <h3>🔸 Underworld / Mafia / Gangster Crime</h3>
                 <div class="gallery-grid">
                     <script>
-                        // const adLinkGlobal = "..."
                         const gangsterCrimeMovies = [
                             { title: "Gangs of Wasseypur", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LbQj.jpg", originalLink: "https://www.netflix.com/title/70259173" },
                             { title: "Satya", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LpCx.jpg", originalLink: "https://www.sonyliv.com/movies/satya-1000101683" },
@@ -603,7 +464,7 @@
                         gangsterCrimeMovies.forEach(movie => {
                             const uniqueCardId = 'moviex_crime_gangster_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info">
@@ -620,7 +481,6 @@
                 <h3>🔸 Cyber / Tech & Digital Crime</h3>
                 <div class="gallery-grid">
                     <script>
-                        // const adLinkGlobal = "..."
                         const cyberCrimeMovies = [
                             { title: "Hacked", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWFta.jpg", originalLink: "https://www.zee5.com/movies/details/hacked/0-0-10906" },
                             { title: "Hello Mini", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWocN.jpg", originalLink: "https://www.mxplayer.in/show/watch-hello-mini-series-online-314227f6f16f03a608149e29f39c7161" },
@@ -631,7 +491,7 @@
                         cyberCrimeMovies.forEach(movie => {
                             const uniqueCardId = 'moviex_crime_cyber_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info">
@@ -655,7 +515,6 @@
                 <h3>High-Profile Latest Releases</h3>
                 <div class="gallery-grid">
                     <script>
-                        // const adLinkGlobal = "..."
                         const latestPopularReleases = [
                             { title: "12th Fail", genre: "Biographical Drama", imgSrc: "https://iili.io/F2SgEE7.jpg", originalLink: "https://www.hotstar.com/in/movies/12th-fail/1260161427" },
                             { title: "Article 370", genre: "Political Thriller", imgSrc: "https://iili.io/F2SPjcP.jpg", originalLink: "https://www.netflix.com/title/81723559" },
@@ -676,7 +535,7 @@
                         latestPopularReleases.forEach(movie => {
                             const uniqueCardId = 'moviex_latest_popular_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${adLinkGlobal}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-ad-link="${adLinkGlobal}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
@@ -689,7 +548,6 @@
                 <h3 style="margin-top: 2rem;">Lesser-Known / New Actor Releases</h3>
                  <div class="gallery-grid">
                     <script>
-                        // const adLinkGlobal = "..."
                         const latestNewReleases = [
                             { title: "Tillu Square", genre: "Comedy", imgSrc: "https://iili.io/F2SecXt.jpg", originalLink: "https://www.netflix.com/title/81729864" },
                             { title: "Dragon", genre: "Action", imgSrc: "https://iili.io/F2Se1Bn.jpg", originalLink: "https://www.google.com/search?q=Dragon+Prabhas+movie+ott+release" },
@@ -700,7 +558,8 @@
                         latestNewReleases.forEach(movie => {
                             const uniqueCardId = 'moviex_latest_new_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
+                                    <div class="movie-card">
                                         <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
                                     </div>
@@ -712,20 +571,6 @@
             </div>
         </section>
 
-
-<script type="text/javascript">
-	atOptions = {
-		'key' : '2ac8a1bb6ff6ddf5a8a1656a6bad0bf3',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="/https://arolinks.com/VcT"></script>
-
-
-        
         <!-- Contact Section -->
         <section id="contact" class="contact-section">
             <div class="container">
@@ -744,7 +589,5 @@
     </footer>
 
     <script src="script.js"></script>
-<script type='text/javascript' src='//pl26862409.profitableratecpm.com/40/22/99/402299a3242b7433dcec06ff5cdd8d6d.js'></script>
-    <script type='text/javascript' src='//pl26862409.profitableratecpm.com/40/22/99/402299a3242b7433dcec06ff5cdd8d6d.js'></script>
 </body>
 </html>
