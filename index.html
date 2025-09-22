@@ -2,16 +2,271 @@
 <html lang="en">
 <head>
 
-<meta name="google-site-verification" content="DsVWvEmjYH1qkAVMV3_F4YCM1zxfcKtS6sadhqJcCyk" />
-	
-    <script type='text/javascript' src='//pl26862394.profitableratecpm.com/da/40/4a/da404a8ef2a6a460033cd734a28643e5.js'></script>
-    <script type='text/javascript' src='//pl26862394.profitableratecpm.com/da/40/4a/da404a8ef2a6a460033cd734a28643e5.js'></script>
-    <script type='text/javascript' src='//pl26862394.profitableratecpm.com/da/40/4a/da404a8ef2a6a460033cd734a28643e5.js'></script>
+    <meta name="google-site-verification" content="DsVWvEmjYH1qkAVMV3_F4YCM1zxfcKtS6sadhqJcCyk" />
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MovieX - Your Film Destination</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="https://iili.io/F33LXDv.png" type="image/png"> 
+
+    <style>
+        /* Global Resets & Base Styles */
+        :root {
+            /* Day Theme Variables */
+            --primary-color: #A0D9A2;
+            --primary-hover-color: #8BCAA0;
+            --secondary-color: #555;
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --text-color: #212529;
+            --header-bg: var(--primary-color);
+            --header-text: #FFFFFF;
+            --logo-text-color: var(--header-text); 
+            --logo-hover-color: #E0F0E3; 
+            --nav-link-text: var(--header-text);
+            --nav-link-hover-bg: #8BCAA0;
+            --nav-link-active-bg: #79B48F;
+            --nav-link-active-text: #FFFFFF;
+            --menu-toggle-icon-color: var(--header-text);
+            --theme-toggle-icon-color: var(--header-text);
+            --theme-toggle-icon-hover-color: var(--logo-hover-color);
+            --link-color: #508D69;
+            --link-hover-color: #3E6B50;
+            --hero-text-color: #FFFFFF;
+            --card-image-border-color: #eaeaea;
+            --footer-bg: var(--header-bg);
+            --footer-text-color: #E0F0E3;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition-speed: 0.3s;
+            --transition-property: color, background-color, border-color, box-shadow, transform, opacity;
+            /* Improvement: Set header height as a variable for easy use */
+            --header-height: 82px;
+        }
+
+        /* Night Theme Variables */
+        body.night-mode {
+            --primary-color: #FFB347;
+            --primary-hover-color: #E69A36;
+            --secondary-color: #9e9e9e;
+            --background-color: #121212;
+            --card-background: #1E1E1E;
+            --text-color: #E0E0E0;
+            --header-bg: #080808;
+            --header-text: var(--primary-color);
+            --logo-text-color: var(--header-text);
+            --logo-hover-color: #FFD180;
+            --nav-link-text: var(--header-text);
+            --nav-link-hover-bg: #33281B;
+            --nav-link-active-bg: #4D3A29;
+            --nav-link-active-text: var(--primary-color);
+            --menu-toggle-icon-color: var(--header-text);
+            --theme-toggle-icon-color: var(--header-text);
+            --theme-toggle-icon-hover-color: var(--logo-hover-color);
+            --link-color: var(--primary-color);
+            --link-hover-color: #FFC973;
+            --hero-text-color: #FFFFFF;
+            --card-image-border-color: #333;
+            --footer-bg: var(--header-bg);
+            --footer-text-color: #A37C48;
+            --box-shadow: 0 4px 15px rgba(255, 179, 71, 0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { 
+            scroll-behavior: smooth; 
+            /* Improvement: Prevents sticky header from covering section titles on anchor link clicks */
+            scroll-padding-top: var(--header-height);
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-size: 16px;
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+            overflow-x: hidden;
+        }
+        /* Improvement: Prevents scrolling when mobile menu is open */
+        body.no-scroll {
+            overflow: hidden;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: var(--link-color); transition: color var(--transition-speed) ease; }
+        a:hover { color: var(--link-hover-color); }
+        h1, h2, h3 { margin-bottom: 0.75em; line-height: 1.2; transition: color var(--transition-speed) ease; }
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.25rem; } 
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        header { background-color: var(--header-bg); color: var(--header-text); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease; height: var(--header-height); }
+        header .container { display: flex; justify-content: space-between; align-items: center; height: 100%;}
+        .logo-link { display: flex; align-items: center; text-decoration: none; transition: opacity 0.3s ease; }
+        .logo-link:hover { opacity: 0.85; }
+        #site-logo { height: 50px; width: auto; }
+        .main-nav ul { list-style: none; display: flex; }
+        .main-nav ul li { margin-left: 20px; }
+        .main-nav ul li a { color: var(--nav-link-text); padding: 0.5rem 0.75rem; border-radius: 4px; transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease; }
+        .main-nav ul li a:hover { background-color: var(--nav-link-hover-bg); color: var(--nav-link-active-text); }
+        .main-nav ul li a.active { background-color: var(--nav-link-active-bg); color: var(--nav-link-active-text); }
+        .header-controls { display: flex; align-items: center; gap: 10px; }
+        #theme-toggle { background: none; border: none; color: var(--theme-toggle-icon-color); cursor: pointer; font-size: 1.4rem; padding: 5px; line-height: 1; transition: color var(--transition-speed) ease, transform 0.2s ease-out; display: flex; align-items: center; justify-content: center; }
+        #theme-toggle .icon-moon { display: none; }
+        body.night-mode #theme-toggle .icon-sun { display: none; }
+        body.night-mode #theme-toggle .icon-moon { display: inline; }
+        #theme-toggle:hover { color: var(--theme-toggle-icon-hover-color); transform: scale(1.1); }
+        .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 10px; position: relative; z-index: 1001; }
+        .menu-toggle span { display: block; width: 25px; height: 3px; background-color: var(--menu-toggle-icon-color); margin: 5px 0; transition: all var(--transition-speed) ease-in-out, background-color var(--transition-speed) ease; }
+        .hero-section { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://image.tmdb.org/t/p/original/8YFL5QQVPy3AgrEQxNYVSgiPEbe.jpg') no-repeat center center/cover; color: var(--hero-text-color); text-align: center; padding: 5rem 1rem; min-height: 110vh; display: flex; align-items: center; justify-content: center; transition: color var(--transition-speed) ease; overflow: hidden; }
+        .hero-section h1 { font-size: 3rem; margin-bottom: 0.5em; animation: fadeInUp 0.8s ease-out 0.2s forwards; opacity: 0; }
+        .hero-section p { font-size: 1.2rem; max-width: 600px; margin: 0 auto; animation: fadeInUp 0.8s ease-out 0.4s forwards; opacity: 0; }
+        .movie-gallery-section, .placeholder-section, .contact-section, .categories-list-section { padding: 3rem 0; }
+        .movie-gallery-section > .container > h2, .placeholder-section > .container > h2, .contact-section > .container > h2, .categories-list-section > .container > h2 { text-align: center; margin-bottom: 2rem; color: var(--text-color); }
+        .placeholder-section .container, .categories-list-section .container { text-align: center; max-width: 900px; }
+        .movie-gallery-section .container > h3 { font-size: 1.7rem; color: var(--text-color); margin-top: 2.5rem; margin-bottom: 1.5rem; text-align: left; padding-left: 5px; border-bottom: 2px solid var(--primary-color); display: inline-block; }
+        body.night-mode .movie-gallery-section .container > h3 { border-bottom-color: var(--primary-color); }
+        .category-links { list-style: none; padding: 0; margin-top: 1rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+        .category-links li a { display: inline-block; padding: 0.75rem 1.5rem; background-color: var(--primary-color); color: var(--header-text); border-radius: var(--border-radius); text-decoration: none; font-weight: 500; transition: background-color var(--transition-speed) ease, transform 0.2s ease; }
+        .category-links li a:hover { background-color: var(--primary-hover-color); transform: translateY(-2px); }
+        body.night-mode .category-links li a { background-color: var(--primary-color); color: var(--background-color); }
+        body.night-mode .category-links li a:hover { background-color: var(--primary-hover-color); }
+        #tags-section .container { text-align: center; }
+        .tags-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 1.5rem; padding: 0 10px; }
+        .tag-link { display: inline-block; padding: 0.6rem 1.2rem; background-color: var(--secondary-color); color: var(--card-background); border-radius: 20px; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: background-color var(--transition-speed) ease, transform 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .tag-link:hover { background-color: var(--primary-color); color: var(--header-text); transform: translateY(-2px) scale(1.02); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+        body.night-mode .tag-link { background-color: var(--secondary-color); color: var(--background-color); }
+        body.night-mode .tag-link:hover { background-color: var(--primary-color); color: var(--background-color); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; }
+        .movie-card-link { display: block; text-decoration: none; color: inherit; border-radius: var(--border-radius); transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease; }
+        .movie-card { background-color: var(--card-background); border-radius: var(--border-radius); box-shadow: var(--box-shadow); overflow: hidden; transition: var(--transition-property) var(--transition-speed) ease; display: flex; flex-direction: column; height: 100%; }
+        .movie-card-link:hover .movie-card { transform: translateY(-8px) scale(1.03); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); }
+        body.night-mode .movie-card-link:hover .movie-card { box-shadow: 0 10px 30px rgba(255, 179, 71, 0.2); }
+        .movie-card img { width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: cover; border-bottom: 1px solid var(--card-image-border-color); transition: border-color var(--transition-speed) ease, transform 0.4s ease; background-color: #e0e0e0; }
+        .movie-card-link:hover .movie-card img { transform: scale(1.05); }
+        .movie-card .movie-info { padding: 0.8rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .movie-card .movie-info h3 { font-size: 1rem; margin-bottom: 0.25em; color: var(--text-color); line-height: 1.3; }
+        .movie-card .movie-info p { font-size: 0.8rem; color: var(--secondary-color); transition: color var(--transition-speed) ease; line-height: 1.4; }
+        .contact-section .container { text-align: center; max-width: 600px; }
+        footer { background-color: var(--footer-bg); color: var(--footer-text-color); text-align: center; padding: 1.5rem 0; margin-top: 2rem; transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease; }
+        .footer-nav { margin-top: 0.5rem; }
+        .footer-nav a { color: var(--footer-text-color); margin: 0 10px; opacity: 0.8; }
+        .footer-nav a:hover { opacity: 1; }
+        .animate-in { opacity: 0; animation: fadeInUp 0.6s ease-out forwards; }
+        @media (max-width: 992px) { .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); } }
+        @media (max-width: 768px) {
+            :root { --header-height: 70px; }
+            h1 { font-size: 2rem; } h2 { font-size: 1.75rem; } .movie-gallery-section .container > h3 { font-size: 1.5rem; } .hero-section h1 { font-size: 2.2rem; } .hero-section p { font-size: 1rem; }
+            .main-nav { position: fixed; top: 0; left: -100%; width: 70%; max-width: 300px; height: 100vh; background-color: var(--header-bg); display: flex; flex-direction: column; align-items: center; padding-top: 60px; box-shadow: 2px 0 10px rgba(0,0,0,0.2); transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1), background-color var(--transition-speed) ease; z-index: 999; }
+            .main-nav.active { left: 0; }
+            .main-nav ul { flex-direction: column; width: 100%; padding-top: 2rem; }
+            .main-nav ul li { margin: 0; width: 100%; text-align: center; }
+            .main-nav ul li a { display: block; padding: 1rem; border-bottom: 1px solid var(--nav-link-hover-bg); transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, border-color var(--transition-speed) ease; }
+            .main-nav ul li:last-child a { border-bottom: none; }
+            .main-nav ul li a:hover, .main-nav ul li a.active { background-color: var(--nav-link-active-bg); color: var(--nav-link-active-text); }
+            .menu-toggle { display: block; }
+            .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+            .movie-card .movie-info h3 { font-size: 0.9rem; } .movie-card .movie-info p { font-size: 0.75rem; }
+            .header-controls { gap: 5px; } #theme-toggle { font-size: 1.3rem; } #site-logo { height: 45px; }
+        }
+        @media (max-width: 480px) {
+            :root { --header-height: 60px; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+            #site-logo { height: 40px; } .main-nav { width: 85%; }
+            .movie-card .movie-info { padding: 0.6rem; } .movie-card .movie-info h3 { font-size: 0.8rem; } .movie-card .movie-info p { font-size: 0.7rem; }
+            .category-links li a { padding: 0.6rem 1rem; font-size: 0.9rem;}
+            .tag-link { padding: 0.5rem 1rem; font-size: 0.85rem;}
+        }
+
+        /* --- NEW STYLES FOR FLOATING ICONS & POPUP --- */
+
+        /* Floating Icons Container */
+        .floating-icons {
+            position: fixed;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1001; /* Above other content */
+        }
+
+        .floating-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .floating-icon:hover {
+            transform: scale(1.15) translateX(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .floating-icon.instagram { background: #d6249f; background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
+        .floating-icon.facebook { background: #1877F2; }
+        .floating-icon.telegram { background: #2AABEE; }
+        .floating-icon.theme-icon { background: #333; }
+        
+        .floating-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        /* Popup Styles */
+        #theme-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none; /* Initially hidden */
+            justify-content: center;
+            align-items: center;
+            z-index: 2000; /* Highest z-index */
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        #theme-popup-overlay.show {
+            display: flex;
+        }
+
+        #theme-popup-content {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .close-popup-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            text-shadow: 0 0 5px black;
+            z-index: 2001;
+        }
+
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -60,8 +315,7 @@
                 <h2>Popular OTT Movies</h2>
                 <div class="gallery-grid">
                     <script>
-                        const adLinkGlobal = "https://arolinks.com/VcT"; // This variable is no longer used for card links but kept for reference
-                        const popularOttMovies = [
+                        const popularOttMoviesData = [
                             { title: "RRR", genre: "Action, Drama", imgSrc: "https://iili.io/F2ziUOJ.jpg", originalLink: "https://www.netflix.com/title/81476453", altText: "RRR Movie Poster" },
                             { title: "Darlings", genre: "Dark Comedy", imgSrc: "https://iili.io/F2ziDRs.jpg", originalLink: "https://www.netflix.com/title/81227894", altText: "Darlings Movie Poster" },
                             { title: "Choked", genre: "Drama", imgSrc: "https://iili.io/F2ziSRa.jpg", originalLink: "https://www.netflix.com/title/81069677", altText: "Choked Movie Poster" },
@@ -78,7 +332,7 @@
                             { title: "Titanic", genre: "Disaster, Tragic Romance", imgSrc: "https://iili.io/F2InRMQ.jpg", originalLink: "https://arolinks.com/CFRBn", altText: "Titanic Movie Poster" },
                             { title: "OMG", genre: "Comedy, Drama", imgSrc: "https://iili.io/F2I1CLN.jpg", originalLink: "https://t.me/omgnewmovie", altText: "OMG Movie Poster" }              
                         ];
-                        popularOttMovies.forEach(movie => {
+                        popularOttMoviesData.forEach(movie => {
                             const uniqueCardId = 'moviex_ott_' + movie.imgSrc.split('/').pop().split('.')[0]; 
                             document.write(`
                                 <a href="${movie.originalLink}" 
@@ -143,7 +397,7 @@
                 <h3>Classic Hindi Movies</h3>
                 <div class="gallery-grid">
                     <script>
-                        const classicHindiMovies = [
+                        const classicHindiMoviesData = [
                             { title: "Sholay", genre: "Action, Adventure", imgSrc: "https://iili.io/F2IW15X.jpg", originalLink: "https://www.primevideo.com/detail/0JMLN82E5FT9G6T8B0F2I8J4G7/" },
                             { title: "Mughal-e-Azam", genre: "Historical Drama", imgSrc: "https://iili.io/F2IUrQI.jpg", originalLink: "https://www.zee5.com/movies/details/mughal-e-azam/0-0-1z5123910" },
                             { title: "Mother India", genre: "Drama", imgSrc: "https://iili.io/F2I6Ywx.jpg", originalLink: "https://www.youtube.com/watch?v=4T1n2G_K7lI" },
@@ -156,7 +410,7 @@
                             { title: "Kaagaz Ke Phool", genre: "Drama, Musical", imgSrc: "https://iili.io/F2THe3b.jpg", originalLink: "https://www.zee5.com/movies/details/kaagaz-ke-phool/0-0-1z5113063" }
                         ];
 
-                        classicHindiMovies.forEach(movie => {
+                        classicHindiMoviesData.forEach(movie => {
                             const uniqueCardId = 'moviex_hindi_classic_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
                                 <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
@@ -176,7 +430,7 @@
 		    <h3 style="margin-top: 2rem;">Latest Movies</h3> 
                 <div class="gallery-grid">
                     <script>
-                        const latestHindiMovies = [
+                        const latestHindiMoviesData = [
                             { title: "Animal", genre: "Action, Crime", imgSrc: "https://iili.io/F2TIfZg.jpg", originalLink: "https://www.netflix.com/title/81634533" },
                             { title: "Jawan", genre: "Action, Thriller", imgSrc: "https://iili.io/F2TIKwF.jpg", originalLink: "https://www.netflix.com/title/81493214" },
                             { title: "Pathaan", genre: "Action, Thriller", imgSrc: "https://iili.io/F2TExXR.jpg", originalLink: "https://www.primevideo.com/detail/0SPI894P6W39446S81T6T43YI9/" },
@@ -189,7 +443,7 @@
                             { title: "Rocky Aur Rani Kii Prem Kahaani", genre: "Romantic Comedy", imgSrc: "https://iili.io/F2TIFu1.jpg", originalLink: "https://www.primevideo.com/detail/0S8A53P5Y1W5A2I6E1S8S32C6F/" }
                         ];
 
-                        latestHindiMovies.forEach(movie => {
+                        latestHindiMoviesData.forEach(movie => {
                              const uniqueCardId = 'moviex_hindi_latest_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
                                 <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
@@ -212,7 +466,7 @@
                 <h3>Popular South Movies</h3>
                 <div class="gallery-grid">
                     <script>
-                        const popularSouthMovies = [
+                        const popularSouthMoviesData = [
                             { title: "Baahubali: The Beginning", genre: "Action, Fantasy", imgSrc: "https://iili.io/F2TtA6x.jpg", originalLink: "https://www.hotstar.com/in/movies/baahubali-the-beginning/1000074368" },
                             { title: "Baahubali 2: The Conclusion", genre: "Action, Fantasy", imgSrc: "https://iili.io/F2Tt1Zg.jpg", originalLink: "https://www.hotstar.com/in/movies/baahubali-2-the-conclusion/1100000751" },
                             { title: "RRR", genre: "Action, Drama", imgSrc: "https://iili.io/F2Ttxje.jpg", originalLink: "https://www.netflix.com/title/81476453" },
@@ -229,7 +483,7 @@
                             { title: "Mersal", genre: "Action, Thriller", imgSrc: "https://iili.io/F2Tt0wF.jpg", originalLink: "https://www.netflix.com/title/81000204" },
                             { title: "Ala Vaikunthapurramuloo", genre: "Action, Comedy", imgSrc: "https://iili.io/F2TtGna.jpg", originalLink: "https://www.netflix.com/title/81273899" }
                         ];
-                         popularSouthMovies.forEach(movie => {
+                         popularSouthMoviesData.forEach(movie => {
                             const uniqueCardId = 'moviex_south_popular_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
                                 <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
@@ -245,14 +499,14 @@
                 <h3 style="margin-top: 2rem;">New Hero / Lesser-known South Movies</h3>
                 <div class="gallery-grid">
                      <script>
-                        const newSouthMovies = [
+                        const newSouthMoviesData = [
                             { title: "Dragon", genre: "Action (Placeholder)", imgSrc: "https://iili.io/F2AHY6F.jpg", originalLink: "https://www.google.com/search?q=Dragon+movie+ott" },
                             { title: "Tillu Square", genre: "Comedy", imgSrc: "https://iili.io/F2AH7G1.jpg", originalLink: "https://www.netflix.com/title/81729864" },
                             { title: "Hanu-Man", genre: "Superhero", imgSrc: "https://iili.io/F2AHAZB.jpg", originalLink: "https://www.zee5.com/movies/details/hanu-man/0-0-1z5435985" },
                             { title: "Love Today", genre: "Romantic Comedy", imgSrc: "https://iili.io/F2AHujV.jpg", originalLink: "https://www.netflix.com/title/81656341" },
                             { title: "Agent", genre: "Spy Action", imgSrc: "https://iili.io/F2AH5CP.jpg", originalLink: "https://www.sonyliv.com/movies/agent-1000236960" }
                         ];
-                        newSouthMovies.forEach(movie => {
+                        newSouthMoviesData.forEach(movie => {
                              const uniqueCardId = 'moviex_south_new_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
                                 <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
@@ -275,7 +529,7 @@
                 <h3>Famous Blockbusters</h3>
                  <div class="gallery-grid">
                     <script>
-                        const famousBollywood = [
+                        const famousBollywoodData = [
                             { title: "Mission Mangal", genre: "Drama, Sci-Fi", imgSrc: "https://iili.io/F2AfPzG.jpg", originalLink: "https://www.hotstar.com/in/movies/mission-mangal/1260011536" },
                             { title: "Gadar 2", genre: "Action, Drama", imgSrc: "https://iili.io/F2AqdLx.jpg", originalLink: "https://www.zee5.com/movies/details/gadar-2/0-0-1z5432131" },
                             { title: "BHARAT", genre: "Drama", imgSrc: "https://iili.io/F2Aq3qQ.webp", originalLink: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" },
@@ -292,7 +546,7 @@
                             { title: "Jawan", genre: "Action, Thriller", imgSrc: "https://iili.io/F2AqHzb.jpg", originalLink: "https://www.netflix.com/title/81493214" },
                             { title: "Chak De India", genre: "Sport, Drama", imgSrc: "https://iili.io/F2AqJXj.jpg", originalLink: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" }
                         ];
-                        famousBollywood.forEach(movie => {
+                        famousBollywoodData.forEach(movie => {
                              const uniqueCardId = 'moviex_bollywood_famous_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
                                 <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
@@ -308,14 +562,14 @@
                 <h3 style="margin-top: 2rem;">Rising Actors / Lesser-known Hits</h3>
                 <div class="gallery-grid">
                      <script>
-                        const newBollywood = [
+                        const newBollywoodData = [
                             { title: "The Kerala Story", genre: "Drama", imgSrc: "https://iili.io/F25rYjs.jpg", originalLink: "https://www.zee5.com/movies/details/the-kerala-story/0-0-1z5430876" },
                             { title: "URI: The Surgical Strike", genre: "Military Action", imgSrc: "https://iili.io/F25r16l.jpg", originalLink: "https://www.zee5.com/movies/details/uri-the-surgical-strike/0-0-3279" },
                             { title: "Ra.One", genre: "Sci-Fi, Action", imgSrc: "https://iili.io/F25r0G4.jpg", originalLink: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" },
                             { title: "Dobaaraa", genre: "Sci-Fi Thriller", imgSrc: "https://iili.io/F25rlnf.jpg", originalLink: "https://www.netflix.com/title/81458266" },
                             { title: "The Kashmir Files", genre: "Drama", imgSrc: "https://iili.io/F25raZG.jpg", originalLink: "https://www.zee5.com/movies/details/the-kashmir-files/0-0-1z5123910" }
                         ];
-                        newBollywood.forEach(movie => {
+                        newBollywoodData.forEach(movie => {
                             const uniqueCardId = 'moviex_bollywood_new_' + movie.imgSrc.split('/').pop().split('.')[0];
                              document.write(`
                                 <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
@@ -338,7 +592,7 @@
                 <h3>Top Trending Shows</h3>
                 <div class="gallery-grid">
                     <script>
-                        const popularWebSeries = [
+                        const popularWebSeriesData = [
                             { title: "Mirzapur", genre: "Crime Thriller", imgSrc: "https://iili.io/F27Hhgt.jpg", originalLink: "https://www.primevideo.com/detail/0PDOKMV9CRLOMO5EUKNCUJY5DR/" },
                             { title: "The Family Man", genre: "Spy Thriller", imgSrc: "https://iili.io/F27HyrP.jpg", originalLink: "https://www.primevideo.com/detail/0S3QYI59BAZ5TM9I6VTYA8D59/" },
                             { title: "Asur 2", genre: "Crime Thriller", imgSrc: "https://iili.io/F27HOes.jpg", originalLink: "https://www.jiocinema.com/tv-shows/asur-welcome-to-your-dark-side/2/welcome-to-your-dark-side/3751717" },
@@ -355,7 +609,7 @@
                             { title: "Special OPS", genre: "Spy Thriller", imgSrc: "https://iili.io/F2YqPjt.jpg", originalLink: "https://www.hotstar.com/in/tv/special-ops/1260022894" },
                             { title: "SHE", genre: "Crime drama", imgSrc: "https://iili.io/F2YfN1f.jpg", originalLink: "https://www.netflix.com/title/81183494" },
                         ];
-                         popularWebSeries.forEach(series => {
+                         popularWebSeriesData.forEach(series => {
                             const uniqueCardId = 'moviex_webseries_popular_' + series.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
                                 <a href="${series.originalLink}" target="_blank" class="movie-card-link" data-original-link="${series.originalLink}" data-card-id="${uniqueCardId}">
@@ -379,7 +633,7 @@
                 <h3>🔸 Financial / Corporate Scam</h3>
                 <div class="gallery-grid">
                     <script>
-                        const financialScamMovies = [
+                        const financialScamMoviesData = [
                             { title: "Scam 1992", genre: "Financial Scam", imgSrc: "https://iili.io/F2ksuPS.jpg", originalLink: "https://www.sonyliv.com/shows/scam-1992-the-harshad-mehta-story-1700000292" },
                             { title: "The Big Bull", genre: "Financial Scam", imgSrc: "https://iili.io/F2ksfcX.jpg", originalLink: "https://www.hotstar.com/in/movies/the-big-bull/1260057538" },
                             { title: "Baazaar", genre: "Financial Thriller", imgSrc: "https://iili.io/F2ksKFt.jpg", originalLink: "https://www.netflix.com/title/81024361" },
@@ -391,7 +645,7 @@
                             { title: "Jamtara", genre: "Cyber Crime", imgSrc: "https://iili.io/F2ksTV2.jpg", originalLink: "https://www.netflix.com/title/81183491" },
                             { title: "NH10", genre: "Thriller", imgSrc: "https://iili.io/F2UFyqN.jpg", originalLink: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" }
                         ];
-                        financialScamMovies.forEach(movie => {
+                        financialScamMoviesData.forEach(movie => {
                             const uniqueCardId = 'moviex_crime_financial_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
                                 <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
@@ -411,7 +665,7 @@
 		     <h3>🔸 Government/Political Crime & Corruption</h3>
                 <div class="gallery-grid">
                     <script>
-                        const politicalCrimeMovies = [
+                        const politicalCrimeMoviesData = [
                             { title: "Raid", genre: "Political Crime", imgSrc: "https://iili.io/F2vk5Ga.jpg", originalLink: "https://www.hotstar.com/in/movies/raid/1100000782" },
                             { title: "Satyagraha", genre: "Political Crime", imgSrc: "https://iili.io/F2vklvp.jpg", originalLink: "https://www.netflix.com/title/70286716" },
                             { title: "Madras Cafe", genre: "Political Crime", imgSrc: "https://iili.io/F2vk3Qe.jpg", originalLink: "https://www.netflix.com/title/70286717" },
@@ -426,7 +680,7 @@
                             { title: "Accidental Prime Minister", genre: "Political Drama", imgSrc: "https://iili.io/F2vkuZF.jpg", originalLink: "https://www.zee5.com/movies/details/the-accidental-prime-minister/0-0-3286" },
                             { title: "Batla House", genre: "Action Thriller", imgSrc: "https://iili.io/F2vkRCg.jpg", originalLink: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" }
                         ];
-                        politicalCrimeMovies.forEach(movie => {
+                        politicalCrimeMoviesData.forEach(movie => {
                             const uniqueCardId = 'moviex_crime_political_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
                                 <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
@@ -446,7 +700,7 @@
 		     <h3>🔸 Underworld / Mafia / Gangster Crime</h3>
                 <div class="gallery-grid">
                     <script>
-                        const gangsterCrimeMovies = [
+                        const gangsterCrimeMoviesData = [
                             { title: "Gangs of Wasseypur", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LbQj.jpg", originalLink: "https://www.netflix.com/title/70259173" },
                             { title: "Satya", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LpCx.jpg", originalLink: "https://www.sonyliv.com/movies/satya-1000101683" },
                             { title: "Company", genre: "Gangster Crime", imgSrc: "https://iili.io/F28LrB4.jpg", originalLink: "https://www.zee5.com/movies/details/company/0-0-1296" },
@@ -461,7 +715,7 @@
                             { title: "Monica, O My Darling", genre: "Neo-Noir", imgSrc: "https://iili.io/F28LtTu.jpg", originalLink: "https://www.netflix.com/title/81233741" },
                             { title: "Ugly", genre: "Thriller", imgSrc: "https://iili.io/F28LDhb.jpg", originalLink: "https://www.hotstar.com/in/movies/ugly/1000072314" }
                         ];
-                        gangsterCrimeMovies.forEach(movie => {
+                        gangsterCrimeMoviesData.forEach(movie => {
                             const uniqueCardId = 'moviex_crime_gangster_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
                                 <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
@@ -481,14 +735,14 @@
                 <h3>🔸 Cyber / Tech & Digital Crime</h3>
                 <div class="gallery-grid">
                     <script>
-                        const cyberCrimeMovies = [
+                        const cyberCrimeMoviesData = [
                             { title: "Hacked", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWFta.jpg", originalLink: "https://www.zee5.com/movies/details/hacked/0-0-10906" },
                             { title: "Hello Mini", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWocN.jpg", originalLink: "https://www.mxplayer.in/show/watch-hello-mini-series-online-314227f6f16f03a608149e29f39c7161" },
                             { title: "Chakravyuh – Inspector Virkar", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWBPR.jpg", originalLink: "https://www.mxplayer.in/show/watch-chakravyuh-inspector-virkar-online-b5a92a39b3b895697334751855e71495" },
                             { title: "Breathe: Into the Shadows", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWqMv.jpg", originalLink: "https://www.primevideo.com/detail/0S3QYI59BAZ5TM9I6VTYA8D59/" },
                             { title: "Rudra: The Edge of Darkness", genre: "Cyber Crime", imgSrc: "https://iili.io/F2SWfoJ.jpg", originalLink: "https://www.hotstar.com/in/tv/rudra-the-edge-of-darkness/1260081023" }
                         ];
-                        cyberCrimeMovies.forEach(movie => {
+                        cyberCrimeMoviesData.forEach(movie => {
                             const uniqueCardId = 'moviex_crime_cyber_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
                                 <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
@@ -515,7 +769,7 @@
                 <h3>High-Profile Latest Releases</h3>
                 <div class="gallery-grid">
                     <script>
-                        const latestPopularReleases = [
+                        const latestPopularReleasesData = [
                             { title: "12th Fail", genre: "Biographical Drama", imgSrc: "https://iili.io/F2SgEE7.jpg", originalLink: "https://www.hotstar.com/in/movies/12th-fail/1260161427" },
                             { title: "Article 370", genre: "Political Thriller", imgSrc: "https://iili.io/F2SPjcP.jpg", originalLink: "https://www.netflix.com/title/81723559" },
                             { title: "Animal", genre: "Action, Crime", imgSrc: "https://iili.io/F2SglQ2.jpg", originalLink: "https://www.netflix.com/title/81634533" },
@@ -532,7 +786,7 @@
                             { title: "Chandu Champion", genre: "Sports Biographical", imgSrc: "https://iili.io/F2SgsQp.jpg", originalLink: "https://www.primevideo.com/detail/0S8A53P5Y1W5A2I6E1S8S32C6F/" },
                             { title: "Yodha", genre: "Action Thriller", imgSrc: "https://iili.io/F2SgQCN.jpg", originalLink: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" }
                         ];
-                        latestPopularReleases.forEach(movie => {
+                        latestPopularReleasesData.forEach(movie => {
                             const uniqueCardId = 'moviex_latest_popular_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
                                 <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
@@ -548,14 +802,14 @@
                 <h3 style="margin-top: 2rem;">Lesser-Known / New Actor Releases</h3>
                  <div class="gallery-grid">
                     <script>
-                        const latestNewReleases = [
+                        const latestNewReleasesData = [
                             { title: "Tillu Square", genre: "Comedy", imgSrc: "https://iili.io/F2SecXt.jpg", originalLink: "https://www.netflix.com/title/81729864" },
                             { title: "Dragon", genre: "Action", imgSrc: "https://iili.io/F2Se1Bn.jpg", originalLink: "https://www.google.com/search?q=Dragon+Prabhas+movie+ott+release" },
                             { title: "Razakar", genre: "Historical Drama", imgSrc: "https://iili.io/F2SelLX.jpg", originalLink: "https://www.primevideo.com/detail/0S8A53P5Y1W5A2I6E1S8S32C6F/" },
                             { title: "Amar Singh Chamkila", genre: "Biographical Musical", imgSrc: "https://iili.io/F2SeE1s.jpg", originalLink: "https://www.netflix.com/title/81229428" },
                             { title: "Madgaon Express", genre: "Comedy", imgSrc: "https://iili.io/F2SeGrG.jpg", originalLink: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" }
                         ];
-                        latestNewReleases.forEach(movie => {
+                        latestNewReleasesData.forEach(movie => {
                             const uniqueCardId = 'moviex_latest_new_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
                                 <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
@@ -588,6 +842,251 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- NEW: Floating Icons -->
+    <div class="floating-icons">
+        <a href="https://www.instagram.com" target="_blank" class="floating-icon instagram" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.2,5.2 0 0,1 16.2,21.4H7.8C4.6,21.4 2,18.8 2,16.2V7.8A5.2,5.2 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" /></svg>
+        </a>
+        <a href="https://www.facebook.com" target="_blank" class="floating-icon facebook" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.32 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 12 2.04Z" /></svg>
+        </a>
+        <a href="https://telegram.org" target="_blank" class="floating-icon telegram" aria-label="Telegram">
+            <svg viewBox="0 0 24 24"><path d="M9.78,18.65L11.2,12.32L17.5,6.5L9.78,18.65M20.3,3.43L1.7,10.13C0.5,10.63 0.5,12.28 1.44,12.83L6.03,15.65L18.5,7.5L10.2,16.25L14.94,19.35C15.7,19.85 16.68,19.5 17.1,18.65L22.23,4.53C22.73,3.53 21.43,2.93 20.3,3.43Z" /></svg>
+        </a>
+      <a href="#" id="theme-icon-button" class="floating-icon theme-icon" aria-label="Open Theme">
+        <img src="https://iili.io/Kax4FYF.png" alt="Theme Icon" />
+            <svg viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        </a>
+    </div>
+
+    <!-- NEW: Popup Modal -->
+    <div id="theme-popup-overlay">
+        <button class="close-popup-btn" id="close-popup" aria-label="Close">&times;</button>
+        <iframe id="theme-popup-content" srcdoc="
+            <!DOCTYPE html>
+            <html lang='en'>
+            <head>
+              <meta charset='UTF-8'>
+              <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+              <title>MOVIEX Theme</title>
+              <style>
+                @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+                * { margin: 0; padding: 0; box-sizing: border-box; }
+                body {
+                  font-family: 'Poppins', sans-serif;
+                  min-height: 100vh;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  flex-direction: column;
+                  overflow: hidden;
+                  color: #fff;
+                  position: relative;
+                  background: linear-gradient(-45deg, #0d0d0d, #1a1a1a, #111827, #000000);
+                  background-size: 400% 400%;
+                  animation: gradientFlow 15s ease infinite;
+                }
+                @keyframes gradientFlow {
+                  0% { background-position: 0% 50%; }
+                  50% { background-position: 100% 50%; }
+                  100% { background-position: 0% 50%; }
+                }
+                .logo {
+                  font-size: 56px;
+                  font-weight: 700;
+                  margin-bottom: 25px;
+                  text-shadow: 0 0 15px rgba(255,255,255,0.8);
+                  z-index: 1;
+                }
+                .logo span.blue { color: #00BFFF; text-shadow: 0 0 20px #00BFFF; }
+                .logo span.white { color: #FFFFFF; text-shadow: 0 0 15px rgba(255,255,255,0.6); }
+                .logo span.red { color: #FF0000; text-shadow: 0 0 25px #FF0000; animation: pulse 1.5s infinite; }
+                @keyframes pulse {
+                  0%,100% { text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
+                  50% { text-shadow: 0 0 25px #ff4d4d, 0 0 40px #ff0000; }
+                }
+                .card {
+                  background: rgba(20,20,20,0.85);
+                  border-radius: 20px;
+                  padding: 40px;
+                  max-width: 420px;
+                  width: 90%;
+                  border: 2px solid rgba(0,191,255,0.4);
+                  box-shadow: 0 0 25px rgba(0,191,255,0.3);
+                  z-index: 1;
+                  animation: float 6s ease-in-out infinite;
+                  text-align: center;
+                }
+                .card h2 { font-size: 26px; margin-bottom: 15px; }
+                .card p { color: #a9b3d0; font-size: 14px; margin-bottom: 25px; }
+                @keyframes float {
+                  0%,100% { transform: translateY(0); }
+                  50% { transform: translateY(-10px); }
+                }
+                .btn {
+                  display: inline-block;
+                  margin: 10px;
+                  padding: 14px 28px;
+                  border-radius: 12px;
+                  font-size: 16px;
+                  font-weight: 600;
+                  color: #fff;
+                  text-decoration: none;
+                  cursor: pointer;
+                  transition: all 0.3s ease;
+                  position: relative;
+                  overflow: hidden;
+                  border: none;
+                }
+                .btn-blue { background: #00BFFF; box-shadow: 0 0 15px rgba(0,191,255,0.8); }
+                .btn-blue:hover { background: #0095cc; transform: translateY(-3px); box-shadow: 0 0 25px rgba(0,191,255,1); }
+                .btn-red { background: #FF0000; box-shadow: 0 0 15px rgba(255,0,0,0.8); }
+                .btn-red:hover { background: #cc0000; transform: translateY(-3px); box-shadow: 0 0 25px rgba(255,0,0,1); }
+              </style>
+            </head>
+            <body>
+              <div class='logo'>
+                <span class='blue'>▶</span><span class='white'>MOVIE</span><span class='red'>X</span>
+              </div>
+              <div class='card'>
+                <h2>Welcome to MOVIEX</h2>
+                <p>Experience the best crime, scam & corruption-based movies and series with a cinematic touch.</p>
+                <a href='#' class='btn btn-blue'>How To Watch Movies</a>
+                <a href='#' class='btn btn-red'>Join Now</a>
+              </div>
+            </body>
+            </html>
+        "></iframe>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Interactivity Code ---
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            const body = document.body;
+
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', () => {
+                    const isExpanded = mainNav.classList.toggle('active');
+                    menuToggle.setAttribute('aria-expanded', isExpanded);
+                    menuToggle.classList.toggle('active');
+                    body.classList.toggle('no-scroll', isExpanded); 
+                });
+            }
+
+            const themeToggle = document.getElementById('theme-toggle');
+            function applyTheme(theme) {
+                if (theme === 'night') {
+                    body.classList.add('night-mode');
+                    if(themeToggle) {
+                        themeToggle.setAttribute('aria-label', 'Switch to Day Mode');
+                        themeToggle.title = 'Switch to Day Mode';
+                    }
+                    localStorage.setItem('theme', 'night');
+                } else { 
+                    body.classList.remove('night-mode');
+                    if(themeToggle) {
+                        themeToggle.setAttribute('aria-label', 'Switch to Night Mode');
+                        themeToggle.title = 'Switch to Night Mode';
+                    }
+                    localStorage.setItem('theme', 'day');
+                }
+            }
+            const savedTheme = localStorage.getItem('theme') || 'day';
+            applyTheme(savedTheme);
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    const currentTheme = body.classList.contains('night-mode') ? 'night' : 'day';
+                    applyTheme(currentTheme === 'night' ? 'day' : 'night');
+                });
+            }
+
+            const navLinks = document.querySelectorAll('.main-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        menuToggle.classList.remove('active');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                        body.classList.remove('no-scroll');
+                    }
+                });
+            });
+
+            const sections = document.querySelectorAll('main section[id]');
+            const headerHeight = document.querySelector('header').offsetHeight;
+
+            function updateActiveLinkOnScroll() {
+                let currentSectionId = 'hero'; // Default to hero
+                const scrollY = window.pageYOffset;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - headerHeight - 20; // 20px buffer
+                    if (scrollY >= sectionTop) {
+                        currentSectionId = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    const linkHrefId = link.getAttribute('href').substring(1);
+
+                    // Special case for home/hero section
+                    if (linkHrefId === 'home' && (currentSectionId === 'hero' || currentSectionId === 'home')) {
+                        link.classList.add('active');
+                    } else if (linkHrefId === 'movie-gallery' && currentSectionId === 'movie-gallery') {
+                         link.classList.add('active');
+                    } else if (linkHrefId === currentSectionId) {
+                        link.classList.add('active');
+                    }
+                });
+                 
+                // If no other link is active, check the hero section again
+                const anyLinkActive = Array.from(navLinks).some(l => 
+                                                                l.classList.contains('active'));
+                if (!anyLinkActive && (window.pageYOffset < sections[1].offsetTop - headerHeight)) {
+                     document.querySelector('.main-nav a[href="#home"]').classList.add('active');
+                }
+            }
+            window.addEventListener('scroll', updateActiveLinkOnScroll);
+            updateActiveLinkOnScroll(); // Initial check on load
+
+
+            // --- NEW POPUP AND FLOATING ICON SCRIPT ---
+            const popupOverlay = document.getElementById('theme-popup-overlay');
+            const closePopupButton = document.getElementById('close-popup');
+            const themeIconButton = document.getElementById('theme-icon-button');
+
+            const showPopup = () => {
+                if (popupOverlay) popupOverlay.classList.add('show');
+            };
+
+            const hidePopup = () => {
+                if (popupOverlay) popupOverlay.classList.remove('show');
+            };
+
+            // Show popup on initial load
+            showPopup();
+
+            // Show popup every 50 seconds
+            setInterval(showPopup, 50000); 
+
+            // Event listener for the close button
+            if (closePopupButton) {
+                closePopupButton.addEventListener('click', hidePopup);
+            }
+            
+            // Event listener for the floating theme icon
+            if (themeIconButton) {
+                themeIconButton.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent default link behavior
+                    showPopup();
+                });
+            }
+        });
+    </script>
 </body>
 </html>
