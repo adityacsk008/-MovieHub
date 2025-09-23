@@ -523,69 +523,6 @@
             </div>
         </section>
 
-        Bollywood Blockbusters Section -->
-        <section id="bollywood-movies" class="movie-gallery-section">
-             <div class="container">
-                <h2>Bollywood Blockbusters</h2>
-            
-                 <div class="gallery-grid">
-                    <script>
-                        const famousBollywoodData = [
-                            { title: "Mission Mangal", genre: "Drama, Sci-Fi", imgSrc: "https://iili.io/F2AfPzG.jpg", originalLink: "https://arolinks.com/UBrin" },
-                            { title: "Gadar 2", genre: "Action, Drama", imgSrc: "https://iili.io/F2AqdLx.jpg", originalLink: "https://arolinks.com/cNE2" },
-                            { title: "BHARAT", genre: "Drama", imgSrc: "https://iili.io/F2Aq3qQ.webp", originalLink: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" },
-                            { title: "War", genre: "Action, Thriller", imgSrc: "https://iili.io/F2Af4bs.jpg", originalLink: "https://www.primevideo.com/detail/0H38982D6Y4F11M29029Y152I0/" },
-                            { title: "Kabir Singh", genre: "Romantic Drama", imgSrc: "https://iili.io/F2Afg5X.jpg", originalLink: "https://www.netflix.com/title/81107692" },
-                            { title: "Fighter", genre: "Action, Aerial", imgSrc: "https://iili.io/F2AfUJt.jpg", originalLink: "https://www.netflix.com/title/81682540" },
-                            { title: "Dangal", genre: "Biographical Sport", imgSrc: "https://iili.io/F2AfiXf.jpg", originalLink: "https://www.netflix.com/title/80166185" },
-                            { title: "Sultan", genre: "Sport, Drama", imgSrc: "https://iili.io/F2Afss4.jpg", originalLink: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" },
-                            { title: "Tanhaji", genre: "Historical Action", imgSrc: "https://iili.io/F2AfQql.jpg", originalLink: "https://arolinks.com/lVkis },
-                            { title: "Brahmāstra", genre: "Fantasy Adventure", imgSrc: "https://iili.io/F2AfZ12.jpg", originalLink: "https://www.hotstar.com/in/movies/brahmastra-part-one-shiva/1260110224" },
-                            { title: "Raazi", genre: "Spy Thriller", imgSrc: "https://iili.io/F2AftgS.jpg", originalLink: "https://www.primevideo.com/detail/0O9I2A2X8W5Y9E1I4S3S4U8R9H/" },
-                            { title: "Sanju", genre: "Biographical Drama", imgSrc: "https://iili.io/F2Afbd7.jpg", originalLink: "https://www.netflix.com/title/80228360" },
-                            { title: "PK", genre: "Comedy, Sci-Fi", imgSrc: "https://iili.io/F2Afpee.jpg", originalLink: "https://www.netflix.com/title/80049479" },
-                            { title: "Jawan", genre: "Action, Thriller", imgSrc: "https://iili.io/F2AqHzb.jpg", originalLink: "https://www.netflix.com/title/81493214" },
-                            { title: "Chak De India", genre: "Sport, Drama", imgSrc: "https://iili.io/F2AqJXj.jpg", originalLink: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" }
-                        ];
-                        famousBollywoodData.forEach(movie => {
-                             const uniqueCardId = 'moviex_bollywood_famous_' + movie.imgSrc.split('/').pop().split('.')[0];
-                            document.write(`
-                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
-                                    <div class="movie-card">
-                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
-                                        <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
-                                    </div>
-                                </a>
-                            `);
-                        });
-                    </script>
-                </div>
-                <h3 style="margin-top: 2rem;">Rising Actors / Lesser-known Hits</h3>
-                <div class="gallery-grid">
-                     <script>
-                        const newBollywoodData = [
-                            { title: "The Kerala Story", genre: "Drama", imgSrc: "https://iili.io/F25rYjs.jpg", originalLink: "https://www.zee5.com/movies/details/the-kerala-story/0-0-1z5430876" },
-                            { title: "URI: The Surgical Strike", genre: "Military Action", imgSrc: "https://iili.io/F25r16l.jpg", originalLink: "https://www.zee5.com/movies/details/uri-the-surgical-strike/0-0-3279" },
-                            { title: "Ra.One", genre: "Sci-Fi, Action", imgSrc: "https://iili.io/F25r0G4.jpg", originalLink: "https://www.primevideo.com/detail/0F7G3S3S4U8R9H2A2X8W5Y9E1I/" },
-                            { title: "Dobaaraa", genre: "Sci-Fi Thriller", imgSrc: "https://iili.io/F25rlnf.jpg", originalLink: "https://www.netflix.com/title/81458266" },
-                            { title: "The Kashmir Files", genre: "Drama", imgSrc: "https://iili.io/F25raZG.jpg", originalLink: "https://www.zee5.com/movies/details/the-kashmir-files/0-0-1z5123910" }
-                        ];
-                        newBollywoodData.forEach(movie => {
-                            const uniqueCardId = 'moviex_bollywood_new_' + movie.imgSrc.split('/').pop().split('.')[0];
-                             document.write(`
-                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
-                                    <div class="movie-card">
-                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
-                                        <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
-                                    </div>
-                                </a>
-                            `);
-                        });
-                    </script>
-                </div>
-            </div>
-        </section>
-
         <!-- Trending Web Series Section -->
         <section id="web-series" class="movie-gallery-section">
             <div class="container">
