@@ -2,13 +2,88 @@
 <html lang="en">
 <head>
 
-	<meta name="google-site-verification" content="vanChHoAJLCeHGbcTwUq08MyKPETYGs5HK8MwSf8sTM" />
-
+    <meta name="google-site-verification" content="vanChHoAJLCeHGbcTwUq08MyKPETYGs5HK8MwSf8sTM" />
     
     <meta charset="UTF-8">
+    <title>MovieX - Watch Latest Movies & Web Series</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MovieX - Your Film Destination</title>
     <link rel="icon" href="https://iili.io/F33LXDv.png" type="image/png"> 
+
+    <!-- ============== SEO Meta Tags Added ============== -->
+    <meta name="description" content="Discover and explore a vast collection of popular OTT releases, Hindi classics, South Indian blockbusters, and trending web series. Your ultimate destination for Indian cinema.">
+    <meta name="keywords" content="movies, web series, Indian cinema, Bollywood, South Indian movies, OTT releases, watch movies online, movie reviews, latest movies, crime movies, moviex">
+    <meta name="author" content="Aditya">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.yourwebsite.com/index.html"> <!-- ज़रूरी: अपनी वेबसाइट का सही URL यहाँ डालें -->
+
+    <!-- Open Graph Meta Tags (for social media sharing) -->
+    <meta property="og:title" content="MovieX - Your Film Destination">
+    <meta property="og:description" content="Explore a vast collection of films, from OTT hits to Bollywood classics and trending web series.">
+    <meta property="og:image" content="https://image.tmdb.org/t/p/original/8YFL5QQVPy3AgrEQxNYVSgiPEbe.jpg">
+    <meta property="og:url" content="https://www.yourwebsite.com/index.html"> <!-- ज़रूरी: अपनी वेबसाइट का सही URL यहाँ डालें -->
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MovieX - Your Film Destination">
+    <meta name="twitter:description" content="Explore a vast collection of films, from OTT hits to Bollywood classics and trending web series.">
+    <meta name="twitter:image" content="https://image.tmdb.org/t/p/original/8YFL5QQVPy3AgrEQxNYVSgiPEbe.jpg">
+
+    <!-- JSON-LD Schema Markup for Rich Results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "MovieX",
+      "url": "https://www.yourwebsite.com/index.html",
+      "description": "Your ultimate destination to discover and explore popular OTT releases, Hindi classics, South Indian blockbusters, and trending web series from Indian cinema.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.yourwebsite.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "mainEntity": {
+        "@type": "ItemList",
+        "name": "Popular OTT Movies",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "Movie",
+              "name": "RRR",
+              "image": "https://iili.io/F2ziUOJ.jpg",
+              "url": "https://arolinks.com/rWfnRI",
+              "genre": ["Action", "Drama"]
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "Movie",
+              "name": "Darlings",
+              "image": "https://iili.io/F2ziDRs.jpg",
+              "url": "https://arolinks.com/rWfnRI",
+              "genre": "Dark Comedy"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "Movie",
+              "name": "12th Fail",
+              "image": "https://iili.io/F2ziQUX.jpg",
+              "url": "https://arolinks.com/YwnPl2",
+              "genre": "Biographical Drama"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    <!-- ============== End of SEO Meta Tags ============== -->
 
     <style>
         /* Global Resets & Base Styles */
@@ -273,7 +348,7 @@
     <!-- Header -->
     <header>
         <div class="container">
-            <a href="index.html" class="logo-link">
+            <a href="index.html" class="logo-link" title="Go to MovieX Homepage">
                 <img src="https://iili.io/F33LXDv.png" alt="MovieX Logo" id="site-logo">
             </a>
             <nav class="main-nav">
@@ -317,21 +392,21 @@
                 <div class="gallery-grid">
                     <script>
                         const popularOttMoviesData = [
-                            { title: "RRR", genre: "Action, Drama", imgSrc: "https://iili.io/F2ziUOJ.jpg", originalLink: "https://arolinks.com/rWfnRI", altText: "RRR Movie Poster" },
-                            { title: "Darlings", genre: "Dark Comedy", imgSrc: "https://iili.io/F2ziDRs.jpg", originalLink: "https://arolinks.com/rWfnRI", altText: "Darlings Movie Poster" },
-                            { title: "Choked", genre: "Drama", imgSrc: "https://iili.io/F2ziSRa.jpg", originalLink: "https://arolinks.com/ooasq", altText: "Choked Movie Poster" },
-                            { title: "Shershaah", genre: "Biographical War", imgSrc: "https://iili.io/F2zi8Hg.jpg", originalLink: "https://arolinks.com/oq5v", altText: "Shershaah Movie Poster" },
-                            { title: "Drishyam 2", genre: "Thriller", imgSrc: "https://iili.io/F2zikUF.jpg", originalLink: "https://arolinks.com/PqUYo", altText: "Drishyam 2 Movie Poster" },
-                            { title: "Jai Bhim", genre: "Legal Drama", imgSrc: "https://iili.io/F2zigDv.jpg", originalLink: "https://arolinks.com/KfhCH", altText: "Jai Bhim Movie Poster" },
-                            { title: "Freddy", genre: "Thriller", imgSrc: "https://iili.io/F2z1RHJ.jpg", originalLink: "https://arolinks.com/8Ahaq", altText: "Freddy Movie Poster" },
-                            { title: "Brahmāstra: Part One – Shiva", genre: "Fantasy Adventure", imgSrc: "https://iili.io/F2zi6Vp.jpg", originalLink: "https://arolinks.com/EMHe", altText: "Brahmāstra Movie Poster" },
-                            { title: "Tanhaji: The Unsung Warrior", genre: "Historical Action", imgSrc: "https://iili.io/F2ziPiN.jpg", originalLink: "https://arolinks.com/lVkis", altText: "Tanhaji Movie Poster" },
-                            { title: "Sita Ramam", genre: "Romantic Drama", imgSrc: "https://iili.io/F2zisfI.jpg", originalLink: "https://arolinks.com/307Upn", altText: "Sita Ramam Movie Poster" },
-                            { title: "Sirf Ek Bandaa Kaafi Hai", genre: "Courtroom Drama", imgSrc: "https://iili.io/F2ziLlt.jpg", originalLink: "https://arolinks.com/qWaK1O", altText: "Sirf Ek Bandaa Kaafi Hai Movie Poster" },
-                            { title: "12th Fail", genre: "Biographical Drama", imgSrc: "https://iili.io/F2ziQUX.jpg", originalLink: "https://arolinks.com/YwnPl2", altText: "12th Fail Movie Poster" },  
-                            { title: "Housefull 5", genre: "Upcoming Drama", imgSrc: "https://iili.io/F2I2FNp.jpg", originalLink: "https://arolinks.com/UAYJ2N", altText: "Housefull 5 Movie Poster" },
-                            { title: "Titanic", genre: "Disaster, Tragic Romance", imgSrc: "https://iili.io/F2InRMQ.jpg", originalLink: "https://arolinks.com/hU3GsT", altText: "Titanic Movie Poster" },
-                            { title: "OMG", genre: "Comedy, Drama", imgSrc: "https://iili.io/F2I1CLN.jpg", originalLink: "https://arolinks.com/hxEv", altText: "OMG Movie Poster" }              
+                            { title: "RRR", genre: "Action, Drama", imgSrc: "https://iili.io/F2ziUOJ.jpg", originalLink: "https://arolinks.com/rWfnRI", altText: "Poster of RRR movie" },
+                            { title: "Darlings", genre: "Dark Comedy", imgSrc: "https://iili.io/F2ziDRs.jpg", originalLink: "https://arolinks.com/rWfnRI", altText: "Poster of Darlings movie" },
+                            { title: "Choked", genre: "Drama", imgSrc: "https://iili.io/F2ziSRa.jpg", originalLink: "https://arolinks.com/ooasq", altText: "Poster of Choked movie" },
+                            { title: "Shershaah", genre: "Biographical War", imgSrc: "https://iili.io/F2zi8Hg.jpg", originalLink: "https://arolinks.com/oq5v", altText: "Poster of Shershaah movie" },
+                            { title: "Drishyam 2", genre: "Thriller", imgSrc: "https://iili.io/F2zikUF.jpg", originalLink: "https://arolinks.com/PqUYo", altText: "Poster of Drishyam 2 movie" },
+                            { title: "Jai Bhim", genre: "Legal Drama", imgSrc: "https://iili.io/F2zigDv.jpg", originalLink: "https://arolinks.com/KfhCH", altText: "Poster of Jai Bhim movie" },
+                            { title: "Freddy", genre: "Thriller", imgSrc: "https://iili.io/F2z1RHJ.jpg", originalLink: "https://arolinks.com/8Ahaq", altText: "Poster of Freddy movie" },
+                            { title: "Brahmāstra: Part One – Shiva", genre: "Fantasy Adventure", imgSrc: "https://iili.io/F2zi6Vp.jpg", originalLink: "https://arolinks.com/EMHe", altText: "Poster of Brahmāstra movie" },
+                            { title: "Tanhaji: The Unsung Warrior", genre: "Historical Action", imgSrc: "https://iili.io/F2ziPiN.jpg", originalLink: "https://arolinks.com/lVkis", altText: "Poster of Tanhaji movie" },
+                            { title: "Sita Ramam", genre: "Romantic Drama", imgSrc: "https://iili.io/F2zisfI.jpg", originalLink: "https://arolinks.com/307Upn", altText: "Poster of Sita Ramam movie" },
+                            { title: "Sirf Ek Bandaa Kaafi Hai", genre: "Courtroom Drama", imgSrc: "https://iili.io/F2ziLlt.jpg", originalLink: "https://arolinks.com/qWaK1O", altText: "Poster of Sirf Ek Bandaa Kaafi Hai movie" },
+                            { title: "12th Fail", genre: "Biographical Drama", imgSrc: "https://iili.io/F2ziQUX.jpg", originalLink: "https://arolinks.com/YwnPl2", altText: "Poster of 12th Fail movie" },  
+                            { title: "Housefull 5", genre: "Upcoming Drama", imgSrc: "https://iili.io/F2I2FNp.jpg", originalLink: "https://arolinks.com/UAYJ2N", altText: "Poster of Housefull 5 movie" },
+                            { title: "Titanic", genre: "Disaster, Tragic Romance", imgSrc: "https://iili.io/F2InRMQ.jpg", originalLink: "https://arolinks.com/hU3GsT", altText: "Poster of Titanic movie" },
+                            { title: "OMG", genre: "Comedy, Drama", imgSrc: "https://iili.io/F2I1CLN.jpg", originalLink: "https://arolinks.com/hxEv", altText: "Poster of OMG movie" }              
                         ];
                         popularOttMoviesData.forEach(movie => {
                             const uniqueCardId = 'moviex_ott_' + movie.imgSrc.split('/').pop().split('.')[0]; 
@@ -339,6 +414,7 @@
                                 <a href="${movie.originalLink}" 
                                    target="_blank" 
                                    class="movie-card-link" 
+                                   title="Watch ${movie.title}"
                                    data-original-link="${movie.originalLink}" 
                                    data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
@@ -357,6 +433,7 @@
         <section id="categories-overview" class="placeholder-section categories-list-section">
              <div class="container">
                 <h2>Explore Categories</h2>
+                <p style="margin-bottom: 1.5rem;">Dive into our curated collections of movies and web series. Whether you love classic Bollywood, action-packed South Indian cinema, or binge-worthy shows, we have something for you.</p>
                 <ul class="category-links">
                     <li><a href="#hindi-movies">Hindi Movies</a></li>
                     <li><a href="#south-movies">South Indian Movies</a></li>
@@ -414,9 +491,9 @@
                         classicHindiMoviesData.forEach(movie => {
                             const uniqueCardId = 'moviex_hindi_classic_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" title="Watch ${movie.title}" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
-                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <img src="${movie.imgSrc}" alt="Poster of ${movie.title}" loading="lazy">
                                         <div class="movie-info">
                                             <h3>${movie.title}</h3>
                                             <p>${movie.genre}</p>
@@ -447,9 +524,9 @@
                         latestHindiMoviesData.forEach(movie => {
                              const uniqueCardId = 'moviex_hindi_latest_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" title="Watch ${movie.title}" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
-                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <img src="${movie.imgSrc}" alt="Poster of ${movie.title}" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
                                     </div>
                                 </a>
@@ -487,9 +564,9 @@
                          popularSouthMoviesData.forEach(movie => {
                             const uniqueCardId = 'moviex_south_popular_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" title="Watch ${movie.title}" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
-                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <img src="${movie.imgSrc}" alt="Poster of ${movie.title}" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
                                     </div>
                                 </a>
@@ -510,9 +587,9 @@
                         newSouthMoviesData.forEach(movie => {
                              const uniqueCardId = 'moviex_south_new_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" title="Watch ${movie.title}" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
-                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <img src="${movie.imgSrc}" alt="Poster of ${movie.title}" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
                                     </div>
                                 </a>
@@ -550,9 +627,9 @@
                          popularWebSeriesData.forEach(series => {
                             const uniqueCardId = 'moviex_webseries_popular_' + series.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${series.originalLink}" target="_blank" class="movie-card-link" data-original-link="${series.originalLink}" data-card-id="${uniqueCardId}">
+                                <a href="${series.originalLink}" target="_blank" class="movie-card-link" title="Watch ${series.title}" data-original-link="${series.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
-                                        <img src="${series.imgSrc}" alt="${series.title} Poster" loading="lazy">
+                                        <img src="${series.imgSrc}" alt="Poster of ${series.title}" loading="lazy">
                                         <div class="movie-info"><h3>${series.title}</h3><p>${series.genre}</p></div>
                                     </div>
                                 </a>
@@ -586,9 +663,9 @@
                         financialScamMoviesData.forEach(movie => {
                             const uniqueCardId = 'moviex_crime_financial_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" title="Watch ${movie.title}" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
-                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <img src="${movie.imgSrc}" alt="Poster of ${movie.title}" loading="lazy">
                                         <div class="movie-info">
                                             <h3>${movie.title}</h3>
                                             <p>${movie.genre}</p>
@@ -621,9 +698,9 @@
                         politicalCrimeMoviesData.forEach(movie => {
                             const uniqueCardId = 'moviex_crime_political_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" title="Watch ${movie.title}" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
-                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <img src="${movie.imgSrc}" alt="Poster of ${movie.title}" loading="lazy">
                                         <div class="movie-info">
                                             <h3>${movie.title}</h3>
                                             <p>${movie.genre}</p>
@@ -656,9 +733,9 @@
                         gangsterCrimeMoviesData.forEach(movie => {
                             const uniqueCardId = 'moviex_crime_gangster_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" title="Watch ${movie.title}" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
-                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <img src="${movie.imgSrc}" alt="Poster of ${movie.title}" loading="lazy">
                                         <div class="movie-info">
                                             <h3>${movie.title}</h3>
                                             <p>${movie.genre}</p>
@@ -683,9 +760,9 @@
                         cyberCrimeMoviesData.forEach(movie => {
                             const uniqueCardId = 'moviex_crime_cyber_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" title="Watch ${movie.title}" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
-                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <img src="${movie.imgSrc}" alt="Poster of ${movie.title}" loading="lazy">
                                         <div class="movie-info">
                                             <h3>${movie.title}</h3>
                                             <p>${movie.genre}</p>
@@ -729,9 +806,9 @@
                         latestPopularReleasesData.forEach(movie => {
                             const uniqueCardId = 'moviex_latest_popular_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" title="Watch ${movie.title}" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
-                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <img src="${movie.imgSrc}" alt="Poster of ${movie.title}" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
                                     </div>
                                 </a>
@@ -752,9 +829,9 @@
                         latestNewReleasesData.forEach(movie => {
                             const uniqueCardId = 'moviex_latest_new_' + movie.imgSrc.split('/').pop().split('.')[0];
                             document.write(`
-                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" title="Watch ${movie.title}" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
                                     <div class="movie-card">
-                                        <img src="${movie.imgSrc}" alt="${movie.title} Poster" loading="lazy">
+                                        <img src="${movie.imgSrc}" alt="Poster of ${movie.title}" loading="lazy">
                                         <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
                                     </div>
                                 </a>
