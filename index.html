@@ -818,6 +818,34 @@
                         });
                     </script>
                 </div>
+
+<!-- Latest Releases Section -->
+        <section id="latest" class="movie-gallery-section">
+             <div class="container">
+                <h2>Latest Releases</h2>
+                <h3>High-Profile Latest Releases</h3>
+                <div class="gallery-grid">
+                    <script>
+                        const latestPopularReleasesData = [
+                            { title: "12th Fail", genre: "Biographical Drama", imgSrc: "https://iili.io/F2SgEE7.jpg", originalLink: "https://arolinks.com/YwnPl2" },
+
+							
+                            { title: "Article 370", genre: "Political Thriller", imgSrc: "https://iili.io/F2SPjcP.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
+                        
+                        ];
+                        latestPopularReleasesData.forEach(movie => {
+                            const uniqueCardId = 'moviex_latest_popular_' + movie.imgSrc.split('/').pop().split('.')[0];
+                            document.write(`
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" title="Watch ${movie.title}" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
+                                    <div class="movie-card">
+                                        <img src="${movie.imgSrc}" alt="Poster of ${movie.title}" loading="lazy">
+                                        <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
+                                    </div>
+                                </a>
+                            `);
+                        });
+                    </script>
+                </div>				 
                 <h3 style="margin-top: 2rem;">Lesser-Known / New Actor Releases</h3>
                  <div class="gallery-grid">
                     <script>
@@ -847,38 +875,7 @@
                             `);
                         });
                     </script>
-
-					   </div>
-                <h3 style="margin-top: 2rem;">Lesser-Known / New Actor Releases</h3>
-                 <div class="gallery-grid">
-                    <script>
-                        const latestNewReleasesData = [
-                            { title: "Tillu Square", genre: "Comedy", imgSrc: "https://iili.io/F2SecXt.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
-							{ title: "Furkey 3", genre: "Comedy", imgSrc: "https://iili.io/KO9YUzB.jpg", originalLink: "Fukrey3.html" },
-							{ title: "Love Hostel", genre: "Comedy", imgSrc: "https://iili.io/KO9Y8bV.jpg", originalLink: "Lovehostel.html" },
-                            { title: "Dragon", genre: "Action", imgSrc: "https://iili.io/F2Se1Bn.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
-							{ title: "Lust Story 2 ", genre: "Action", imgSrc: "https://iili.io/KO9cNAx.jpg", originalLink: "Luststory1.html" },
-							{ title: "ishq_E_Nadaan  ", genre: "Action", imgSrc: "https://iili.io/KO90aQ2.jpg", originalLink: "isq_E_Nadaan.html" },
-
-
-							
-                            { title: "Razakar", genre: "Historical Drama", imgSrc: "https://iili.io/F2SelLX.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
-                            { title: "Amar Singh Chamkila", genre: "Biographical Musical", imgSrc: "https://iili.io/F2SeE1s.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
-                            { title: "Madgaon Express", genre: "Comedy", imgSrc: "https://iili.io/F2SeGrG.jpg", originalLink: "https://arolinks.com/P1LqQJ" }
-                        ];
-                        latestNewReleasesData.forEach(movie => {
-                            const uniqueCardId = 'moviex_latest_new_' + movie.imgSrc.split('/').pop().split('.')[0];
-                            document.write(`
-                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" title="Watch ${movie.title}" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
-                                    <div class="movie-card">
-                                        <img src="${movie.imgSrc}" alt="Poster of ${movie.title}" loading="lazy">
-                                        <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
-                                    </div>
-                                </a>
-                            `);
-                        });
-                    </script>
-                </div>
+				 </div>
                 </div>
             </div>
         </section>
