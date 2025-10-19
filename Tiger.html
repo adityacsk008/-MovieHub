@@ -6,11 +6,7 @@
   <title>MOVIEX - Dailymotion Video Player</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       background: linear-gradient(-45deg, #0d0d0d, #1a1a1a, #111827, #000000);
@@ -21,7 +17,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       min-height: 100vh;
       padding: 20px;
     }
@@ -32,6 +27,23 @@
       100% { background-position: 0% 50%; }
     }
 
+    /* ---- ADS ---- */
+    .ad-top, .ad-footer { text-align: center; margin: 10px 0; }
+    .ad-left, .ad-right {
+      position: fixed;
+      top: 120px;
+      width: 160px;
+      height: 600px;
+      z-index: 100;
+    }
+    .ad-left { left: 10px; }
+    .ad-right { right: 10px; }
+
+    @media (max-width: 900px) {
+      .ad-left, .ad-right { display: none; }
+    }
+
+    /* ---- MAIN CONTENT ---- */
     .logo {
       font-size: 56px;
       font-weight: 700;
@@ -64,13 +76,14 @@
     .loading {
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0,0,0,0.9);
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 10;
       transition: opacity 0.5s ease;
     }
+
     .spinner {
       width: 60px;
       height: 60px;
@@ -80,10 +93,7 @@
       animation: spin 1s linear infinite;
       box-shadow: 0 0 20px #00BFFF;
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
     .video-container {
       position: relative;
@@ -127,10 +137,54 @@
       .controls { flex-direction: column; }
       .btn { width: 100%; }
     }
+
   </style>
 </head>
 <body>
 
+  <!-- 🔝 TOP BANNER -->
+  <div class="ad-top">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '2ac8a1bb6ff6ddf5a8a1656a6bad0bf3',
+        'format' : 'iframe',
+        'height' : 90,
+        'width' : 728,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/2ac8a1bb6ff6ddf5a8a1656a6bad0bf3/invoke.js"></script>
+  </div>
+
+  <!-- ⬅️ LEFT SIDE AD -->
+  <div class="ad-left">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '147aba6676e70f407c9e0b2ecc519218',
+        'format' : 'iframe',
+        'height' : 600,
+        'width' : 160,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/147aba6676e70f407c9e0b2ecc519218/invoke.js"></script>
+  </div>
+
+  <!-- ➡️ RIGHT SIDE AD -->
+  <div class="ad-right">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '147aba6676e70f407c9e0b2ecc519218',
+        'format' : 'iframe',
+        'height' : 600,
+        'width' : 160,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/147aba6676e70f407c9e0b2ecc519218/invoke.js"></script>
+  </div>
+
+  <!-- 🔹 MAIN MOVIEX CONTENT -->
   <div class="logo">
     <span class="blue">▶</span><span class="white">MOVIE</span><span class="red">X</span>
   </div>
@@ -140,7 +194,6 @@
       <div class="spinner"></div>
     </div>
 
-    <!-- Dailymotion Video -->
     <div class="video-container">
       <iframe 
         src="https://geo.dailymotion.com/player.html?video=x9pdsrs"
@@ -156,6 +209,12 @@
       <a class="btn btn-red" href="https://moviex.live" target="_blank" rel="noopener noreferrer">Visit Main Page</a>
       <a class="btn btn-blue" href="#">Next Page »</a>
     </div>
+  </div>
+
+  <!-- 🔚 FOOTER NATIVE AD -->
+  <div class="ad-footer">
+    <script async="async" data-cfasync="false" src="//pl26862416.effectivegatecpm.com/9b5d33c4deec391821f562ba1b12f9a9/invoke.js"></script>
+    <div id="container-9b5d33c4deec391821f562ba1b12f9a9"></div>
   </div>
 
   <script>
