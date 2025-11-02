@@ -369,6 +369,69 @@
             </div>
         </section>
 
+
+
+
+
+
+
+  <!-- Popular OTT Movies Section -->
+        <section id="movie-gallery" class="movie-gallery-section">
+            <div class="container">
+                <h2>Popular OTT Movies</h2>
+                <div class="gallery-grid">
+                    <script>
+                        const popularOttMoviesData = [
+                            { title: "Mahavatar Narsimha (2025) New Bollywood Hindi Full Movie HD", genre: "", imgSrc: "https://iili.io/KLacTdu.jpg", originalLink: "Narsimha.html", altText: "Poster of Choked movie" },
+                            { title: "Sunny Sunskari Ki Tulsi Kumari (2025) New Bollywood Hindi Full Movie HDTS", genre: " ", imgSrc: "https://iili.io/KLacAej.jpg", originalLink: "Sunskari.html", altText: "Poster of Shershaah movie" },
+                            { title: "Kishkindhapuri (2025) New South Hindi Dubbed Full Movie HD", genre: "", imgSrc: "https://iili.io/KLacx19.jpg", originalLink: "Kishkindhapuri.html", altText: "Poster of Drishyam 2 movie" },
+                            { title: "Mirai (2025) New South Hindi Dubbed Full Movie HD", genre: " ", imgSrc: "https://iili.io/KLacu5b.jpg", originalLink: "Mirai.html", altText: "Poster of Jai Bhim movie" },
+                                
+                            { title: "Coolie (2025) New South Hindi Dubbed Full Movie HD (2025) New Bollywood Hindi Full Movie HD", genre: "", imgSrc: "https://iili.io/KLacWmv.jpg, originalLink: "freddy.html", altText: "Poster of Freddy movie" },
+                            
+                                { title: "War 2 (2025) New Bollywood Hindi Full Movie HD: Part One – Shiva", genre: " ", imgSrc: "https://iili.io/KLacM7a.jpg", originalLink: "https://arolinks.com/EMHe", altText: "Poster of Brahmāstra movie" },
+                            { title: "Tanhaji: The Unsung Warrior", genre: " ", imgSrc: "https://iili.io/KLace1t.jpg", originalLink: "Tanhaji.html", altText: "Poster of Tanhaji movie" },
+                            { title: "Sita Ramam", genre: " ", imgSrc: "https://iili.io/F2zisfI.jpg", originalLink: "SitaRamam.html", altText: "Poster of Sita Ramam movie" },
+                           
+                        ];
+                        // This is the template for ALL movie cards now.
+                        function createMovieCard(movie) {
+                            const uniqueCardId = 'moviex_card_' + Math.random().toString(36).substr(2, 9);
+                            return `
+                                <a href="${movie.originalLink}" target="_blank" class="movie-card-link" title="Watch ${movie.title}" data-original-link="${movie.originalLink}" data-card-id="${uniqueCardId}">
+                                    <div class="movie-card">
+                                        <div class="card-overlay">
+                                            <span class="card-icon heart-icon" title="Add to Favorites">❤️</span>
+                                            <span class="card-icon share-icon" title="Share Movie" data-link="${movie.originalLink}">
+                                                <svg viewBox="0 0 24 24"><path d="M18,16.08C17.24,16.08 16.56,16.38 16.04,16.85L8.91,12.7C8.96,12.47 9,12.24 9,12C9,11.76 8.96,11.53 8.91,11.3L16.04,7.15C16.56,7.62 17.24,7.92 18,7.92C19.66,7.92 21,6.58 21,5C21,3.42 19.66,2 18,2C16.34,2 15,3.42 15,5C15,5.24 15.04,5.47 15.09,5.7L7.96,9.85C7.44,9.38 6.76,9.08 6,9.08C4.34,9.08 3,10.42 3,12C3,13.58 4.34,15 6,15C6.76,15 7.44,14.62 7.96,14.15L15.09,18.3C15.04,18.53 15,18.76 15,19C15,20.58 16.34,22 18,22C19.66,22 21,20.58 21,19C21,17.42 19.66,16.08 18,16.08Z"/></svg>
+                                            </span>
+                                        </div>
+                                        <img src="${movie.imgSrc}" alt="${movie.altText || 'Poster of ' + movie.title}" loading="lazy">
+                                        <div class="movie-info"><h3>${movie.title}</h3><p>${movie.genre}</p></div>
+                                    </div>
+                                </a>
+                            `;
+                        }
+                        popularOttMoviesData.forEach(movie => {
+                            document.write(createMovieCard(movie));
+                        });
+                    </script>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+            
+
         <!-- Categories Overview Section -->
         <section id="categories-overview" class="placeholder-section categories-list-section">
              <div class="container">
