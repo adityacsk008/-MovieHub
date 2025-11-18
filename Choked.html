@@ -63,7 +63,7 @@
         margin-bottom: 20px;
         width: 100%;
         position: relative;
-        padding-bottom: 56.25%;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
         height: 0;
         overflow: hidden;
     }
@@ -110,12 +110,16 @@
         box-shadow: 0 0 22px rgba(0, 191, 255, 1);
     }
     
+    /* Mobile Responsive Styles */
     @media (max-width: 500px) {
         .controls {
             flex-direction: column;
         }
         .btn {
             width: 100%;
+        }
+        .logo {
+            font-size: 40px; /* Logo ka size mobile ke liye adjust kiya gaya hai */
         }
     }
   </style>
