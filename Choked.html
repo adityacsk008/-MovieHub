@@ -27,6 +27,7 @@
       100% { background-position: 0% 50%; }
     }
 
+    /* LOGO */
     .logo {
       font-size: 56px;
       font-weight: 700;
@@ -45,6 +46,7 @@
       50% { text-shadow: 0 0 25px #ff4d4d, 0 0 40px #ff0000; }
     }
 
+    /* CARD */
     .card {
       background: rgba(20,20,20,0.9);
       border-radius: 16px;
@@ -59,11 +61,12 @@
       overflow: hidden;
     }
 
+    /* VIDEO (16:9) */
     .video-container {
         margin-bottom: 20px;
         width: 100%;
         position: relative;
-        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        padding-bottom: 56.25%;
         height: 0;
         overflow: hidden;
     }
@@ -77,13 +80,13 @@
         box-shadow: 0 0 20px rgba(0, 191, 255, 0.4);
         border: none;
     }
-    
+
+    /* BUTTONS */
     .controls {
         display: flex;
         justify-content: space-between;
         gap: 10px;
     }
-
     .btn {
       display: inline-block;
       flex: 1;
@@ -100,7 +103,6 @@
     }
     .btn-red { background: #FF0000; box-shadow: 0 0 12px rgba(255,0,0,0.8); }
     .btn-red:hover { transform: translateY(-3px); box-shadow: 0 0 22px rgba(255,0,0,1); }
-
     .btn-blue {
         background: #00BFFF;
         box-shadow: 0 0 12px rgba(0, 191, 255, 0.8);
@@ -109,51 +111,69 @@
         transform: translateY(-3px);
         box-shadow: 0 0 22px rgba(0, 191, 255, 1);
     }
-    
-    /* Mobile Responsive Styles */
+
+    /* 🔥 MOBILE VERSION ONLY 🔥 */
     @media (max-width: 500px) {
-        .controls {
-            flex-direction: column;
+
+        body {
+            justify-content: flex-start;
+            padding-top: 10px;
         }
-        .btn {
-            width: 100%;
-        }
+
+        /* Logo top-left me */
         .logo {
-            font-size: 40px; /* Logo ka size mobile ke liye adjust kiya gaya hai */
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            margin: 0;
+            font-size: 34px;
+        }
+
+        .card {
+            margin-top: 80px; /* Logo ke neeche jagah */
+            padding: 15px;
+        }
+
+        .controls {
+            flex-direction: row;      /* Horizontal */
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn {
+            flex: none;
+            padding: 8px 10px;        /* Button chota */
+            font-size: 13px;
+        }
+
+        /* Card width full mobile me */
+        .card {
+            max-width: 100%;
         }
     }
   </style>
 </head>
 <body>
+
   <div class="logo">
     <span class="blue">▶</span><span class="white">MOVIE</span><span class="red">X</span>
   </div>
 
   <div class="card">
-    
-    <!-- Updated Dailymotion Video Player with Autoplay -->
     <div class="video-container">
       <iframe 
         src="https://geo.dailymotion.com/player.html?video=x948rku&autoplay=1&mute=1"
         allow="autoplay; fullscreen; picture-in-picture; web-share"
-        allowfullscreen
-        title="Dailymotion Video Player">
+        allowfullscreen>
       </iframe>
     </div>
 
-    <!-- Controls -->
     <div class="controls">
-      <a class="btn btn-blue" href="#" onclick="history.back(); return false;">
-        « Previous Page
-      </a>
-      <a class="btn btn-red" href="https://moviex.live" target="_blank" rel="noopener noreferrer">
-        Visit Main Page
-      </a>
-      <a class="btn btn-blue" href="https://dai.ly/x948rku" target="_blank">
-        Watch on Dailymotion »
-      </a>
+      <a class="btn btn-blue" href="#" onclick="history.back(); return false;">« Previous</a>
+      <a class="btn btn-red" href="https://moviex.live" target="_blank">Main Page</a>
+      <a class="btn btn-blue" href="https://dai.ly/x948rku" target="_blank">Watch »</a>
     </div>
-
   </div>
+
 </body>
 </html>
