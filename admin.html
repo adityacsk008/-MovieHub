@@ -30,7 +30,7 @@
         }
 
         .admin-container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -130,6 +130,8 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .section-header h2 {
@@ -165,6 +167,8 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            overflow-x: auto;
+            display: block;
         }
 
         .movies-table thead {
@@ -177,11 +181,17 @@
             font-weight: 600;
             color: var(--primary);
             border-bottom: 2px solid var(--primary);
+            white-space: nowrap;
         }
 
         .movies-table td {
             padding: 15px;
             border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .movies-table tbody {
+            display: table;
+            width: 100%;
         }
 
         .movies-table tr:hover {
@@ -191,6 +201,7 @@
         .action-btns {
             display: flex;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
         .action-btn {
@@ -218,87 +229,26 @@
             color: white;
         }
 
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
+        .create-btn {
+            background: var(--primary);
+            color: white;
         }
 
-        .modal.active {
+        /* Search & Filter */
+        .search-filter-bar {
             display: flex;
-        }
-
-        .modal-content {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 12px;
-            max-width: 600px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .modal-header h2 {
-            color: var(--primary);
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            color: var(--muted);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .form-group {
+            gap: 15px;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--muted);
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px;
-            background: var(--bg-dark);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            color: var(--text);
-            font-size: 0.95rem;
-        }
-
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        /* Search Bar */
         .search-bar {
-            margin-bottom: 20px;
+            flex: 1;
+            min-width: 250px;
         }
 
-        .search-bar input {
+        .search-bar input,
+        .filter-select {
             width: 100%;
             padding: 12px 20px;
             background: var(--bg-dark);
@@ -306,6 +256,33 @@
             border-radius: 8px;
             color: var(--text);
             font-size: 1rem;
+        }
+
+        .filter-select {
+            min-width: 200px;
+        }
+
+        /* Status Badge */
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+        }
+
+        .status-missing {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger);
+        }
+
+        .status-pending {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--warning);
         }
 
         /* Responsive */
@@ -327,6 +304,24 @@
             .action-btns {
                 flex-direction: column;
             }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .movie-poster {
+            width: 60px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .bulk-actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -345,23 +340,23 @@
         <div class="stats-grid">
             <div class="stat-card">
                 <h3>Total Movies</h3>
-                <div class="number" id="totalMovies">32</div>
-                <div class="change positive">↑ 3 this month</div>
+                <div class="number" id="totalMovies">0</div>
+                <div class="change positive" id="moviesChange">Loading...</div>
             </div>
             <div class="stat-card">
-                <h3>Total Views</h3>
-                <div class="number">12.5K</div>
-                <div class="change positive">↑ 15% this week</div>
+                <h3>With Details Page</h3>
+                <div class="number" id="withDetails">0</div>
+                <div class="change positive" id="detailsPercent">0%</div>
             </div>
             <div class="stat-card">
-                <h3>Active Users</h3>
-                <div class="number">1,234</div>
-                <div class="change positive">↑ 8% today</div>
+                <h3>Missing Details</h3>
+                <div class="number" id="missingDetails">0</div>
+                <div class="change" style="color: var(--danger)" id="missingPercent">0%</div>
             </div>
             <div class="stat-card">
-                <h3>Avg Rating</h3>
-                <div class="number">4.6</div>
-                <div class="change positive">↑ 0.2 points</div>
+                <h3>Categories</h3>
+                <div class="number" id="totalCategories">0</div>
+                <div class="change positive">All Active</div>
             </div>
         </div>
 
@@ -369,162 +364,270 @@
         <div class="content-section">
             <div class="section-header">
                 <h2>Manage Movies</h2>
-                <button class="btn" onclick="openAddModal()">+ Add New Movie</button>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn" onclick="createAllMissingPages()">🚀 Create All Missing Pages</button>
+                    <button class="btn btn-secondary" onclick="exportData()">📥 Export Data</button>
+                </div>
             </div>
 
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="🔍 Search movies..." onkeyup="searchMovies()">
+            <div class="search-filter-bar">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="🔍 Search movies..." onkeyup="searchMovies()">
+                </div>
+                <select class="filter-select" id="categoryFilter" onchange="filterByCategory()">
+                    <option value="all">All Categories</option>
+                </select>
+                <select class="filter-select" id="statusFilter" onchange="filterByStatus()">
+                    <option value="all">All Status</option>
+                    <option value="complete">Complete (Has Details)</option>
+                    <option value="missing">Missing Details</option>
+                    <option value="no-video">No Video Page</option>
+                </select>
             </div>
 
-            <table class="movies-table" id="moviesTable">
-                <thead>
-                    <tr>
-                        <th>Movie Name</th>
-                        <th>Genre</th>
-                        <th>Year</th>
-                        <th>Rating</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="moviesTableBody">
-                    <!-- Sample Data -->
-                    <tr>
-                        <td>12th Fail</td>
-                        <td>Drama</td>
-                        <td>2023</td>
-                        <td>⭐ 4.8</td>
-                        <td><span style="color: var(--success)">Active</span></td>
-                        <td>
-                            <div class="action-btns">
-                                <button class="action-btn view-btn" onclick="viewMovie('12thFail.html')">View</button>
-                                <button class="action-btn edit-btn" onclick="editMovie('12th Fail')">Edit</button>
-                                <button class="action-btn delete-btn" onclick="deleteMovie('12th Fail')">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Arjun Reddy</td>
-                        <td>Drama, Romance</td>
-                        <td>2017</td>
-                        <td>⭐ 4.5</td>
-                        <td><span style="color: var(--success)">Active</span></td>
-                        <td>
-                            <div class="action-btns">
-                                <button class="action-btn view-btn" onclick="viewMovie('ArjunReddy.html')">View</button>
-                                <button class="action-btn edit-btn" onclick="editMovie('Arjun Reddy')">Edit</button>
-                                <button class="action-btn delete-btn" onclick="deleteMovie('Arjun Reddy')">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Choked</td>
-                        <td>Thriller</td>
-                        <td>2020</td>
-                        <td>⭐ 4.2</td>
-                        <td><span style="color: var(--success)">Active</span></td>
-                        <td>
-                            <div class="action-btns">
-                                <button class="action-btn view-btn" onclick="viewMovie('Choked.html')">View</button>
-                                <button class="action-btn edit-btn" onclick="editMovie('Choked')">Edit</button>
-                                <button class="action-btn delete-btn" onclick="deleteMovie('Choked')">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Kalki 2898 AD</td>
-                        <td>Sci-Fi, Action</td>
-                        <td>2024</td>
-                        <td>⭐ 4.7</td>
-                        <td><span style="color: var(--success)">Active</span></td>
-                        <td>
-                            <div class="action-btns">
-                                <button class="action-btn view-btn" onclick="viewMovie('kalki.html')">View</button>
-                                <button class="action-btn edit-btn" onclick="editMovie('Kalki')">Edit</button>
-                                <button class="action-btn delete-btn" onclick="deleteMovie('Kalki')">Delete</button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Add/Edit Movie Modal -->
-    <div class="modal" id="movieModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalTitle">Add New Movie</h2>
-                <button class="close-btn" onclick="closeModal()">&times;</button>
+            <div class="bulk-actions">
+                <button class="btn btn-secondary" onclick="selectAll()">Select All</button>
+                <button class="btn btn-secondary" onclick="deselectAll()">Deselect All</button>
+                <button class="btn" onclick="bulkCreatePages()">Create Selected Pages</button>
             </div>
-            <form id="movieForm">
-                <div class="form-group">
-                    <label>Movie Name *</label>
-                    <input type="text" id="movieName" required>
-                </div>
-                <div class="form-group">
-                    <label>Genre *</label>
-                    <input type="text" id="movieGenre" placeholder="e.g., Action, Drama, Thriller" required>
-                </div>
-                <div class="form-group">
-                    <label>Year *</label>
-                    <input type="number" id="movieYear" min="1900" max="2025" required>
-                </div>
-                <div class="form-group">
-                    <label>Rating (1-5) *</label>
-                    <input type="number" id="movieRating" min="1" max="5" step="0.1" required>
-                </div>
-                <div class="form-group">
-                    <label>Description *</label>
-                    <textarea id="movieDescription" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Poster URL</label>
-                    <input type="url" id="moviePoster" placeholder="https://...">
-                </div>
-                <div class="form-group">
-                    <label>Video URL</label>
-                    <input type="url" id="movieVideo" placeholder="https://...">
-                </div>
-                <div class="form-group">
-                    <label>Status</label>
-                    <select id="movieStatus">
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Save Movie</button>
-            </form>
+
+            <div style="overflow-x: auto;">
+                <table class="movies-table" id="moviesTable">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="selectAllCheckbox" onchange="toggleSelectAll()"></th>
+                            <th>Poster</th>
+                            <th>Movie Name</th>
+                            <th>Genre</th>
+                            <th>Category</th>
+                            <th>Details Page</th>
+                            <th>Video Page</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="moviesTableBody">
+                        <!-- Movies will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
     <script>
-        // Modal Functions
-        function openAddModal() {
-            document.getElementById('modalTitle').textContent = 'Add New Movie';
-            document.getElementById('movieForm').reset();
-            document.getElementById('movieModal').classList.add('active');
+        // All movies data from index.html
+        const moviesData = {
+            "Latest Releases - High Profile": [
+                { title: "12th Fail", genre: "Biographical Drama", imgSrc: "https://iili.io/F2SgEE7.jpg", originalLink: "https://arolinks.com/YwnPl2", hasDetails: true, hasVideo: true },
+                { title: "Article 370", genre: "Political Thriller", imgSrc: "https://iili.io/F2SPjcP.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
+                { title: "Animal", genre: "Action, Crime", imgSrc: "https://iili.io/F2SglQ2.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
+                { title: "Jawan", genre: "Action, Thriller", imgSrc: "https://iili.io/F2Sgchl.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
+                { title: "Fighter", genre: "Action, Aerial", imgSrc: "https://iili.io/F2SgaI4.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
+                { title: "Crew", genre: "Comedy", imgSrc: "https://iili.io/F2SgWYu.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
+                { title: "Maharaja", genre: "Action", imgSrc: "https://iili.io/F2SgXkb.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
+                { title: "Bhool Bhulaiyaa 3", genre: "Upcoming", imgSrc: "https://iili.io/F2Sghpj.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
+                { title: "Bade Miyan Chote Miyan", genre: "Action Comedy", imgSrc: "https://iili.io/F2SgNhQ.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
+                { title: "Laapataa Ladies", genre: "Comedy Drama", imgSrc: "https://iili.io/F2Sg841.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
+                { title: "Manjummel Boys", genre: "Survival Thriller", imgSrc: "https://iili.io/F2SgU3F.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
+                { title: "Mr. & Mrs. Mahi", genre: "Sports Drama", imgSrc: "https://iili.io/F2SggYg.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
+                { title: "Srikanth", genre: "Biographical", imgSrc: "https://iili.io/F2Sgrva.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
+                { title: "Chandu Champion", genre: "Sports Biographical", imgSrc: "https://iili.io/F2SgsQp.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
+                { title: "Yodha", genre: "Action Thriller", imgSrc: "https://iili.io/F2SgQCN.jpg", originalLink: "https://arolinks.com/P1LqQJ" }
+            ],
+            "Latest Releases - New Actors": [
+                { title: "Tillu Square", genre: "Comedy", imgSrc: "https://iili.io/F2SecXt.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
+                { title: "Fukrey 3", genre: "Comedy", imgSrc: "https://iili.io/KO9YUzB.jpg", originalLink: "Fukrey3.html", hasVideo: true },
+                { title: "Love Hostel", genre: "Comedy", imgSrc: "https://iili.io/KO9Y8bV.jpg", originalLink: "Lovehostel.html", hasVideo: true },
+                { title: "Dragon", genre: "Action", imgSrc: "https://iili.io/F2Se1Bn.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
+                { title: "Razakar", genre: "Historical Drama", imgSrc: "https://iili.io/F2SelLX.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
+                { title: "Amar Singh Chamkila", genre: "Biographical Musical", imgSrc: "https://iili.io/F2SeE1s.jpg", originalLink: "https://arolinks.com/P1LqQJ" },
+                { title: "Madgaon Express", genre: "Comedy", imgSrc: "https://iili.io/F2SeGrG.jpg", originalLink: "https://arolinks.com/P1LqQJ" }
+            ],
+            "Web Series": [
+                { title: "Lust Story 2", genre: "Anthology", imgSrc: "https://iili.io/KO9cNAx.jpg", originalLink: "Luststory1.html", hasVideo: true },
+                { title: "Ishq-E-Nadaan", genre: "Romance", imgSrc: "https://iili.io/KO90aQ2.jpg", originalLink: "isq_E_Nadaan.html", hasVideo: true }
+            ]
+        };
+
+        let allMovies = [];
+        let filteredMovies = [];
+
+        // Initialize
+        function init() {
+            loadMoviesData();
+            updateStats();
+            renderMoviesTable();
+            populateCategoryFilter();
         }
 
-        function closeModal() {
-            document.getElementById('movieModal').classList.remove('active');
+        function loadMoviesData() {
+            allMovies = [];
+            Object.keys(moviesData).forEach(category => {
+                moviesData[category].forEach(movie => {
+                    allMovies.push({
+                        ...movie,
+                        category: category,
+                        hasDetails: movie.hasDetails || false,
+                        hasVideo: movie.hasVideo || false
+                    });
+                });
+            });
+            filteredMovies = [...allMovies];
         }
 
-        function editMovie(movieName) {
-            document.getElementById('modalTitle').textContent = 'Edit Movie: ' + movieName;
-            document.getElementById('movieModal').classList.add('active');
-            // Load movie data here
+        function updateStats() {
+            const total = allMovies.length;
+            const withDetails = allMovies.filter(m => m.hasDetails).length;
+            const missing = total - withDetails;
+            const categories = Object.keys(moviesData).length;
+
+            document.getElementById('totalMovies').textContent = total;
+            document.getElementById('withDetails').textContent = withDetails;
+            document.getElementById('missingDetails').textContent = missing;
+            document.getElementById('totalCategories').textContent = categories;
+            
+            document.getElementById('moviesChange').textContent = `${total} movies tracked`;
+            document.getElementById('detailsPercent').textContent = `${Math.round((withDetails/total)*100)}% complete`;
+            document.getElementById('missingPercent').textContent = `${Math.round((missing/total)*100)}% pending`;
         }
 
-        function viewMovie(filename) {
-            window.open(filename, '_blank');
+        function renderMoviesTable() {
+            const tbody = document.getElementById('moviesTableBody');
+            tbody.innerHTML = '';
+
+            filteredMovies.forEach((movie, index) => {
+                const status = movie.hasDetails && movie.hasVideo ? 'complete' : 
+                              !movie.hasDetails ? 'missing' : 'partial';
+                
+                const statusClass = status === 'complete' ? 'status-active' : 
+                                   status === 'missing' ? 'status-missing' : 'status-pending';
+                
+                const statusText = status === 'complete' ? 'Complete' : 
+                                  status === 'missing' ? 'Missing Details' : 'Partial';
+
+                const row = `
+                    <tr data-index="${index}">
+                        <td><input type="checkbox" class="movie-checkbox" data-index="${index}"></td>
+                        <td><img src="${movie.imgSrc}" alt="${movie.title}" class="movie-poster"></td>
+                        <td><strong>${movie.title}</strong></td>
+                        <td>${movie.genre}</td>
+                        <td>${movie.category}</td>
+                        <td>${movie.hasDetails ? '✅ Yes' : '❌ No'}</td>
+                        <td>${movie.hasVideo ? '✅ Yes' : '❌ No'}</td>
+                        <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+                        <td>
+                            <div class="action-btns">
+                                ${movie.hasVideo ? `<button class="action-btn view-btn" onclick="viewMovie('${movie.originalLink}')">View</button>` : ''}
+                                ${!movie.hasDetails ? `<button class="action-btn create-btn" onclick="createDetailsPage('${movie.title}')">Create Details</button>` : ''}
+                                ${!movie.hasVideo ? `<button class="action-btn create-btn" onclick="createVideoPage('${movie.title}')">Create Video</button>` : ''}
+                                <button class="action-btn edit-btn" onclick="editMovie(${index})">Edit</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                tbody.innerHTML += row;
+            });
         }
 
-        function deleteMovie(movieName) {
-            if (confirm('Are you sure you want to delete "' + movieName + '"?')) {
-                alert('Movie deleted successfully!');
-                // Add delete logic here
+        function populateCategoryFilter() {
+            const select = document.getElementById('categoryFilter');
+            Object.keys(moviesData).forEach(category => {
+                const option = document.createElement('option');
+                option.value = category;
+                option.textContent = category;
+                select.appendChild(option);
+            });
+        }
+
+        function searchMovies() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            filteredMovies = allMovies.filter(movie => 
+                movie.title.toLowerCase().includes(input) ||
+                movie.genre.toLowerCase().includes(input)
+            );
+            renderMoviesTable();
+        }
+
+        function filterByCategory() {
+            const category = document.getElementById('categoryFilter').value;
+            if (category === 'all') {
+                filteredMovies = [...allMovies];
+            } else {
+                filteredMovies = allMovies.filter(m => m.category === category);
             }
+            renderMoviesTable();
+        }
+
+        function filterByStatus() {
+            const status = document.getElementById('statusFilter').value;
+            if (status === 'all') {
+                filteredMovies = [...allMovies];
+            } else if (status === 'complete') {
+                filteredMovies = allMovies.filter(m => m.hasDetails && m.hasVideo);
+            } else if (status === 'missing') {
+                filteredMovies = allMovies.filter(m => !m.hasDetails);
+            } else if (status === 'no-video') {
+                filteredMovies = allMovies.filter(m => !m.hasVideo);
+            }
+            renderMoviesTable();
+        }
+
+        function viewMovie(link) {
+            window.open(link, '_blank');
+        }
+
+        function createDetailsPage(title) {
+            alert(`Creating details page for: ${title}\n\nThis will generate a new movie details page with proper structure.`);
+            // Implementation would create actual file
+        }
+
+        function createVideoPage(title) {
+            alert(`Creating video page for: ${title}\n\nThis will generate a new video player page.`);
+            // Implementation would create actual file
+        }
+
+        function editMovie(index) {
+            const movie = filteredMovies[index];
+            alert(`Edit movie: ${movie.title}\n\nFeature coming soon!`);
+        }
+
+        function createAllMissingPages() {
+            const missing = allMovies.filter(m => !m.hasDetails);
+            if (confirm(`Create details pages for ${missing.length} movies?`)) {
+                alert(`Creating ${missing.length} movie details pages...\n\nThis feature will be implemented to auto-generate all missing pages.`);
+            }
+        }
+
+        function toggleSelectAll() {
+            const checked = document.getElementById('selectAllCheckbox').checked;
+            document.querySelectorAll('.movie-checkbox').forEach(cb => cb.checked = checked);
+        }
+
+        function selectAll() {
+            document.querySelectorAll('.movie-checkbox').forEach(cb => cb.checked = true);
+        }
+
+        function deselectAll() {
+            document.querySelectorAll('.movie-checkbox').forEach(cb => cb.checked = false);
+        }
+
+        function bulkCreatePages() {
+            const selected = Array.from(document.querySelectorAll('.movie-checkbox:checked'));
+            if (selected.length === 0) {
+                alert('Please select movies first!');
+                return;
+            }
+            alert(`Creating pages for ${selected.length} selected movies...`);
+        }
+
+        function exportData() {
+            const dataStr = JSON.stringify(allMovies, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'moviehub-data.json';
+            link.click();
         }
 
         function logout() {
@@ -533,36 +636,8 @@
             }
         }
 
-        // Search Function
-        function searchMovies() {
-            const input = document.getElementById('searchInput').value.toLowerCase();
-            const table = document.getElementById('moviesTable');
-            const rows = table.getElementsByTagName('tr');
-
-            for (let i = 1; i < rows.length; i++) {
-                const movieName = rows[i].getElementsByTagName('td')[0];
-                if (movieName) {
-                    const textValue = movieName.textContent || movieName.innerText;
-                    rows[i].style.display = textValue.toLowerCase().indexOf(input) > -1 ? '' : 'none';
-                }
-            }
-        }
-
-        // Form Submit
-        document.getElementById('movieForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Movie saved successfully!');
-            closeModal();
-            // Add save logic here
-        });
-
-        // Close modal on outside click
-        window.onclick = function(event) {
-            const modal = document.getElementById('movieModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
+        // Initialize on load
+        init();
     </script>
 </body>
 </html>
