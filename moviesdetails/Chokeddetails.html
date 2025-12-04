@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Movie Details - Template</title>
+<style>
+  :root {
+    --bg:#0f1724;
+    --card:#0b1220;
+    --muted:#9aa4b2;
+    --accent:#06b6d4;
+    --glass:rgba(255,255,255,0.03);
+    --gap:16px;
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+  }
+  body {
+    margin:0;
+    background:linear-gradient(180deg,#071028 0%,#0f1724 100%);
+    color:#e6eef6;
+    padding:24px;
+    box-sizing:border-box;
+  }
+
+  .container {
+    max-width:1100px;
+    margin:0 auto;
+  }
+
+  .details-card {
+    background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
+    border-radius:12px;
+    padding:20px;
+    display:flex;
+    gap:var(--gap);
+    box-shadow:0 6px 18px rgba(2,6,23,0.7);
+    align-items:flex-start;
+    flex-wrap:wrap;
+  }
+
+  .poster {
+    flex:0 0 320px;
+    max-width:320px;
+    border-radius:8px;
+    overflow:hidden;
+    background:var(--glass);
+  }
+  .poster img {
+    width:100%;
+    display:block;
+    height:auto;
+    object-fit:cover;
+  }
+
+  .meta {
+    flex:1;
+    min-width:260px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .title-row {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    justify-content:space-between;
+  }
+
+  h1 {
+    font-size:1.4rem;
+    margin:0;
+    line-height:1.05;
+  }
+
+  .sub { color:var(--muted); font-size:0.95rem; }
+
+  .actions {
+    display:flex;
+    gap:10px;
+    margin-top:6px;
+  }
+
+  .btn {
+    background:var(--accent);
+    color:#021018;
+    border:none;
+    padding:10px 14px;
+    border-radius:8px;
+    font-weight:600;
+    cursor:pointer;
+  }
+
+  .btn.secondary {
+    background:transparent;
+    color:var(--muted);
+    border:1px solid rgba(255,255,255,0.06);
+  }
+
+  .desc {
+    color:var(--muted);
+    font-size:0.98rem;
+    line-height:1.5;
+    margin-top:8px;
+  }
+
+  .info-grid {
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:8px;
+  }
+
+  .info-chip {
+    background:rgba(255,255,255,0.02);
+    border-radius:8px;
+    padding:8px 10px;
+    font-size:0.9rem;
+    color:var(--muted);
+  }
+
+  .related { margin-top:18px; width:100%; }
+
+  .related h3 {
+    margin:0 0 10px 0;
+    font-size:1rem;
+    color:#d8eaf0;
+  }
+
+  .thumbs {
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+
+  .thumb {
+    width:120px;
+    cursor:pointer;
+    border-radius:8px;
+    overflow:hidden;
+    border:2px solid transparent;
+    transition:transform .18s ease, border-color .18s ease;
+    background:var(--glass);
+  }
+
+  .thumb img {
+    width:100%;
+    display:block;
+    height:180px;
+    object-fit:cover;
+  }
+
+  .thumb:hover { transform:translateY(-6px); }
+  .thumb.active { border-color:var(--accent); transform:translateY(-6px); }
+
+  @media (max-width:880px){
+    .poster{ flex-basis:260px; max-width:260px; }
+    .thumb img{ height:150px; }
+  }
+
+  @media (max-width:680px){
+    .details-card{ flex-direction:column; align-items:center; }
+    .poster{ max-width:420px; width:100%; }
+    .meta{ width:100%; padding:8px 4px 0 4px; }
+    .thumb{ width:22%; min-width:90px; }
+  }
+
+  .muted{ color:var(--muted); font-size:0.9rem; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="details-card" id="movieCard">
+      <div class="poster">
+        <img id="mainPoster" src="https://placehold.co/600x900/png?text=Poster" alt="Movie Poster">
+      </div>
+
+      <div class="meta">
+        <div>
+          <div class="title-row">
+            <div>
+              <h1 id="movieTitle">Movie Title</h1>
+              <div class="sub muted" id="movieTagline">Tagline or short subtitle</div>
+            </div>
+            <div class="sub muted" id="movieYear">2025</div>
+          </div>
+
+          <div class="actions">
+            <button class="btn" id="watchBtn">▶ Watch Now</button>
+            <button class="btn secondary" id="downloadBtn">⬇ Download</button>
+          </div>
+        </div>
+
+        <div class="desc" id="movieDesc"></div>
+
+        <div class="info-grid" id="movieInfo">
+          <div class="info-chip" id="genreChip">Genre: Drama</div>
+          <div class="info-chip" id="durationChip">120 min</div>
+          <div class="info-chip" id="ratingChip">IMDB: 7.4</div>
+        </div>
+
+        <div style="margin-top:10px;">
+          <div class="muted">Cast:</div>
+          <div id="movieCast" class="muted">Actor A, Actor B, Actor C</div>
+        </div>
+
+        <div class="related">
+          <h3>Popular / Related</h3>
+          <div class="thumbs" id="thumbsRow"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<script>
+const movies = [
+  
+   {
+    slug: "ek-deewane-ki-deewaniyat",
+    title: "Ek Deewane Ki Deewaniyat (2024)",
+    tagline: "A story of love and obsession.",
+    year: "2024",
+    poster: "https://iili.io/K6lu9ea.jpg",
+    desc: "A romantic drama exploring the emotional turmoil of love and longing.",
+    genre: "Romance, Drama",
+    duration: "140 min",
+    rating: "7.8",
+    cast: "Unknown Cast",
+    watchUrl: "../Choked.html",
+    downloadUrl: "https://www.diskwala.com/app/69003605a57987ab272caef0"
+  },
+   {
+    slug: "tiger-nageswara-rao",
+    title: "Tiger Nageswara Rao (2023)",
+    tagline: "A thief who became a legend.",
+    year: "2023",
+    poster: "https://iili.io/K8M02ef.jpg",
+    desc: "A gripping crime-action film inspired by India's most wanted thief of the 1970s.",
+    genre: "Crime, Action, Drama",
+    duration: "156 min",
+    rating: "7.2",
+    cast: "Ravi Teja, Nupur Sanon, Anupam Kher, Renu Desai",
+    watchUrl: "../Tiger.html",
+    downloadUrl: "https://example.com/download/tiger"
+  },
+   {
+    slug: "kalki-2898-ad",
+    title: "Kalki 2898 AD (2024)",
+    tagline: "The future begins now.",
+    year: "2024",
+    poster: "https://iili.io/KXXLZ7V.jpg",
+    desc: "A futuristic sci-fi epic blending mythology and technology, starring Prabhas as the savior of a dying world.",
+    genre: "Action, Sci-Fi, Drama",
+    duration: "180 min",
+    rating: "8.3",
+    cast: "Prabhas, Deepika Padukone, Amitabh Bachchan, Kamal Haasan",
+    watchUrl: "../kalki.html",
+    downloadUrl: "https://example.com/download/kalki"
+  },
+  {
+    slug: "rrr",
+    title: "RRR (2022)",
+    tagline: "Rise. Roar. Revolt.",
+    year: "2022",
+    poster: "https://iili.io/F2ziUOJ.jpg",
+    desc: "An epic action-drama directed by S.S. Rajamouli about two revolutionaries fighting against British rule.",
+    genre: "Action, Drama",
+    duration: "182 min",
+    rating: "8.0",
+    cast: "N.T. Rama Rao Jr., Ram Charan, Alia Bhatt, Ajay Devgn",
+    watchUrl: "https://arolinks.com/rWfnRI",
+    downloadUrl: "https://arolinks.com/rWfnRI"
+  },
+ 
+ 
+];
+
+function findMovieBySlug(slug){
+  return movies.find(m => m.slug === slug) || movies[0];
+}
+
+const thumbsRow = document.getElementById('thumbsRow');
+movies.forEach((m) => {
+  const div = document.createElement('div');
+  div.className = 'thumb';
+  div.dataset.slug = m.slug;
+  div.title = m.title;
+  div.innerHTML = `<img src="${m.poster}" alt="${m.title} poster">`;
+  div.addEventListener('click', () => loadMovie(m.slug, true));
+  thumbsRow.appendChild(div);
+});
+
+function loadMovie(slug, pushState=false){
+  const m = findMovieBySlug(slug);
+  document.getElementById('mainPoster').src = m.poster;
+  document.getElementById('movieTitle').textContent = m.title;
+  document.getElementById('movieTagline').textContent = m.tagline;
+  document.getElementById('movieYear').textContent = m.year;
+  document.getElementById('movieDesc').textContent = m.desc;
+  document.getElementById('genreChip').textContent = "Genre: " + m.genre;
+  document.getElementById('durationChip').textContent = m.duration;
+  document.getElementById('ratingChip').textContent = "IMDB: " + m.rating;
+  document.getElementById('movieCast').textContent = m.cast;
+
+  const watchBtn = document.getElementById('watchBtn');
+  watchBtn.onclick = () => window.open(m.watchUrl, "_blank");
+
+  const downloadBtn = document.getElementById('downloadBtn');
+  downloadBtn.onclick = () => window.open(m.downloadUrl, "_blank");
+
+  document.querySelectorAll('.thumb').forEach(t => {
+    t.classList.toggle('active', t.dataset.slug === m.slug);
+  });
+
+  if(pushState){
+    const newUrl = window.location.pathname + '?id=' + encodeURIComponent(m.slug);
+    history.pushState({slug: m.slug}, m.title, newUrl);
+  }
+}
+
+function getQueryParam(name){
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(name);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  const slug = getQueryParam('id') || movies[0].slug;
+  loadMovie(slug, false);
+});
+
+window.addEventListener('popstate', (e) => {
+  const slug = (e.state && e.state.slug) || getQueryParam('id') || movies[0].slug;
+  loadMovie(slug, false);
+});
+</script>
+</body>
+</html>
