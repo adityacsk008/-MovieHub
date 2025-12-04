@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieHub - Admin Panel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #06b6d4;
+            --bg-dark: #0f1724;
+            --card-bg: #1a2332;
+            --text: #e6eef6;
+            --muted: #9aa4b2;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(180deg, #071028 0%, #0f1724 100%);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .admin-header {
+            background: var(--card-bg);
+            padding: 20px 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .admin-header h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .admin-header .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logout-btn {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-card h3 {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-card .change {
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+
+        .stat-card .change.positive {
+            color: var(--success);
+        }
+
+        /* Main Content */
+        .content-section {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+            color: var(--text);
+        }
+
+        .btn {
+            background: var(--primary);
+            color: #021018;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        /* Table */
+        .movies-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .movies-table thead {
+            background: rgba(6, 182, 212, 0.1);
+        }
+
+        .movies-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .movies-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .movies-table tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .edit-btn {
+            background: var(--warning);
+            color: white;
+        }
+
+        .delete-btn {
+            background: var(--danger);
+            color: white;
+        }
+
+        .view-btn {
+            background: var(--success);
+            color: white;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .modal-header h2 {
+            color: var(--primary);
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            background: var(--bg-dark);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px;
+            background: var(--bg-dark);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .admin-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .movies-table {
+                font-size: 0.85rem;
+            }
+
+            .action-btns {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Header -->
+        <div class="admin-header">
+            <h1>🎬 MovieHub Admin Panel</h1>
+            <div class="user-info">
+                <span>Welcome, <strong>Admin</strong></span>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Movies</h3>
+                <div class="number" id="totalMovies">32</div>
+                <div class="change positive">↑ 3 this month</div>
+            </div>
+            <div class="stat-card">
+                <h3>Total Views</h3>
+                <div class="number">12.5K</div>
+                <div class="change positive">↑ 15% this week</div>
+            </div>
+            <div class="stat-card">
+                <h3>Active Users</h3>
+                <div class="number">1,234</div>
+                <div class="change positive">↑ 8% today</div>
+            </div>
+            <div class="stat-card">
+                <h3>Avg Rating</h3>
+                <div class="number">4.6</div>
+                <div class="change positive">↑ 0.2 points</div>
+            </div>
+        </div>
+
+        <!-- Movies Management -->
+        <div class="content-section">
+            <div class="section-header">
+                <h2>Manage Movies</h2>
+                <button class="btn" onclick="openAddModal()">+ Add New Movie</button>
+            </div>
+
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="🔍 Search movies..." onkeyup="searchMovies()">
+            </div>
+
+            <table class="movies-table" id="moviesTable">
+                <thead>
+                    <tr>
+                        <th>Movie Name</th>
+                        <th>Genre</th>
+                        <th>Year</th>
+                        <th>Rating</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="moviesTableBody">
+                    <!-- Sample Data -->
+                    <tr>
+                        <td>12th Fail</td>
+                        <td>Drama</td>
+                        <td>2023</td>
+                        <td>⭐ 4.8</td>
+                        <td><span style="color: var(--success)">Active</span></td>
+                        <td>
+                            <div class="action-btns">
+                                <button class="action-btn view-btn" onclick="viewMovie('12thFail.html')">View</button>
+                                <button class="action-btn edit-btn" onclick="editMovie('12th Fail')">Edit</button>
+                                <button class="action-btn delete-btn" onclick="deleteMovie('12th Fail')">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Arjun Reddy</td>
+                        <td>Drama, Romance</td>
+                        <td>2017</td>
+                        <td>⭐ 4.5</td>
+                        <td><span style="color: var(--success)">Active</span></td>
+                        <td>
+                            <div class="action-btns">
+                                <button class="action-btn view-btn" onclick="viewMovie('ArjunReddy.html')">View</button>
+                                <button class="action-btn edit-btn" onclick="editMovie('Arjun Reddy')">Edit</button>
+                                <button class="action-btn delete-btn" onclick="deleteMovie('Arjun Reddy')">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Choked</td>
+                        <td>Thriller</td>
+                        <td>2020</td>
+                        <td>⭐ 4.2</td>
+                        <td><span style="color: var(--success)">Active</span></td>
+                        <td>
+                            <div class="action-btns">
+                                <button class="action-btn view-btn" onclick="viewMovie('Choked.html')">View</button>
+                                <button class="action-btn edit-btn" onclick="editMovie('Choked')">Edit</button>
+                                <button class="action-btn delete-btn" onclick="deleteMovie('Choked')">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kalki 2898 AD</td>
+                        <td>Sci-Fi, Action</td>
+                        <td>2024</td>
+                        <td>⭐ 4.7</td>
+                        <td><span style="color: var(--success)">Active</span></td>
+                        <td>
+                            <div class="action-btns">
+                                <button class="action-btn view-btn" onclick="viewMovie('kalki.html')">View</button>
+                                <button class="action-btn edit-btn" onclick="editMovie('Kalki')">Edit</button>
+                                <button class="action-btn delete-btn" onclick="deleteMovie('Kalki')">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Add/Edit Movie Modal -->
+    <div class="modal" id="movieModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add New Movie</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <form id="movieForm">
+                <div class="form-group">
+                    <label>Movie Name *</label>
+                    <input type="text" id="movieName" required>
+                </div>
+                <div class="form-group">
+                    <label>Genre *</label>
+                    <input type="text" id="movieGenre" placeholder="e.g., Action, Drama, Thriller" required>
+                </div>
+                <div class="form-group">
+                    <label>Year *</label>
+                    <input type="number" id="movieYear" min="1900" max="2025" required>
+                </div>
+                <div class="form-group">
+                    <label>Rating (1-5) *</label>
+                    <input type="number" id="movieRating" min="1" max="5" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label>Description *</label>
+                    <textarea id="movieDescription" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Poster URL</label>
+                    <input type="url" id="moviePoster" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label>Video URL</label>
+                    <input type="url" id="movieVideo" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label>Status</label>
+                    <select id="movieStatus">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Save Movie</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal Functions
+        function openAddModal() {
+            document.getElementById('modalTitle').textContent = 'Add New Movie';
+            document.getElementById('movieForm').reset();
+            document.getElementById('movieModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('movieModal').classList.remove('active');
+        }
+
+        function editMovie(movieName) {
+            document.getElementById('modalTitle').textContent = 'Edit Movie: ' + movieName;
+            document.getElementById('movieModal').classList.add('active');
+            // Load movie data here
+        }
+
+        function viewMovie(filename) {
+            window.open(filename, '_blank');
+        }
+
+        function deleteMovie(movieName) {
+            if (confirm('Are you sure you want to delete "' + movieName + '"?')) {
+                alert('Movie deleted successfully!');
+                // Add delete logic here
+            }
+        }
+
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Search Function
+        function searchMovies() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const table = document.getElementById('moviesTable');
+            const rows = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < rows.length; i++) {
+                const movieName = rows[i].getElementsByTagName('td')[0];
+                if (movieName) {
+                    const textValue = movieName.textContent || movieName.innerText;
+                    rows[i].style.display = textValue.toLowerCase().indexOf(input) > -1 ? '' : 'none';
+                }
+            }
+        }
+
+        // Form Submit
+        document.getElementById('movieForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Movie saved successfully!');
+            closeModal();
+            // Add save logic here
+        });
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('movieModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
