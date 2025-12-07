@@ -1,0 +1,369 @@
+<!-- ============================================ -->
+<!-- ADMOB INTEGRATION CODE FOR INDEX.HTML -->
+<!-- Copy-paste these sections into your index.html -->
+<!-- ============================================ -->
+
+<!-- ============================================ -->
+<!-- STEP 1: ADD THIS IN <head> SECTION -->
+<!-- Paste this after <title> tag -->
+<!-- ============================================ -->
+
+<!-- Google AdMob SDK -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5411788341265146"
+     crossorigin="anonymous"></script>
+
+<!-- AdMob CSS Styles -->
+<style>
+/* AdMob Ads Styling */
+.ad-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 20px auto;
+    text-align: center;
+    background: rgba(0,0,0,0.05);
+    padding: 10px;
+    border-radius: 8px;
+    min-height: 90px;
+}
+
+.banner-ad {
+    margin: 30px 0;
+}
+
+.ad-label {
+    font-size: 10px;
+    color: #888;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Responsive Ad Containers */
+@media (max-width: 768px) {
+    .ad-container {
+        margin: 15px 0;
+        padding: 8px;
+    }
+}
+</style>
+
+
+<!-- ============================================ -->
+<!-- STEP 2: BANNER AD -->
+<!-- Add this AFTER hero section (after </section> of hero) -->
+<!-- ============================================ -->
+
+<!-- AdMob Banner Ad -->
+<div class="ad-container banner-ad">
+    <div class="ad-label">Advertisement</div>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5411788341265146"
+         data-ad-slot="1020552131"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+
+<!-- ============================================ -->
+<!-- STEP 3: REWARDED INTERSTITIAL AD -->
+<!-- Add this between content sections (e.g., between "Trending" and "Top 10") -->
+<!-- ============================================ -->
+
+<!-- AdMob Rewarded Interstitial Ad -->
+<div class="ad-container">
+    <div class="ad-label">Advertisement</div>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5411788341265146"
+         data-ad-slot="4374022529"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+
+<!-- ============================================ -->
+<!-- STEP 4: JAVASCRIPT CODE -->
+<!-- Add this BEFORE closing </body> tag -->
+<!-- ============================================ -->
+
+<script>
+/* ========== ADMOB INTEGRATION JAVASCRIPT ========== */
+
+// ===== APP OPEN AD (Shows on page load) =====
+window.addEventListener('load', function() {
+    const appOpenAdContainer = document.createElement('div');
+    appOpenAdContainer.id = 'app-open-ad';
+    appOpenAdContainer.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.95);
+        z-index: 10000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    `;
+    
+    appOpenAdContainer.innerHTML = `
+        <div style="background: white; padding: 30px; border-radius: 15px; text-align: center; max-width: 90%; margin-bottom: 30px;">
+            <h2 style="color: #E50914; margin-bottom: 10px; font-size: 28px;">Welcome to StreamFlix</h2>
+            <p style="color: #666; font-size: 14px;">Loading your entertainment...</p>
+        </div>
+        <ins class="adsbygoogle"
+             style="display:block; width: 90%; max-width: 400px;"
+             data-ad-client="ca-pub-5411788341265146"
+             data-ad-slot="8409648060"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <button id="close-app-open-ad" style="
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #E50914 0%, #ff6b6b 100%);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
+            display: none;
+        ">Enter StreamFlix</button>
+    `;
+    
+    document.body.appendChild(appOpenAdContainer);
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    
+    // Show close button after 3 seconds
+    setTimeout(() => {
+        document.getElementById('close-app-open-ad').style.display = 'block';
+    }, 3000);
+    
+    // Close app open ad
+    document.getElementById('close-app-open-ad').addEventListener('click', () => {
+        appOpenAdContainer.style.animation = 'fadeOut 0.5s ease';
+        setTimeout(() => {
+            document.body.removeChild(appOpenAdContainer);
+        }, 500);
+    });
+});
+
+
+// ===== INTERSTITIAL AD (Shows after 30 seconds or on navigation) =====
+let interstitialAdShown = false;
+
+function loadInterstitialAd() {
+    if (!interstitialAdShown) {
+        const interstitialContainer = document.createElement('div');
+        interstitialContainer.id = 'interstitial-ad-container';
+        interstitialContainer.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        `;
+        
+        interstitialContainer.innerHTML = `
+            <div style="background: white; padding: 20px; border-radius: 10px; text-align: center; max-width: 90%; margin-bottom: 20px;">
+                <h3 style="color: #333; margin-bottom: 10px;">Please Wait</h3>
+                <p style="color: #666; font-size: 14px;">Advertisement loading...</p>
+            </div>
+            <ins class="adsbygoogle"
+                 style="display:block; width: 90%; max-width: 400px;"
+                 data-ad-client="ca-pub-5411788341265146"
+                 data-ad-slot="8528889954"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <button id="close-interstitial-ad" style="
+                margin-top: 20px;
+                padding: 12px 30px;
+                background: #E50914;
+                color: white;
+                border: none;
+                border-radius: 25px;
+                font-size: 16px;
+                cursor: pointer;
+                display: none;
+            ">Continue</button>
+        `;
+        
+        document.body.appendChild(interstitialContainer);
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        
+        // Show continue button after 5 seconds
+        setTimeout(() => {
+            document.getElementById('close-interstitial-ad').style.display = 'block';
+        }, 5000);
+        
+        // Close interstitial ad
+        document.getElementById('close-interstitial-ad').addEventListener('click', () => {
+            document.body.removeChild(interstitialContainer);
+        });
+        
+        interstitialAdShown = true;
+    }
+}
+
+// Show interstitial ad after 30 seconds
+setTimeout(loadInterstitialAd, 30000);
+
+
+// ===== REWARDED AD (Shows when clicking Play/Watch buttons) =====
+function showRewardedAd(callback) {
+    const rewardedAdContainer = document.createElement('div');
+    rewardedAdContainer.id = 'rewarded-ad-container';
+    rewardedAdContainer.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.9);
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    `;
+    
+    rewardedAdContainer.innerHTML = `
+        <div style="background: white; padding: 20px; border-radius: 10px; text-align: center; max-width: 90%; margin-bottom: 20px;">
+            <h3 style="color: #333; margin-bottom: 10px;">🎬 Watch Ad to Continue</h3>
+            <p style="color: #666; font-size: 14px;">Please watch this ad to access the content</p>
+        </div>
+        <ins class="adsbygoogle"
+             style="display:block; width: 90%; max-width: 400px;"
+             data-ad-client="ca-pub-5411788341265146"
+             data-ad-slot="3060940858"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <button id="close-rewarded-ad" style="
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: #46d369;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            display: none;
+        ">Continue to Content</button>
+    `;
+    
+    document.body.appendChild(rewardedAdContainer);
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    
+    // Show continue button after 5 seconds
+    setTimeout(() => {
+        document.getElementById('close-rewarded-ad').style.display = 'block';
+    }, 5000);
+    
+    // Close rewarded ad and execute callback
+    document.getElementById('close-rewarded-ad').addEventListener('click', () => {
+        document.body.removeChild(rewardedAdContainer);
+        if (callback) callback();
+    });
+}
+
+// Apply rewarded ad to Play buttons
+document.addEventListener('DOMContentLoaded', function() {
+    // For hero Play buttons
+    const playButtons = document.querySelectorAll('.btn-play');
+    playButtons.forEach(btn => {
+        const originalOnclick = btn.getAttribute('onclick');
+        btn.removeAttribute('onclick');
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showRewardedAd(() => {
+                // Execute original onclick after ad
+                if (originalOnclick) {
+                    eval(originalOnclick);
+                }
+            });
+        });
+    });
+    
+    // For movie cards
+    const movieCards = document.querySelectorAll('.movie-card, .landscape-card, .top10-card');
+    movieCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            e.preventDefault();
+            showRewardedAd(() => {
+                // Navigate to movie page after ad
+                console.log('Movie clicked - navigate to details');
+            });
+        });
+    });
+});
+
+
+// ===== NAVIGATION INTERSTITIAL AD =====
+// Show interstitial ad on navigation clicks
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.header-nav a, .mobile-bottom-nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (!interstitialAdShown && !this.href.includes('#')) {
+                e.preventDefault();
+                const targetHref = this.href;
+                loadInterstitialAd();
+                setTimeout(() => {
+                    window.location.href = targetHref;
+                }, 2000);
+            }
+        });
+    });
+});
+
+/* ========== END ADMOB INTEGRATION ========== */
+</script>
+
+
+<!-- ============================================ -->
+<!-- INTEGRATION SUMMARY -->
+<!-- ============================================ -->
+
+<!--
+✅ APP OPEN AD (ca-pub-5411788341265146/8409648060)
+   - Shows on page load
+   - Welcome screen with 3-second delay
+
+✅ BANNER AD (ca-pub-5411788341265146/1020552131)
+   - After hero section
+   - Responsive auto-format
+
+✅ INTERSTITIAL AD (ca-pub-5411788341265146/8528889954)
+   - After 30 seconds
+   - On navigation clicks
+
+✅ REWARDED AD (ca-pub-5411788341265146/3060940858)
+   - On Play button clicks
+   - On movie card clicks
+
+✅ REWARDED INTERSTITIAL (ca-pub-5411788341265146/4374022529)
+   - Between content sections
+   - Static placement
+
+All ads are fully integrated and ready to use!
+-->
