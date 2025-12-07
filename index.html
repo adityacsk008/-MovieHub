@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamFlix - Watch Movies & TV Shows Online</title>
+    
+    <style>
+        /* ═══════════════════════════════════════════════════════════════
+           CSS VARIABLES (THEMING)
+           ═══════════════════════════════════════════════════════════════ */
+        :root {
+            --bg-color: #141414;
+            --header-bg: rgba(0, 0, 0, 0.9);
+            --header-bg-scrolled: #141414;
+            --text-color: #ffffff;
+            --section-title-color: #e5e5e5;
+            --card-hover-shadow: rgba(0, 0, 0, 0.7);
+            --scroll-btn-bg: rgba(0, 0, 0, 0.5);
+            --scroll-btn-hover: rgba(0, 0, 0, 0.8);
+            --search-bg: rgba(0,0,0,0.8);
+            --search-border: #ffffff;
+            --mobile-nav-bg: #121212;
+            --footer-bg: #0a0a0a;
+        }
+
+        /* LIGHT MODE (Day - Light Green & White) */
+        body.light-mode {
+            --bg-color: #e8f5e9; /* Light Green */
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --header-bg-scrolled: #ffffff;
+            --text-color: #1a1a1a;
+            --section-title-color: #2e7d32; /* Dark Green Text */
+            --card-hover-shadow: rgba(46, 125, 50, 0.4);
+            --scroll-btn-bg: rgba(46, 125, 50, 0.6);
+            --scroll-btn-hover: rgba(46, 125, 50, 0.9);
+            --search-bg: rgba(255, 255, 255, 0.9);
+            --search-border: #2e7d32;
+            --mobile-nav-bg: #ffffff;
+            --footer-bg: #c8e6c9;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           GLOBAL STYLES
+           ═══════════════════════════════════════════════════════════════ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            padding-bottom: 0; 
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           HEADER SECTION
+           ═══════════════════════════════════════════════════════════════ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: var(--header-bg);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 60px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background-color: var(--header-bg-scrolled);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-logo {
+            width: 140px;
+            font-size: 32px;
+            font-weight: 900;
+            color: #E50914;
+            letter-spacing: -1px;
+            cursor: pointer;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .header-nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .header-nav a:hover {
+            opacity: 1;
+        }
+
+        .header-nav a.active {
+            opacity: 1;
+            font-weight: 700;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        /* SEARCH BOX */
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: transparent;
+            border: 1px solid transparent;
+            padding: 5px;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .search-box.active {
+            background-color: var(--search-bg);
+            border: 1px solid var(--search-border);
+            padding: 5px 10px;
+        }
+
+        .search-input {
+            width: 0;
+            background: transparent;
+            border: none;
+            color: var(--text-color);
+            font-size: 14px;
+            outline: none;
+            transition: width 0.3s ease;
+            opacity: 0;
+        }
+
+        .search-box.active .search-input {
+            width: 200px;
+            opacity: 1;
+            margin-left: 10px;
+        }
+
+        .header-icon {
+            font-size: 20px;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: color 0.3s ease;
+            background: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-icon:hover {
+            color: #E50914;
+        }
+
+        /* THEME TOGGLE BTN */
+        .theme-toggle-btn {
+            font-size: 22px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            filter: grayscale(100%);
+            transition: transform 0.3s;
+        }
+        .theme-toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* PROFILE DROPDOWN */
+        .profile-container {
+            position: relative;
+        }
+
+        .header-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #E50914, #ff6b6b);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .header-avatar:hover {
+            border-color: var(--text-color);
+        }
+
+        .profile-dropdown {
+            display: none;
+            position: absolute;
+            top: 45px;
+            right: 0;
+            width: 180px;
+            background-color: rgba(0, 0, 0, 0.95);
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 10px 0;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+            z-index: 1001;
+        }
+        
+        body.light-mode .profile-dropdown {
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+
+        .profile-dropdown.show {
+            display: block;
+            animation: fadeIn 0.2s ease;
+        }
+
+        .profile-dropdown a {
+            display: block;
+            padding: 10px 20px;
+            color: #e5e5e5;
+            text-decoration: none;
+            font-size: 13px;
+            transition: background 0.2s;
+        }
+        
+        body.light-mode .profile-dropdown a {
+            color: #333;
+        }
+
+        .profile-dropdown a:hover {
+            background-color: #333;
+            color: #fff;
+            text-decoration: underline;
+        }
+        
+        body.light-mode .profile-dropdown a:hover {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background-color: #333;
+            margin: 5px 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           MOBILE BOTTOM NAVIGATION
+           ═══════════════════════════════════════════════════════════════ */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 65px;
+            background-color: var(--mobile-nav-bg);
+            border-top: 1px solid #333;
+            z-index: 2000;
+            justify-content: space-around;
+            align-items: center;
+            padding-bottom: 5px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #808080;
+            text-decoration: none;
+            font-size: 10px;
+            gap: 4px;
+            width: 20%;
+        }
+
+        .nav-item.active {
+            color: #E50914; /* Red for active state */
+            font-weight: bold;
+        }
+
+        .nav-icon {
+            font-size: 20px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           HERO SECTION
+           ═══════════════════════════════════════════════════════════════ */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 85vh;
+            margin-top: 0;
+            overflow: hidden;
+            scroll-margin-top: 70px;
+        }
+
+        .hero-slider-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+            z-index: 1;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 2;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: zoomEffect 20s infinite alternate;
+        }
+
+        @keyframes zoomEffect {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .hero-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Gradient optimized for both modes but kept dark at bottom for text readability */
+            background: linear-gradient(to top, var(--bg-color) 0%, transparent 20%),
+                        linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 60%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 60px;
+            z-index: 4;
+            width: 45%;
+            padding-right: 20px;
+        }
+
+        .age-rating {
+            display: inline-block;
+            background-color: rgba(51, 51, 51, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 2px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title-text {
+            font-size: 60px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            color: #fff; /* Always white on hero image */
+        }
+        
+        .hero-synopsis {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #ffffff;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hero-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 35px;
+            font-size: 18px;
+            font-weight: 700;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-play {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .btn-play:hover {
+            background-color: rgba(255, 255, 255, 0.75);
+        }
+
+        .btn-info {
+            background-color: rgba(109, 109, 110, 0.7);
+            color: #ffffff;
+        }
+
+        .btn-info:hover {
+            background-color: rgba(109, 109, 110, 0.4);
+        }
+
+        .slider-dots {
+            position: absolute;
+            right: 60px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 5;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background-color: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background-color: #fff;
+            transform: scale(1.5);
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           CONTENT SECTIONS & SCROLL BUTTONS
+           ═══════════════════════════════════════════════════════════════ */
+        .content-section {
+            padding: 20px 0;
+            background-color: var(--bg-color);
+            position: relative;
+            z-index: 10;
+            scroll-margin-top: 70px;
+            transition: background-color 0.3s;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--section-title-color);
+            margin-bottom: 15px;
+            padding-left: 60px;
+            transition: color 0.3s;
+        }
+        
+        /* Wrapper for Scroll Buttons */
+        .row-wrapper {
+            position: relative;
+            padding: 0 60px;
+        }
+
+        /* Scroll Buttons */
+        .scroll-btn {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50px;
+            background-color: var(--scroll-btn-bg);
+            border: none;
+            color: #fff;
+            font-size: 30px;
+            z-index: 20;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            height: 300px; /* Match card height */
+            margin-top: 0;
+            border-radius: 4px;
+        }
+        
+        .row-wrapper:hover .scroll-btn {
+            opacity: 1;
+        }
+
+        .scroll-btn:hover {
+            background-color: var(--scroll-btn-hover);
+            transform: scale(1.1);
+        }
+
+        .scroll-btn.left {
+            left: 10px;
+        }
+
+        .scroll-btn.right {
+            right: 10px;
+        }
+
+        .card-row {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-behavior: smooth;
+            padding-bottom: 20px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .card-row::-webkit-scrollbar {
+            height: 0px;
+        }
+
+        .movie-card, .landscape-card, .top10-card {
+            cursor: pointer;
+        }
+
+        .movie-card {
+            flex: 0 0 200px;
+            position: relative;
+            border-radius: 4px;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+        }
+
+        .movie-card:hover {
+            transform: scale(1.1);
+            z-index: 99;
+            box-shadow: 0 10px 20px var(--card-hover-shadow);
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .movie-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #fff; /* Always white on overlay */
+        }
+
+        .card-meta {
+            font-size: 10px;
+            color: #46d369;
+            font-weight: bold;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           SEARCH RESULTS SECTION
+           ═══════════════════════════════════════════════════════════════ */
+        #search-results-section {
+            display: none; /* Hidden by default */
+            min-height: 80vh;
+            padding-top: 100px;
+        }
+        
+        .search-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            padding: 0 60px;
+        }
+        
+        .no-results {
+            text-align: center;
+            font-size: 24px;
+            color: #757575;
+            margin-top: 50px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           TOP 10 SECTION
+           ═══════════════════════════════════════════════════════════════ */
+        .top10-card {
+            flex: 0 0 200px;
+            position: relative;
+            margin-left: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .top10-number {
+            position: absolute;
+            left: -20px;
+            bottom: -5px;
+            font-size: 180px;
+            font-weight: 900;
+            color: #000;
+            -webkit-text-stroke: 4px #595959;
+            z-index: 1;
+            line-height: 1;
+            font-family: impact, sans-serif;
+        }
+        
+        body.light-mode .top10-number {
+             -webkit-text-stroke: 4px #2e7d32;
+             color: #fff;
+        }
+
+        .top10-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 4px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .top10-card:hover {
+            transform: scale(1.1);
+            z-index: 99;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           LANDSCAPE CARDS
+           ═══════════════════════════════════════════════════════════════ */
+        .landscape-card {
+            flex: 0 0 300px;
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .landscape-card img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+        }
+
+        .landscape-card:hover {
+            transform: scale(1.05);
+            z-index: 99;
+            box-shadow: 0 8px 16px var(--card-hover-shadow);
+        }
+
+        .new-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background-color: #E50914;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 3px 6px;
+            border-radius: 2px;
+            letter-spacing: 0.5px;
+        }
+
+        .landscape-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 100%);
+        }
+
+        .landscape-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(255,255,255,0.3);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #E50914;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════════════════════════════ */
+        .footer {
+            background-color: var(--footer-bg);
+            padding: 60px 60px 100px 60px;
+            margin-top: 40px;
+            border-top: 1px solid #222;
+            transition: background-color 0.3s;
+        }
+        
+        body.light-mode .footer {
+            border-top: 1px solid #a5d6a7;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #757575;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        
+        body.light-mode .footer-column a {
+            color: #33691e;
+        }
+        
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            color: #757575;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           RESPONSIVE DESIGN (MOBILE PERFECT)
+           ═══════════════════════════════════════════════════════════════ */
+        @media (max-width: 768px) {
+            .header { 
+                padding: 0 20px; 
+                height: 60px;
+                background-color: transparent;
+            }
+            .header.scrolled { background-color: var(--header-bg-scrolled); }
+            .header-nav { display: none; }
+            .header-right { gap: 10px; }
+            .header-logo { width: 100px; font-size: 24px; }
+            .header-avatar { width: 28px; height: 28px; }
+            
+            .search-box.active .search-input { width: 120px; }
+
+            .mobile-bottom-nav { display: flex; }
+            body { padding-bottom: 65px; }
+
+            .footer { display: none !important; }
+
+            .hero-section { height: 65vh; }
+            .hero-content { 
+                width: 100%; 
+                left: 0; 
+                padding: 20px; 
+                bottom: 0;
+                top: auto;
+                transform: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                height: 100%;
+                background: linear-gradient(to top, var(--bg-color) 5%, transparent 95%);
+            }
+            .hero-logo { width: 70%; margin-bottom: 10px; align-self: center; }
+            .hero-title-text { font-size: 32px; text-align: center; }
+            .hero-synopsis { display: none; }
+            .hero-buttons { 
+                width: 100%; 
+                justify-content: center; 
+                margin-bottom: 20px; 
+            }
+            .hero-btn { 
+                padding: 8px 20px; 
+                font-size: 14px; 
+                flex: 1;
+                justify-content: center;
+                max-width: 160px;
+            }
+            .age-rating { display: none; }
+            .slider-dots { display: none; }
+            
+            .row-wrapper { padding: 0 20px; }
+            .scroll-btn { display: none; /* Hide scroll buttons on mobile, swipe is better */ }
+
+            .section-title { 
+                padding-left: 20px; 
+                font-size: 16px; 
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            .card-row { 
+                gap: 8px;
+            }
+            
+            .movie-card { flex: 0 0 130px; }
+            .movie-card img { height: 190px; }
+            
+            .top10-card { flex: 0 0 130px; margin-left: 15px; }
+            .top10-card img { height: 190px; }
+            .top10-number { font-size: 100px; left: -15px; }
+            
+            .landscape-card { flex: 0 0 220px; }
+            .landscape-card img { height: 125px; }
+            
+            #search-results-section { padding: 80px 20px 20px 20px; }
+            .search-grid { padding: 0; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        }
+    </style>
+</head>
+<body class="">
+
+    <!-- HEADER SECTION -->
+    <header class="header" id="header">
+        <div class="header-logo" onclick="window.location.reload()">STREAMFLIX</div>
+        <nav>
+            <ul class="header-nav">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#tvshows">TV Shows</a></li>
+                <li><a href="#movies">Movies</a></li>
+                <li><a href="#new">New & Popular</a></li>
+                <li><a href="#mylist">My List</a></li>
+            </ul>
+        </nav>
+        <div class="header-right">
+            <!-- Theme Toggle -->
+            <button class="theme-toggle-btn" id="themeToggle" onclick="toggleTheme()">☀️</button>
+            
+            <div class="search-box" id="searchBox">
+                <button class="header-icon" id="searchBtn">🔍</button>
+                <input type="text" class="search-input" id="searchInput" placeholder="Titles, people, genres">
+            </div>
+            <span class="header-icon">🔔</span>
+            <div class="profile-container">
+                <div class="header-avatar" id="profileAvatar"></div>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="#account">Manage Profiles</a>
+                    <a href="#transfer">Transfer Profile</a>
+                    <a href="#account">Account</a>
+                    <a href="about.html">Help Center</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#signout">Sign out of StreamFlix</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SEARCH RESULTS CONTAINER -->
+    <section class="content-section" id="search-results-section">
+        <h2 class="section-title">Search Results</h2>
+        <div class="search-grid" id="search-results-grid">
+            <!-- Results injected here -->
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT WRAPPER (Hidden when searching) -->
+    <div id="main-content">
+        <!-- HERO SECTION -->
+        <section class="hero-section" id="home">
+            <div class="hero-slider-container" id="heroSlider">
+                <div class="hero-slide active" data-index="0">
+                    <div class="hero-background">
+                        <img src="https://image.tmdb.org/t/p/original/8ZTVqvKDQ8emSGUEMjsS4yHAwrp.jpg" class="hero-image" alt="Inception">
+                        <div class="hero-gradient"></div>
+                    </div>
+                    <div class="hero-content">
+                        <div class="age-rating">13+</div>
+                        <h1 class="hero-title-text" style="font-family: 'Arial Black';">INCEPTION</h1>
+                        <p class="hero-synopsis">A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.</p>
+                        <div class="hero-buttons">
+                            <button class="hero-btn btn-play" onclick="openPlayer()"><span>▶</span> Play</button>
+                            <button class="hero-btn btn-info" onclick="openDetails()"><span>ⓘ</span> More Info</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-slide" data-index="1">
+                    <div class="hero-background">
+                        <img src="https://image.tmdb.org/t/p/original/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg" class="hero-image" alt="Avatar">
+                        <div class="hero-gradient"></div>
+                    </div>
+                    <div class="hero-content">
+                        <div class="age-rating">13+</div>
+                        <h1 class="hero-title-text" style="color: #00d4ff;">AVATAR: THE WAY OF WATER</h1>
+                        <p class="hero-synopsis">Jake Sully lives with his newfound family formed on the extrasolar moon Pandora.</p>
+                        <div class="hero-buttons">
+                            <button class="hero-btn btn-play" onclick="openPlayer()"><span>▶</span> Play</button>
+                            <button class="hero-btn btn-info" onclick="openDetails()"><span>ⓘ</span> More Info</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-slide" data-index="2">
+                    <div class="hero-background">
+                        <img src="https://image.tmdb.org/t/p/original/56v2KjBlU4XaOv9rVYkJu64COcfe.jpg" class="hero-image" alt="Stranger Things">
+                        <div class="hero-gradient"></div>
+                    </div>
+                    <div class="hero-content">
+                        <div class="age-rating">16+</div>
+                        <h1 class="hero-title-text" style="color: #ff2a2a; text-shadow: 0 0 10px #ff0000;">STRANGER THINGS</h1>
+                        <p class="hero-synopsis">When a young boy vanishes, a small town uncovers a mystery involving secret experiments.</p>
+                        <div class="hero-buttons">
+                            <button class="hero-btn btn-play" onclick="openPlayer()"><span>▶</span> Play</button>
+                            <button class="hero-btn btn-info" onclick="openDetails()"><span>ⓘ</span> More Info</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-dots">
+                <div class="dot active" onclick="goToSlide(0)"></div>
+                <div class="dot" onclick="goToSlide(1)"></div>
+                <div class="dot" onclick="goToSlide(2)"></div>
+            </div>
+        </section>
+
+        <!-- MOBILE BOTTOM NAVIGATION -->
+        <nav class="mobile-bottom-nav">
+            <a href="#home" class="nav-item active"><span class="nav-icon">🏠</span><span>Home</span></a>
+            <a href="#tvshows" class="nav-item"><span class="nav-icon">📺</span><span>TV Shows</span></a>
+            <a href="#movies" class="nav-item"><span class="nav-icon">🎬</span><span>Movies</span></a>
+            <a href="#new" class="nav-item"><span class="nav-icon">🔥</span><span>New</span></a>
+            <a href="#mylist" class="nav-item"><span class="nav-icon">📂</span><span>My List</span></a>
+        </nav>
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             DYNAMIC MOVIE SECTIONS 
+             ═══════════════════════════════════════════════════════════════ -->
+        
+        <section class="content-section" id="movies">
+            <h2 class="section-title">Popular OTT Movies</h2>
+            <div class="row-wrapper">
+                <button class="scroll-btn left" onclick="scrollContainer('ott-movies-container', -300)">❮</button>
+                <div class="card-row" id="ott-movies-container"></div>
+                <button class="scroll-btn right" onclick="scrollContainer('ott-movies-container', 300)">❯</button>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">South Indian Hits</h2>
+            <div class="row-wrapper">
+                <button class="scroll-btn left" onclick="scrollContainer('south-movies-container', -300)">❮</button>
+                <div class="card-row" id="south-movies-container"></div>
+                <button class="scroll-btn right" onclick="scrollContainer('south-movies-container', 300)">❯</button>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Trending Web Series</h2>
+            <div class="row-wrapper">
+                <button class="scroll-btn left" onclick="scrollContainer('web-series-container', -300)">❮</button>
+                <div class="card-row" id="web-series-container"></div>
+                <button class="scroll-btn right" onclick="scrollContainer('web-series-container', 300)">❯</button>
+            </div>
+        </section>
+
+        <!-- New Releases (Landscape) -->
+        <section class="content-section" id="new">
+            <h2 class="section-title">New Releases</h2>
+            <div class="row-wrapper">
+                <button class="scroll-btn left" onclick="scrollContainer('new-container', -300)">❮</button>
+                <div class="card-row" id="new-container">
+                    <div class="landscape-card" onclick="window.location.href='movie_details.html'">
+                        <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=640&q=80" alt="New Release">
+                        <div class="new-badge">NEW</div>
+                        <div class="landscape-overlay">
+                            <div class="landscape-title">Dune: Part Two</div>
+                            <div class="card-meta">Sci-Fi • 2024</div>
+                        </div>
+                    </div>
+                    <div class="landscape-card" onclick="window.location.href='movie_details.html'">
+                        <img src="https://images.unsplash.com/photo-1596727147705-54a9d099308a?w=640&q=80" alt="New Release">
+                        <div class="new-badge">NEW</div>
+                        <div class="landscape-overlay">
+                            <div class="landscape-title">Oppenheimer</div>
+                            <div class="card-meta">Drama • 2023</div>
+                        </div>
+                    </div>
+                    <div class="landscape-card" onclick="window.location.href='movie_details.html'">
+                        <img src="https://images.unsplash.com/photo-1599839575945-a9e5af0c3fa5?w=640&q=80" alt="New Release">
+                        <div class="new-badge">NEW</div>
+                        <div class="landscape-overlay">
+                            <div class="landscape-title">Barbie</div>
+                            <div class="card-meta">Comedy • 2023</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="scroll-btn right" onclick="scrollContainer('new-container', 300)">❯</button>
+            </div>
+        </section>
+
+        <!-- Continue Watching -->
+        <section class="content-section" id="tvshows">
+            <h2 class="section-title">Continue Watching</h2>
+            <div class="row-wrapper">
+                <div class="card-row">
+                    <div class="landscape-card" onclick="window.location.href='movie_details.html'">
+                        <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=640&q=80" alt="Continue">
+                        <div class="landscape-overlay"><div class="landscape-title">Breaking Bad</div></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 65%;"></div></div>
+                    </div>
+                    <div class="landscape-card" onclick="window.location.href='movie_details.html'">
+                        <img src="https://images.unsplash.com/photo-1534809027769-b00d750a6bac?w=640&q=80" alt="Continue">
+                        <div class="landscape-overlay"><div class="landscape-title">Stranger Things</div></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width: 30%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOP 10 -->
+        <section class="content-section">
+            <h2 class="section-title">Top 10 Movies in India Today</h2>
+            <div class="row-wrapper">
+                <div class="card-row">
+                    <div class="top10-card" onclick="window.location.href='movie_details.html'">
+                        <div class="top10-number">1</div>
+                        <img src="https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg" alt="Top 1">
+                    </div>
+                    <div class="top10-card" onclick="window.location.href='movie_details.html'">
+                        <div class="top10-number">2</div>
+                        <img src="https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg" alt="Top 2">
+                    </div>
+                    <div class="top10-card" onclick="window.location.href='movie_details.html'">
+                        <div class="top10-number">3</div>
+                        <img src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="Top 3">
+                    </div>
+                    <div class="top10-card" onclick="window.location.href='movie_details.html'">
+                        <div class="top10-number">4</div>
+                        <img src="https://image.tmdb.org/t/p/w500/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg" alt="Top 4">
+                    </div>
+                    <div class="top10-card" onclick="window.location.href='movie_details.html'">
+                        <div class="top10-number">5</div>
+                        <img src="https://image.tmdb.org/t/p/w500/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg" alt="Top 5">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section" id="mylist">
+            <h2 class="section-title">My List</h2>
+            <div class="row-wrapper">
+                <button class="scroll-btn left" onclick="scrollContainer('mylist-container', -300)">❮</button>
+                <div class="card-row" id="mylist-container"></div>
+                <button class="scroll-btn right" onclick="scrollContainer('mylist-container', 300)">❯</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Investor Relations</a></li>
+                        <li><a href="privacy.html">Privacy</a></li>
+                        <li><a href="#">Speed Test</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <ul>
+                        <li><a href="about.html">Help Center</a></li>
+                        <li><a href="#">Jobs</a></li>
+                        <li><a href="#">Cookie Preferences</a></li>
+                        <li><a href="#">Legal Notices</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <ul>
+                        <li><a href="#">Account</a></li>
+                        <li><a href="#">Ways to Watch</a></li>
+                        <li><a href="about.html">Corporate Information</a></li>
+                        <li><a href="#">Only on StreamFlix</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <ul>
+                        <li><a href="#">Media Center</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="copyright">© 2024 StreamFlix, Inc.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // --- 1. MOVIE DATA ARRAYS ---
+        
+        const popularOttMoviesData = [
+            { title: "RRR", genre: "Action, Drama", imgSrc: "https://iili.io/F2ziUOJ.jpg", originalLink: "WatchRRR.html", altText: "Poster of RRR movie" },
+            { title: "Kalki 2898 AD", genre: "Action, Drama", imgSrc: "https://iili.io/KXXLZ7V.jpg.jpg", originalLink: "kalkidetails.html", altText: "Poster of Kalki movie" },
+            { title: "Tiger Nageswara Rao", genre: "Dark Comedy", imgSrc: "https://iili.io/K8M02ef.jpg", originalLink: "Tigerdetails.html", altText: "Poster of Tiger movie" },
+            { title: "Ek Deewane Ki Deewaniyat ", genre: "Romance", imgSrc: "https://iili.io/K6lu9ea.jpg", originalLink: "Deewaniyat.html", altText: "Poster of Ek Deewane Ki Deewaniyat" },
+            { title: "Choked", genre: "Drama", imgSrc: "https://iili.io/K8MXjAF.jpg", originalLink: "Chokeddetails.html", altText: "Poster of Choked movie" },
+            { title: "Shershaah", genre: "Biographical War", imgSrc: "https://iili.io/F2zi8Hg.jpg", originalLink: "Shershaah.html", altText: "Poster of Shershaah movie" },
+            { title: "Drishyam 2", genre: "Thriller", imgSrc: "https://iili.io/F2zikUF.jpg", originalLink: "Drishyam.html", altText: "Poster of Drishyam 2 movie" },
+            { title: "Jai Bhim", genre: "Legal Drama", imgSrc: "https://iili.io/F2zigDv.jpg", originalLink: "jaibhim.html", altText: "Poster of Jai Bhim movie" },
+            { title: "Freddy", genre: "Thriller", imgSrc: "https://iili.io/F2z1RHJ.jpg", originalLink: "freddy.html", altText: "Poster of Freddy movie" },
+            { title: "Brahmāstra: Part One – Shiva", genre: "Fantasy Adventure", imgSrc: "https://iili.io/F2zi6Vp.jpg", originalLink: "https://arolinks.com/EMHe", altText: "Poster of Brahmāstra movie" },
+            { title: "Tanhaji: The Unsung Warrior", genre: "Historical Action", imgSrc: "https://iili.io/F2ziPiN.jpg", originalLink: "Tanhaji.html", altText: "Poster of Tanhaji movie" },
+            { title: "Sita Ramam", genre: "Romantic Drama", imgSrc: "https://iili.io/F2zisfI.jpg", originalLink: "SitaRamam.html", altText: "Poster of Sita Ramam movie" },
+            { title: "Sirf Ek Bandaa Kaafi Hai", genre: "Courtroom Drama", imgSrc: "https://iili.io/F2ziLlt.jpg", originalLink: "https://arolinks.com/qWaK1O", altText: "Poster of Sirf Ek Bandaa Kaafi Hai movie" },
+            { title: "12th Fail", genre: "Biographical Drama", imgSrc: "https://iili.io/F2ziQUX.jpg", originalLink: "12thFail.html", altText: "Poster of 12th Fail movie" },  
+            { title: "Housefull 5", genre: "Upcoming Drama", imgSrc: "https://iili.io/F2I2FNp.jpg", originalLink: "https://arolinks.com/UAYJ2N", altText: "Poster of Housefull 5 movie" },
+            { title: "Titanic", genre: "Disaster, Tragic Romance", imgSrc: "https://iili.io/F2InRMQ.jpg", originalLink: "https://arolinks.com/hU3GsT", altText: "Poster of Titanic movie" },
+            { title: "OMG", genre: "Comedy, Drama", imgSrc: "https://iili.io/F2I1CLN.jpg", originalLink: "https://arolinks.com/hxEv", altText: "Poster of OMG movie" }              
+        ];
+
+        const popularSouthMoviesData = [
+            { title: "Baahubali 2: The Conclusion", genre: "Action, Fantasy", imgSrc: "https://iili.io/F2Tt1Zg.jpg", originalLink: "video.unavailable.html" },
+            { title: "Girls Will Be Girls 2024", genre: "Romance, Drama", imgSrc: "https://iili.io/KQQ119a.jpg", originalLink: "girl.html", altText: "Poster of Girls Will Be Girls" },
+            { title: "Arjun Reddy", genre: "Romance", imgSrc: "https://iili.io/KrlUnhx.jpg", originalLink: "ArjunReddy.html", altText: "Poster of Arjun Reddy" },
+            { title: "Kabir Singh", genre: "Romance", imgSrc: "https://iili.io/Krj2evj.jpg", originalLink: "Kabirsingh.html", altText: "Poster of Kabir Singh" },
+            { title: "KGF Chapter 1", genre: "Action, Crime", imgSrc: "https://iili.io/F2TtBvS.jpg", originalLink: "https://arolinks.com/MdpR" },
+            { title: "Salaar ", genre: "Action, Crime", imgSrc: "https://iili.io/KXEoove.jpg", originalLink: "salaar.html" },
+            { title: "Sita Ramam", genre: "Action, Crime", imgSrc: "https://iili.io/F2Ttqa2.jpg", originalLink: "SitaRamam.html" },
+            { title: "Jai Bhim", genre: "Romantic Drama", imgSrc: "https://iili.io/F2TtzZu.jpg", originalLink: "jaibhim.html" },
+            { title: "Master", genre: "Legal Drama", imgSrc: "https://iili.io/F2TtTCb.jpg", originalLink: "https://arolinks.com/5CGPa0" },
+            { title: "Vikram", genre: "Action, Thriller", imgSrc: "https://iili.io/F2TtuGj.jpg", originalLink: "https://arolinks.com/8U9Wbb" },
+            { title: "Eega", genre: "Action, Thriller", imgSrc: "https://iili.io/F2Tt53Q.jpg", originalLink: "https://arolinks.com/z1BC" },
+            { title: "Varisu", genre: "Fantasy, Action", imgSrc: "https://iili.io/F2Tt7aV.jpg", originalLink: "https://arolinks.com/RMiZz" },
+            { title: "Dasara", genre: "Action, Drama", imgSrc: "https://iili.io/F2TtayP.jpg", originalLink: "https://arolinks.com/RphBBF" },
+            { title: "Mersal", genre: "Action, Drama", imgSrc: "https://iili.io/F2Ttlu1.jpg", originalLink: "https://arolinks.com/ZNw6TB" },
+            { title: "Ala Vaikunthapurramuloo", genre: "Action, Thriller", imgSrc: "https://iili.io/F2Tt0wF.jpg", originalLink: "https://arolinks.com/UdDblH" },
+            { title: "KGF Chapter 2 ", genre: "Action, Comedy", imgSrc: "https://iili.io/F2TtGna.jpg", originalLink: "https://arolinks.com/72h" }
+        ];
+
+        const popularWebSeriesData = [
+            { title: "Mirzapur", genre: "Crime Thriller", imgSrc: "https://iili.io/F27Hhgt.jpg", originalLink: "https://arolinks.com/IMivvy" },
+            { title: "The Family Man", genre: "Spy Thriller", imgSrc: "https://iili.io/F27HyrP.jpg", originalLink: "https://arolinks.com/IMivvy" },
+            { title: "Asur 2", genre: "Crime Thriller", imgSrc: "https://iili.io/F27HOes.jpg", originalLink: "Asur2.html" },
+            { title: "Sacred Games", genre: "Crime Thriller", imgSrc: "https://iili.io/F27HN7n.jpg", originalLink: "https://arolinks.com/IMivvy" },
+            { title: "Paatal Lok", genre: "Crime Thriller", imgSrc: "https://iili.io/F27HSLl.jpg", originalLink: "https://arolinks.com/IMivvy" },
+            { title: "Farzi", genre: "Crime Thriller", imgSrc: "https://iili.io/F39aGXj.jpg", originalLink: "https://arolinks.com/IMivvy" },
+            { title: "Scam 1992", genre: "Biographical Crime", imgSrc: "https://iili.io/F27Hr1S.jpg", originalLink: "https://arolinks.com/IMivvy" },
+            { title: "Panchayat", genre: "Comedy Drama", imgSrc: "https://iili.io/F27HgB2.jpg", originalLink: "https://arolinks.com/IMivvy" },
+            { title: "Rocket Boys", genre: "Biographical Drama", imgSrc: "https://iili.io/F27H4r7.jpg", originalLink: "https://arolinks.com/IMivvy" },
+            { title: "Made in Heaven", genre: "Drama", imgSrc: "https://iili.io/F27Hsku.jpg", originalLink: "https://arolinks.com/IMivvy" },
+            { title: "Delhi Crime", genre: "Crime Drama", imgSrc: "https://iili.io/F27HLmb.jpg", originalLink: "https://arolinks.com/IMivvy" },
+            { title: "Criminal Justice", genre: "Legal Drama", imgSrc: "https://iili.io/F27HZIj.jpg", originalLink: "https://arolinks.com/IMivvy" },
+            { title: "Breathe", genre: "Crime Thriller", imgSrc: "https://iili.io/F27Hthx.jpg", originalLink: "https://arolinks.com/IMivvy" },
+            { title: "Special OPS", genre: "Spy Thriller", imgSrc: "https://iili.io/F2YqPjt.jpg", originalLink: "https://arolinks.com/IMivvy" },
+            { title: "SHE", genre: "Crime drama", imgSrc: "https://iili.io/F2YfN1f.jpg", originalLink: "https://arolinks.com/IMivvy" },
+        ];   
+
+        const myListMovies = [
+            { title: "The Dark Knight", genre: "Action", imgSrc: "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg", originalLink: "watch_tdk.html", altText: "Dark Knight Poster" },
+            { title: "Interstellar", genre: "Sci-Fi", imgSrc: "https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg", originalLink: "watch_interstellar.html", altText: "Interstellar Poster" },
+            { title: "The Matrix", genre: "Sci-Fi", imgSrc: "https://image.tmdb.org/t/p/w500/xBKGJQsAIeweesB79KC89FpBrVr.jpg", originalLink: "watch_matrix.html", altText: "Matrix Poster" }
+        ];
+
+        // Combine all for Search
+        const allMovies = [...popularOttMoviesData, ...popularSouthMoviesData, ...popularWebSeriesData, ...myListMovies];
+
+
+        // --- 2. RENDER FUNCTIONS ---
+        function renderMovies(containerId, movies) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = ''; 
+
+            movies.forEach(movie => {
+                const card = document.createElement('div');
+                card.className = 'movie-card';
+                card.onclick = () => window.location.href = movie.originalLink;
+
+                card.innerHTML = `
+                    <img src="${movie.imgSrc}" alt="${movie.altText || movie.title}" loading="lazy">
+                    <div class="card-overlay">
+                        <div class="card-title">${movie.title}</div>
+                        <div class="card-meta">${movie.genre}</div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // --- 3. SCROLL FUNCTIONALITY (< > Buttons) ---
+        function scrollContainer(containerId, scrollAmount) {
+            const container = document.getElementById(containerId);
+            container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+
+
+        // --- 4. THEME TOGGLE (Day/Night) ---
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.getElementById('themeToggle');
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                btn.textContent = '🌙'; // Switch to Moon icon
+            } else {
+                btn.textContent = '☀️'; // Switch to Sun icon
+            }
+        }
+
+
+        // --- 5. SEARCH FUNCTIONALITY ---
+        const searchInput = document.getElementById('searchInput');
+        const searchResultsSection = document.getElementById('search-results-section');
+        const searchResultsGrid = document.getElementById('search-results-grid');
+        const mainContent = document.getElementById('main-content');
+        const searchBtn = document.getElementById('searchBtn');
+
+        function performSearch(query) {
+            if (!query) {
+                // Clear search, show main content
+                searchResultsSection.style.display = 'none';
+                mainContent.style.display = 'block';
+                return;
+            }
+
+            // Hide main content, show search section
+            mainContent.style.display = 'none';
+            searchResultsSection.style.display = 'block';
+            searchResultsGrid.innerHTML = '';
+
+            const lowerQuery = query.toLowerCase();
+            const filteredMovies = allMovies.filter(m => m.title.toLowerCase().includes(lowerQuery));
+
+            if (filteredMovies.length === 0) {
+                searchResultsGrid.innerHTML = '<div class="no-results">No movies found matching "' + query + '"</div>';
+            } else {
+                filteredMovies.forEach(movie => {
+                    const card = document.createElement('div');
+                    card.className = 'movie-card';
+                    card.onclick = () => window.location.href = movie.originalLink;
+                    card.innerHTML = `
+                        <img src="${movie.imgSrc}" alt="${movie.title}">
+                        <div class="card-overlay">
+                            <div class="card-title">${movie.title}</div>
+                            <div class="card-meta">${movie.genre}</div>
+                        </div>
+                    `;
+                    searchResultsGrid.appendChild(card);
+                });
+            }
+        }
+
+        // Search Events
+        searchInput.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+                performSearch(searchInput.value);
+            }
+            // Optional: Live search as you type (uncomment below line)
+            // performSearch(searchInput.value); 
+        });
+        
+        // Search icon click performs search
+        searchBtn.addEventListener('click', () => {
+             const box = document.getElementById('searchBox');
+             if (box.classList.contains('active') && searchInput.value.length > 0) {
+                 performSearch(searchInput.value);
+             } else {
+                 box.classList.toggle('active');
+                 if(box.classList.contains('active')) searchInput.focus();
+             }
+        });
+
+
+        // --- 6. INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMovies('ott-movies-container', popularOttMoviesData);
+            renderMovies('south-movies-container', popularSouthMoviesData);
+            renderMovies('web-series-container', popularWebSeriesData);
+            renderMovies('mylist-container', myListMovies);
+        });
+
+
+        // --- STANDARD UTILS (Scroll Header, Slider) ---
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) { header.classList.add('scrolled'); } 
+            else { header.classList.remove('scrolled'); }
+        });
+
+        const profileAvatar = document.getElementById('profileAvatar');
+        const profileDropdown = document.getElementById('profileDropdown');
+
+        profileAvatar.addEventListener('click', (e) => {
+            e.stopPropagation();
+            profileDropdown.classList.toggle('show');
+        });
+
+        window.addEventListener('click', () => {
+            if (profileDropdown.classList.contains('show')) { profileDropdown.classList.remove('show'); }
+        });
+
+        profileDropdown.addEventListener('click', (e) => { e.stopPropagation(); });
+
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = slides.length;
+        const intervalTime = 8000;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            let nextIndex = (currentSlide + 1) % totalSlides;
+            showSlide(nextIndex);
+        }
+
+        let slideInterval = setInterval(nextSlide, intervalTime);
+
+        function goToSlide(index) {
+            clearInterval(slideInterval);
+            showSlide(index);
+            slideInterval = setInterval(nextSlide, intervalTime);
+        }
+
+        function openPlayer() { window.location.href = 'watch_movie.html'; }
+        function openDetails() { window.location.href = 'movie_details.html'; }
+
+    </script>
+</body>
+</html>
