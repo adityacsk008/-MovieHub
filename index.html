@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StreamFlix - Watch Movies & TV Shows Online</title>
     
+    <!-- Google AdMob SDK -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5411788341265146"
+         crossorigin="anonymous"></script>
+    
     <style>
         /* ═══════════════════════════════════════════════════════════════
            CSS VARIABLES (THEMING)
@@ -299,7 +303,7 @@
         }
 
         .nav-item.active {
-            color: #E50914; /* Red for active state */
+            color: #E50914;
             font-weight: bold;
         }
 
@@ -308,175 +312,188 @@
         }
 
         /* ═══════════════════════════════════════════════════════════════
-           HERO SECTION
+           HERO CAROUSEL SECTION (NEW)
            ═══════════════════════════════════════════════════════════════ */
-        .hero-section {
+        .hero-carousel-section {
             position: relative;
             width: 100%;
-            height: 85vh;
-            margin-top: 0;
+            height: 0;
+            padding-bottom: 56.25%;
             overflow: hidden;
-            scroll-margin-top: 70px;
+            background: #000;
+            margin-top: 70px;
         }
 
-        .hero-slider-container {
+        .carousel-container {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            position: relative;
         }
 
-        .hero-slide {
+        .carousel-slide {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             opacity: 0;
-            visibility: hidden;
-            transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
             z-index: 1;
         }
 
-        .hero-slide.active {
-            opacity: 1;
-            visibility: visible;
-            z-index: 2;
-        }
-
-        .hero-background {
+        .carousel-slide img {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .hero-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            animation: zoomEffect 20s infinite alternate;
+            filter: brightness(0.6);
         }
 
-        @keyframes zoomEffect {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-
-        .hero-gradient {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* Gradient optimized for both modes but kept dark at bottom for text readability */
-            background: linear-gradient(to top, var(--bg-color) 0%, transparent 20%),
-                        linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 60%);
+        .carousel-content {
+            position: relative;
             z-index: 2;
+            padding: 0 5%;
+            max-width: 600px;
+            color: white;
+            margin-left: 3%;
         }
 
-        .hero-content {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            left: 60px;
-            z-index: 4;
-            width: 45%;
-            padding-right: 20px;
+        .carousel-content h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+            line-height: 1.2;
         }
 
-        .age-rating {
+        .carousel-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+            max-width: 500px;
+        }
+
+        .watch-now-btn {
             display: inline-block;
-            background-color: rgba(51, 51, 51, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            color: #ffffff;
-            font-size: 14px;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 2px;
-            margin-bottom: 20px;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #FFB347 0%, #E69A36 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 179, 71, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .hero-title-text {
-            font-size: 60px;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-            color: #fff; /* Always white on hero image */
-        }
-        
-        .hero-synopsis {
-            font-size: 18px;
-            line-height: 1.5;
-            color: #ffffff;
-            margin-bottom: 25px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+        .watch-now-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 179, 71, 0.6);
+            background: linear-gradient(135deg, #E69A36 0%, #FFB347 100%);
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .hero-btn {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 35px;
-            font-size: 18px;
-            font-weight: 700;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .btn-play {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        .btn-play:hover {
-            background-color: rgba(255, 255, 255, 0.75);
-        }
-
-        .btn-info {
-            background-color: rgba(109, 109, 110, 0.7);
-            color: #ffffff;
-        }
-
-        .btn-info:hover {
-            background-color: rgba(109, 109, 110, 0.4);
-        }
-
-        .slider-dots {
+        .carousel-indicators {
             position: absolute;
-            right: 60px;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 3;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .indicator.active {
+            background: #FFB347;
+            transform: scale(1.3);
+            border-color: white;
+        }
+
+        .carousel-nav {
+            position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 5;
-        }
-
-        .dot {
-            width: 6px;
-            height: 6px;
-            background-color: rgba(255,255,255,0.3);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             cursor: pointer;
-            transition: all 0.3s;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 3;
+            backdrop-filter: blur(5px);
         }
 
-        .dot.active {
-            background-color: #fff;
-            transform: scale(1.5);
+        .carousel-nav:hover {
+            background: rgba(255, 179, 71, 0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-nav.prev {
+            left: 20px;
+        }
+
+        .carousel-nav.next {
+            right: 20px;
+        }
+
+        /* ═══════════════════════════════════════════════════════════════
+           ADMOB ADS STYLING
+           ═══════════════════════════════════════════════════════════════ */
+        .ad-container {
+            width: 100%;
+            max-width: 100%;
+            margin: 20px auto;
+            text-align: center;
+            background: rgba(0,0,0,0.05);
+            padding: 10px;
+            border-radius: 8px;
+            min-height: 90px;
+        }
+
+        .banner-ad {
+            margin: 30px 0;
+        }
+
+        .ad-label {
+            font-size: 10px;
+            color: #888;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
         }
 
         /* ═══════════════════════════════════════════════════════════════
@@ -523,7 +540,7 @@
             justify-content: center;
             opacity: 0;
             transition: all 0.3s ease;
-            height: 300px; /* Match card height */
+            height: 300px;
             margin-top: 0;
             border-radius: 4px;
         }
@@ -607,7 +624,7 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            color: #fff; /* Always white on overlay */
+            color: #fff;
         }
 
         .card-meta {
@@ -620,7 +637,7 @@
            SEARCH RESULTS SECTION
            ═══════════════════════════════════════════════════════════════ */
         #search-results-section {
-            display: none; /* Hidden by default */
+            display: none;
             min-height: 80vh;
             padding-top: 100px;
         }
@@ -823,40 +840,46 @@
 
             .footer { display: none !important; }
 
-            .hero-section { height: 65vh; }
-            .hero-content { 
-                width: 100%; 
-                left: 0; 
-                padding: 20px; 
-                bottom: 0;
-                top: auto;
-                transform: none;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-end;
-                height: 100%;
-                background: linear-gradient(to top, var(--bg-color) 5%, transparent 95%);
+            .hero-carousel-section {
+                padding-bottom: 75%;
             }
-            .hero-logo { width: 70%; margin-bottom: 10px; align-self: center; }
-            .hero-title-text { font-size: 32px; text-align: center; }
-            .hero-synopsis { display: none; }
-            .hero-buttons { 
-                width: 100%; 
-                justify-content: center; 
-                margin-bottom: 20px; 
+            .carousel-content {
+                padding: 0 4%;
+                margin-left: 2%;
+                max-width: 90%;
             }
-            .hero-btn { 
-                padding: 8px 20px; 
-                font-size: 14px; 
-                flex: 1;
-                justify-content: center;
-                max-width: 160px;
+            .carousel-content h2 {
+                font-size: 1.8rem;
             }
-            .age-rating { display: none; }
-            .slider-dots { display: none; }
+            .carousel-content p {
+                font-size: 0.9rem;
+            }
+            .watch-now-btn {
+                padding: 12px 30px;
+                font-size: 0.95rem;
+            }
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            .carousel-nav.prev {
+                left: 10px;
+            }
+            .carousel-nav.next {
+                right: 10px;
+            }
+            .carousel-indicators {
+                bottom: 20px;
+                gap: 8px;
+            }
+            .indicator {
+                width: 10px;
+                height: 10px;
+            }
             
             .row-wrapper { padding: 0 20px; }
-            .scroll-btn { display: none; /* Hide scroll buttons on mobile, swipe is better */ }
+            .scroll-btn { display: none; }
 
             .section-title { 
                 padding-left: 20px; 
@@ -880,6 +903,11 @@
             
             #search-results-section { padding: 80px 20px 20px 20px; }
             .search-grid { padding: 0; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            
+            .ad-container {
+                margin: 15px 0;
+                padding: 8px;
+            }
         }
     </style>
 </head>
@@ -930,61 +958,83 @@
 
     <!-- MAIN CONTENT WRAPPER (Hidden when searching) -->
     <div id="main-content">
-        <!-- HERO SECTION -->
-        <section class="hero-section" id="home">
-            <div class="hero-slider-container" id="heroSlider">
-                <div class="hero-slide active" data-index="0">
-                    <div class="hero-background">
-                        <img src="https://image.tmdb.org/t/p/original/8ZTVqvKDQ8emSGUEMjsS4yHAwrp.jpg" class="hero-image" alt="Inception">
-                        <div class="hero-gradient"></div>
-                    </div>
-                    <div class="hero-content">
-                        <div class="age-rating">13+</div>
-                        <h1 class="hero-title-text" style="font-family: 'Arial Black';">INCEPTION</h1>
-                        <p class="hero-synopsis">A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.</p>
-                        <div class="hero-buttons">
-                            <button class="hero-btn btn-play" onclick="openPlayer()"><span>▶</span> Play</button>
-                            <button class="hero-btn btn-info" onclick="openDetails()"><span>ⓘ</span> More Info</button>
-                        </div>
+        <!-- NEW HERO CAROUSEL SECTION -->
+        <section class="hero-carousel-section" id="home">
+            <div class="carousel-container">
+                <div class="carousel-slide active">
+                    <img src="https://iili.io/F2SglQ2.jpg" alt="Animal Movie">
+                    <div class="carousel-content">
+                        <h2>Animal</h2>
+                        <p>A dark and intense action crime drama exploring the complex relationship between a father and son. When his father's life is threatened, a man embarks on a violent path of revenge.</p>
+                        <a href="mainmovies/animal.html" class="watch-now-btn">▶ Watch Now</a>
                     </div>
                 </div>
-                <div class="hero-slide" data-index="1">
-                    <div class="hero-background">
-                        <img src="https://image.tmdb.org/t/p/original/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg" class="hero-image" alt="Avatar">
-                        <div class="hero-gradient"></div>
-                    </div>
-                    <div class="hero-content">
-                        <div class="age-rating">13+</div>
-                        <h1 class="hero-title-text" style="color: #00d4ff;">AVATAR: THE WAY OF WATER</h1>
-                        <p class="hero-synopsis">Jake Sully lives with his newfound family formed on the extrasolar moon Pandora.</p>
-                        <div class="hero-buttons">
-                            <button class="hero-btn btn-play" onclick="openPlayer()"><span>▶</span> Play</button>
-                            <button class="hero-btn btn-info" onclick="openDetails()"><span>ⓘ</span> More Info</button>
-                        </div>
+                <div class="carousel-slide">
+                    <img src="https://iili.io/F2Sgchl.jpg" alt="Jawan Movie">
+                    <div class="carousel-content">
+                        <h2>Jawan</h2>
+                        <p>A high-octane action thriller following a man driven by a personal vendetta to rectify the wrongs in society. Shah Rukh Khan delivers a powerful dual role performance.</p>
+                        <a href="mainmovies/jawan.html" class="watch-now-btn">▶ Watch Now</a>
                     </div>
                 </div>
-                <div class="hero-slide" data-index="2">
-                    <div class="hero-background">
-                        <img src="https://image.tmdb.org/t/p/original/56v2KjBlU4XaOv9rVYkJu64COcfe.jpg" class="hero-image" alt="Stranger Things">
-                        <div class="hero-gradient"></div>
+                <div class="carousel-slide">
+                    <img src="https://iili.io/F2SgaI4.jpg" alt="Fighter Movie">
+                    <div class="carousel-content">
+                        <h2>Fighter</h2>
+                        <p>India's first aerial action film showcasing elite fighter pilots protecting the nation's airspace. Experience breathtaking aerial sequences and intense dogfights.</p>
+                        <a href="mainmovies/fighter.html" class="watch-now-btn">▶ Watch Now</a>
                     </div>
-                    <div class="hero-content">
-                        <div class="age-rating">16+</div>
-                        <h1 class="hero-title-text" style="color: #ff2a2a; text-shadow: 0 0 10px #ff0000;">STRANGER THINGS</h1>
-                        <p class="hero-synopsis">When a young boy vanishes, a small town uncovers a mystery involving secret experiments.</p>
-                        <div class="hero-buttons">
-                            <button class="hero-btn btn-play" onclick="openPlayer()"><span>▶</span> Play</button>
-                            <button class="hero-btn btn-info" onclick="openDetails()"><span>ⓘ</span> More Info</button>
-                        </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://iili.io/F2SgXkb.jpg" alt="Maharaja Movie">
+                    <div class="carousel-content">
+                        <h2>Maharaja</h2>
+                        <p>An intense action thriller that follows a barber whose life takes a dramatic turn. What begins as a simple theft investigation unravels into a complex web of crime and revenge.</p>
+                        <a href="mainmovies/maharaja.html" class="watch-now-btn">▶ Watch Now</a>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://iili.io/F2SgEE7.jpg" alt="12th Fail Movie">
+                    <div class="carousel-content">
+                        <h2>12th Fail</h2>
+                        <p>An inspiring biographical drama about perseverance and determination. The story of a man who overcomes failures to achieve his dreams against all odds.</p>
+                        <a href="12thFail.html" class="watch-now-btn">▶ Watch Now</a>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://iili.io/F2SPjcP.jpg" alt="Article 370 Movie">
+                    <div class="carousel-content">
+                        <h2>Article 370</h2>
+                        <p>A gripping political thriller exploring one of India's most significant constitutional decisions. Intense drama and powerful performances bring this historic event to life.</p>
+                        <a href="mainmovies/article370.html" class="watch-now-btn">▶ Watch Now</a>
                     </div>
                 </div>
             </div>
-            <div class="slider-dots">
-                <div class="dot active" onclick="goToSlide(0)"></div>
-                <div class="dot" onclick="goToSlide(1)"></div>
-                <div class="dot" onclick="goToSlide(2)"></div>
+            <button class="carousel-nav prev" onclick="changeSlide(-1)">❮</button>
+            <button class="carousel-nav next" onclick="changeSlide(1)">❯</button>
+            <div class="carousel-indicators">
+                <span class="indicator active" onclick="goToSlide(0)"></span>
+                <span class="indicator" onclick="goToSlide(1)"></span>
+                <span class="indicator" onclick="goToSlide(2)"></span>
+                <span class="indicator" onclick="goToSlide(3)"></span>
+                <span class="indicator" onclick="goToSlide(4)"></span>
+                <span class="indicator" onclick="goToSlide(5)"></span>
             </div>
         </section>
+
+        <!-- AdMob Banner Ad -->
+        <div class="ad-container banner-ad">
+            <div class="ad-label">Advertisement</div>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5411788341265146"
+                 data-ad-slot="1020552131"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
 
         <!-- MOBILE BOTTOM NAVIGATION -->
         <nav class="mobile-bottom-nav">
@@ -1007,6 +1057,20 @@
                 <button class="scroll-btn right" onclick="scrollContainer('ott-movies-container', 300)">❯</button>
             </div>
         </section>
+
+        <!-- AdMob Rewarded Interstitial Ad -->
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5411788341265146"
+                 data-ad-slot="4374022529"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
 
         <section class="content-section">
             <h2 class="section-title">South Indian Hits</h2>
@@ -1226,7 +1290,6 @@
             { title: "The Matrix", genre: "Sci-Fi", imgSrc: "https://image.tmdb.org/t/p/w500/xBKGJQsAIeweesB79KC89FpBrVr.jpg", originalLink: "watch_matrix.html", altText: "Matrix Poster" }
         ];
 
-        // Combine all for Search
         const allMovies = [...popularOttMoviesData, ...popularSouthMoviesData, ...popularWebSeriesData, ...myListMovies];
 
 
@@ -1265,9 +1328,9 @@
             body.classList.toggle('light-mode');
             
             if (body.classList.contains('light-mode')) {
-                btn.textContent = '🌙'; // Switch to Moon icon
+                btn.textContent = '🌙';
             } else {
-                btn.textContent = '☀️'; // Switch to Sun icon
+                btn.textContent = '☀️';
             }
         }
 
@@ -1281,13 +1344,11 @@
 
         function performSearch(query) {
             if (!query) {
-                // Clear search, show main content
                 searchResultsSection.style.display = 'none';
                 mainContent.style.display = 'block';
                 return;
             }
 
-            // Hide main content, show search section
             mainContent.style.display = 'none';
             searchResultsSection.style.display = 'block';
             searchResultsGrid.innerHTML = '';
@@ -1314,16 +1375,12 @@
             }
         }
 
-        // Search Events
         searchInput.addEventListener('keyup', (e) => {
             if (e.key === 'Enter') {
                 performSearch(searchInput.value);
             }
-            // Optional: Live search as you type (uncomment below line)
-            // performSearch(searchInput.value); 
         });
         
-        // Search icon click performs search
         searchBtn.addEventListener('click', () => {
              const box = document.getElementById('searchBox');
              if (box.classList.contains('active') && searchInput.value.length > 0) {
@@ -1335,7 +1392,153 @@
         });
 
 
-        // --- 6. INITIALIZATION ---
+        // --- 6. HERO CAROUSEL JAVASCRIPT ---
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const totalSlides = slides.length;
+        let autoSlideInterval;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            else if (currentSlide < 0) currentSlide = totalSlides - 1;
+            showSlide(currentSlide);
+            resetAutoSlide();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            showSlide(currentSlide);
+            resetAutoSlide();
+        }
+
+        function autoSlide() {
+            currentSlide++;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            showSlide(currentSlide);
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(autoSlide, 5000);
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+
+        if (slides.length > 0) {
+            startAutoSlide();
+            const carouselSection = document.querySelector('.hero-carousel-section');
+            if (carouselSection) {
+                carouselSection.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+                carouselSection.addEventListener('mouseleave', () => startAutoSlide());
+            }
+        }
+
+
+        // --- 7. ADMOB INTEGRATION ---
+        
+        // APP OPEN AD
+        window.addEventListener('load', function() {
+            const appOpenAdContainer = document.createElement('div');
+            appOpenAdContainer.id = 'app-open-ad';
+            appOpenAdContainer.style.cssText = `
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.95); z-index: 10000;
+                display: flex; flex-direction: column; align-items: center; justify-content: center;
+            `;
+            appOpenAdContainer.innerHTML = `
+                <div style="background: white; padding: 30px; border-radius: 15px; text-align: center; max-width: 90%; margin-bottom: 30px;">
+                    <h2 style="color: #E50914; margin-bottom: 10px; font-size: 28px;">Welcome to StreamFlix</h2>
+                    <p style="color: #666; font-size: 14px;">Loading your entertainment...</p>
+                </div>
+                <ins class="adsbygoogle" style="display:block; width: 90%; max-width: 400px;"
+                     data-ad-client="ca-pub-5411788341265146" data-ad-slot="8409648060"
+                     data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <button id="close-app-open-ad" style="margin-top: 30px; padding: 15px 40px;
+                    background: linear-gradient(135deg, #E50914 0%, #ff6b6b 100%); color: white;
+                    border: none; border-radius: 30px; font-size: 18px; font-weight: 600;
+                    cursor: pointer; box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4); display: none;">
+                    Enter StreamFlix</button>
+            `;
+            document.body.appendChild(appOpenAdContainer);
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            setTimeout(() => { document.getElementById('close-app-open-ad').style.display = 'block'; }, 3000);
+            document.getElementById('close-app-open-ad').addEventListener('click', () => {
+                appOpenAdContainer.style.animation = 'fadeOut 0.5s ease';
+                setTimeout(() => { document.body.removeChild(appOpenAdContainer); }, 500);
+            });
+        });
+
+        // INTERSTITIAL AD
+        let interstitialAdShown = false;
+        function loadInterstitialAd() {
+            if (!interstitialAdShown) {
+                const interstitialContainer = document.createElement('div');
+                interstitialContainer.style.cssText = `position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                    background: rgba(0,0,0,0.9); z-index: 9999; display: flex; flex-direction: column;
+                    align-items: center; justify-content: center;`;
+                interstitialContainer.innerHTML = `
+                    <div style="background: white; padding: 20px; border-radius: 10px; text-align: center; max-width: 90%; margin-bottom: 20px;">
+                        <h3 style="color: #333; margin-bottom: 10px;">Please Wait</h3>
+                        <p style="color: #666; font-size: 14px;">Advertisement loading...</p>
+                    </div>
+                    <ins class="adsbygoogle" style="display:block; width: 90%; max-width: 400px;"
+                         data-ad-client="ca-pub-5411788341265146" data-ad-slot="8528889954"
+                         data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <button id="close-interstitial-ad" style="margin-top: 20px; padding: 12px 30px;
+                        background: #E50914; color: white; border: none; border-radius: 25px;
+                        font-size: 16px; cursor: pointer; display: none;">Continue</button>
+                `;
+                document.body.appendChild(interstitialContainer);
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                setTimeout(() => { document.getElementById('close-interstitial-ad').style.display = 'block'; }, 5000);
+                document.getElementById('close-interstitial-ad').addEventListener('click', () => {
+                    document.body.removeChild(interstitialContainer);
+                });
+                interstitialAdShown = true;
+            }
+        }
+        setTimeout(loadInterstitialAd, 30000);
+
+        // REWARDED AD
+        function showRewardedAd(callback) {
+            const rewardedAdContainer = document.createElement('div');
+            rewardedAdContainer.style.cssText = `position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.9); z-index: 9999; display: flex; flex-direction: column;
+                align-items: center; justify-content: center;`;
+            rewardedAdContainer.innerHTML = `
+                <div style="background: white; padding: 20px; border-radius: 10px; text-align: center; max-width: 90%; margin-bottom: 20px;">
+                    <h3 style="color: #333; margin-bottom: 10px;">🎬 Watch Ad to Continue</h3>
+                    <p style="color: #666; font-size: 14px;">Please watch this ad to access the content</p>
+                </div>
+                <ins class="adsbygoogle" style="display:block; width: 90%; max-width: 400px;"
+                     data-ad-client="ca-pub-5411788341265146" data-ad-slot="3060940858"
+                     data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <button id="close-rewarded-ad" style="margin-top: 20px; padding: 12px 30px;
+                    background: #46d369; color: white; border: none; border-radius: 25px;
+                    font-size: 16px; cursor: pointer; display: none;">Continue to Content</button>
+            `;
+            document.body.appendChild(rewardedAdContainer);
+            (adsbygoogle = window.adsbygoogle || []).push({});
+            setTimeout(() => { document.getElementById('close-rewarded-ad').style.display = 'block'; }, 5000);
+            document.getElementById('close-rewarded-ad').addEventListener('click', () => {
+                document.body.removeChild(rewardedAdContainer);
+                if (callback) callback();
+            });
+        }
+
+
+        // --- 8. INITIALIZATION ---
         document.addEventListener('DOMContentLoaded', () => {
             renderMovies('ott-movies-container', popularOttMoviesData);
             renderMovies('south-movies-container', popularSouthMoviesData);
@@ -1344,7 +1547,7 @@
         });
 
 
-        // --- STANDARD UTILS (Scroll Header, Slider) ---
+        // --- STANDARD UTILS (Scroll Header, Profile) ---
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) { header.classList.add('scrolled'); } 
@@ -1364,36 +1567,6 @@
         });
 
         profileDropdown.addEventListener('click', (e) => { e.stopPropagation(); });
-
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.hero-slide');
-        const dots = document.querySelectorAll('.dot');
-        const totalSlides = slides.length;
-        const intervalTime = 8000;
-
-        function showSlide(index) {
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
-            currentSlide = index;
-        }
-
-        function nextSlide() {
-            let nextIndex = (currentSlide + 1) % totalSlides;
-            showSlide(nextIndex);
-        }
-
-        let slideInterval = setInterval(nextSlide, intervalTime);
-
-        function goToSlide(index) {
-            clearInterval(slideInterval);
-            showSlide(index);
-            slideInterval = setInterval(nextSlide, intervalTime);
-        }
-
-        function openPlayer() { window.location.href = 'watch_movie.html'; }
-        function openDetails() { window.location.href = 'movie_details.html'; }
 
     </script>
 </body>
