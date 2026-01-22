@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>Shambhala Movie Review - Moviex.live</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    background:#0f172a;
+    color:white;
+    font-family: Arial, sans-serif;
+    line-height:1.8;
+}
+header{
+    padding:15px;
+    background:#020617;
+    border-bottom:1px solid #1e293b;
+    font-size:22px;
+    font-weight:bold;
+    color:#38bdf8;
+}
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:15px;
+}
+h1{
+    font-size:28px;
+    margin-bottom:5px;
+}
+.subtitle{
+    color:#cbd5f5;
+    margin-bottom:20px;
+}
+h2{
+    margin-top:25px;
+    color:#38bdf8;
+}
+.article-img{
+    width:100%;
+    max-width:800px;
+    margin:25px auto;
+    display:block;
+    border-radius:10px;
+}
+.download-box{
+    text-align:center;
+    margin:35px 0;
+    padding:20px;
+    border:1px dashed #38bdf8;
+    border-radius:10px;
+}
+#downloadBtn{
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:8px;
+    background:#38bdf8;
+    color:#020617;
+    cursor:pointer;
+}
+#downloadBtn:disabled{
+    background:gray;
+    cursor:not-allowed;
+}
+#timer{
+    margin-top:10px;
+    font-size:18px;
+    color:#facc15;
+}
+.highlight{
+    background:#020617;
+    padding:15px;
+    border-left:4px solid #38bdf8;
+    margin:20px 0;
+    border-radius:6px;
+}
+</style>
+</head>
+<body>
+
+<header>Moviex.live</header>
+
+<div class="container">
+
+<h1>Shambhala Movie Review: Ek Mysterious, Spiritual Aur Deep Journey</h1>
+<div class="subtitle">Adventure, Mystery aur Inner Peace ka Unique Combination – Full Honest Review</div>
+
+<p>
+Shambhala ek aisi movie hai jo sirf story nahi sunati, balki viewer ko ek **spiritual aur emotional journey** pe le jaati hai. Ye film slow-burn hai, lekin iska impact deep aur long-lasting hai.
+</p>
+
+<div class="highlight">
+🎯 <b>Short Me:</b> Ye movie un logon ke liye hai jo meaningful, artistic aur different type ki films pasand karte hain.
+</div>
+
+<h2>📖 Story Kis Baare Me Hai?</h2>
+
+<p>
+Shambhala ki kahani ek aise insaan ke around ghoomti hai jo apni life ke true purpose ko dhoondhne ke liye ek unknown journey pe nikal padta hai. Ye journey sirf physical nahi, balki **mental aur spiritual** bhi hai.
+</p>
+
+<p>
+Movie dheere-dheere apna world build karti hai aur viewer ko us atmosphere me completely immerse kar deti hai.
+</p>
+
+<!-- SINGLE IMAGE -->
+<img class="article-img" src="https://iili.io/f4TAY9j.webp" alt="Shambhala Movie">
+
+<h2>🎭 Acting & Direction</h2>
+
+<p>
+Is movie me acting bahut hi natural aur realistic lagti hai. Director ne har scene ko painting ki tarah shoot kiya hai. Cinematography is movie ka **sabse strong point** hai.
+</p>
+
+<h2>🎵 Music & Background Score</h2>
+
+<p>
+Background music bahut subtle hai, lekin scenes ke emotions ko aur powerful bana deta hai. Ye movie zyada shor nahi karti, balki **silence ke through impact create** karti hai.
+</p>
+
+<h2>💡 Movie Ka Message</h2>
+
+<div class="highlight">
+✨ Kabhi-kabhi life me answers bahar nahi, balki apne andar milte hain.
+</div>
+
+<p>
+Shambhala hume ye sikhati hai ki har insaan apni life ke kisi na kisi stage pe lost feel karta hai, aur us lost phase se hi real journey start hoti hai.
+</p>
+
+<!-- DOWNLOAD BUTTON -->
+<div class="download-box">
+    <h2>⬇️ Download Movie</h2>
+    <p>Download start karne ke liye niche button dabaye. Pehle 10 seconds ka timer complete hoga.</p>
+    <button id="downloadBtn" onclick="handleDownload()">Download Now</button>
+    <div id="timer"></div>
+</div>
+
+<h2>⭐ Final Verdict</h2>
+
+<p>
+Shambhala ek **different, deep aur meaningful movie** hai. Ye sab logon ke taste ki nahi hai, lekin jo log artistic aur thoughtful cinema pasand karte hain, unke liye ye movie ek gem hai.
+</p>
+
+</div>
+
+<script>
+let countdown = 10;
+let timerStarted = false;
+let unlocked = false;
+
+function handleDownload(){
+    if(unlocked){
+        window.location.href = "download.html";
+        return;
+    }
+
+    if(timerStarted) return;
+
+    timerStarted = true;
+    const btn = document.getElementById("downloadBtn");
+    const timerText = document.getElementById("timer");
+
+    btn.disabled = true;
+
+    const interval = setInterval(()=>{
+        timerText.innerText = "Please wait " + countdown + " seconds...";
+        countdown--;
+
+        if(countdown < 0){
+            clearInterval(interval);
+            timerText.innerText = "Timer complete! Ab Download pe click karo.";
+            btn.disabled = false;
+            unlocked = true;
+            btn.innerText = "Click to Download";
+        }
+    },1000);
+}
+</script>
+
+</body>
+</html>
