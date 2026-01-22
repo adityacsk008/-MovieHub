@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>सितारे ज़मीन पर Movie Review - Moviex.live</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    background:#0f172a;
+    color:white;
+    font-family: Arial, sans-serif;
+    line-height:1.8;
+}
+header{
+    padding:15px;
+    background:#020617;
+    border-bottom:1px solid #1e293b;
+    font-size:22px;
+    font-weight:bold;
+    color:#38bdf8;
+}
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:15px;
+}
+h1{
+    font-size:28px;
+    margin-bottom:5px;
+}
+.subtitle{
+    color:#cbd5f5;
+    margin-bottom:20px;
+}
+h2{
+    margin-top:25px;
+    color:#38bdf8;
+}
+.article-img{
+    width:100%;
+    max-width:800px;
+    margin:25px auto;
+    display:block;
+    border-radius:10px;
+}
+.download-box{
+    text-align:center;
+    margin:35px 0;
+    padding:20px;
+    border:1px dashed #38bdf8;
+    border-radius:10px;
+}
+#downloadBtn{
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:8px;
+    background:#38bdf8;
+    color:#020617;
+    cursor:pointer;
+}
+#downloadBtn:disabled{
+    background:gray;
+    cursor:not-allowed;
+}
+#timer{
+    margin-top:10px;
+    font-size:18px;
+    color:#facc15;
+}
+.highlight{
+    background:#020617;
+    padding:15px;
+    border-left:4px solid #38bdf8;
+    margin:20px 0;
+    border-radius:6px;
+}
+</style>
+</head>
+<body>
+
+<header>Moviex.live</header>
+
+<div class="container">
+
+<h1>सितारे ज़मीन पर Movie Review: Ek Aisi Film Jo Dil Aur Dimaag Dono Jeet Leti Hai</h1>
+<div class="subtitle">Emotional, Inspiring aur Heart-Touching Bollywood Masterpiece – Poori Honest Review</div>
+
+<p>
+"सितारे ज़मीन पर" sirf ek movie nahi hai, balki ek **emotion aur life lesson** hai. Ye film hume sikhati hai ki har bachcha special hota hai, bas use samajhne wale nazariye ki zarurat hoti hai.
+</p>
+
+<div class="highlight">
+🎯 <b>Short Me:</b> Ye movie parents, teachers aur students sabko ek baar zaroor dekhni chahiye.
+</div>
+
+<h2>📖 Story Kis Baare Me Hai?</h2>
+
+<p>
+Movie ki story ek chhote se bachche Ishaan ke around ghoomti hai jo padhai me weak hota hai aur sab use nalayak samajhne lagte hain. Uske parents aur teachers bhi use seriously nahi samajh paate. Lekin story me twist tab aata hai jab ek naye art teacher (Aamir Khan) uski life me entry leta hai.
+</p>
+
+<p>
+Ye teacher samajh jaata hai ki Ishaan problem child nahi hai, balki **dyslexia** se suffer kar raha hai. Fir shuru hota hai ek emotional aur inspiring journey.
+</p>
+
+<!-- CENTER IMAGE -->
+<img class="article-img" src="https://iili.io/f4TAaAx.webp" alt="Sitare Zameen Par">
+
+<h2>🎭 Acting & Performance</h2>
+
+<p>
+Aamir Khan ne hamesha ki tarah bahut hi sensible aur strong performance di hai. Lekin is movie ka asli hero hai **Darsheel Safary** jinhone Ishaan ka role play kiya hai. Uski acting naturally dil ko chhoo jaati hai.
+</p>
+
+<h2>🎵 Music & Emotions</h2>
+
+<p>
+Is movie ka music uski soul hai. "Maa" song ho ya title track – har gaana directly heart pe hit karta hai. Background score bhi scenes ke emotions ko aur strong bana deta hai.
+</p>
+
+<h2>💡 Movie Ka Message</h2>
+
+<div class="highlight">
+✨ Har bachcha unique hota hai. Comparison nahi, understanding zaroori hoti hai.
+</div>
+
+<p>
+Ye movie parents aur teachers dono ko ye realize karwati hai ki sirf marks hi sab kuch nahi hote. Talent har jagah hota hai, bas use pehchanne wali nazar chahiye.
+</p>
+
+<!-- DOWNLOAD BUTTON -->
+<div class="download-box">
+    <h2>⬇️ Download Movie</h2>
+    <p>Download start karne ke liye niche button dabaye. Pehle 10 seconds ka timer complete hoga.</p>
+    <button id="downloadBtn" onclick="handleDownload()">Download Now</button>
+    <div id="timer"></div>
+</div>
+
+<h2>⭐ Final Verdict</h2>
+
+<p>
+"सितारे ज़मीन पर" ek **must watch movie** hai. Ye sirf entertain nahi karti, balki aapko better human being banne ka lesson bhi deti hai. Agar aapne ye movie abhi tak nahi dekhi, to honestly aap ek gem miss kar rahe ho.
+</p>
+
+</div>
+
+<script>
+let countdown = 10;
+let timerStarted = false;
+let unlocked = false;
+
+function handleDownload(){
+    if(unlocked){
+        window.location.href = "download.html";
+        return;
+    }
+
+    if(timerStarted) return;
+
+    timerStarted = true;
+    const btn = document.getElementById("downloadBtn");
+    const timerText = document.getElementById("timer");
+
+    btn.disabled = true;
+
+    const interval = setInterval(()=>{
+        timerText.innerText = "Please wait " + countdown + " seconds...";
+        countdown--;
+
+        if(countdown < 0){
+            clearInterval(interval);
+            timerText.innerText = "Timer complete! Ab Download pe click karo.";
+            btn.disabled = false;
+            unlocked = true;
+            btn.innerText = "Click to Download";
+        }
+    },1000);
+}
+</script>
+
+</body>
+</html>
