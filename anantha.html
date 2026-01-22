@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>Anantha Movie Review - Moviex.live</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{margin:0;background:#0f172a;color:white;font-family:Arial;line-height:1.8;}
+header{padding:15px;background:#020617;border-bottom:1px solid #1e293b;font-size:22px;font-weight:bold;color:#38bdf8;}
+.container{max-width:900px;margin:auto;padding:15px;}
+h1{font-size:28px;}
+.subtitle{color:#cbd5f5;margin-bottom:20px;}
+h2{margin-top:25px;color:#38bdf8;}
+.article-img{width:100%;max-width:800px;margin:25px auto;display:block;border-radius:10px;}
+.download-box{text-align:center;margin:35px 0;padding:20px;border:1px dashed #38bdf8;border-radius:10px;}
+#downloadBtn{padding:12px 25px;font-size:18px;border:none;border-radius:8px;background:#38bdf8;color:#020617;cursor:pointer;}
+#downloadBtn:disabled{background:gray;}
+#timer{margin-top:10px;font-size:18px;color:#facc15;}
+.highlight{background:#020617;padding:15px;border-left:4px solid #38bdf8;margin:20px 0;border-radius:6px;}
+</style>
+</head>
+<body>
+
+<header>Moviex.live</header>
+<div class="container">
+
+<h1>Anantha Movie Review: Mystery, Emotion Aur Destiny Ka Deep Connection</h1>
+<div class="subtitle">Slow-Burn, Thoughtful aur Meaningful Cinema – Full Honest Review</div>
+
+<p>
+Anantha ek **different type ki movie** hai jo normal masala films se alag hai. Ye film destiny, time aur human emotions ke around ghoomti hai.
+</p>
+
+<div class="highlight">
+🌀 <b>Short Me:</b> Anantha = Mystery + Emotion + Deep Story
+</div>
+
+<h2>📖 Story Kis Baare Me Hai?</h2>
+<p>
+Anantha ki story ek aise character ke journey ko follow karti hai jo apni life ke unanswered questions ke answers dhoondhne nikalta hai. Dheere-dheere usse realize hota hai ki har cheez ka connection uske past aur future se juda hua hai.
+</p>
+
+<p>
+Story slow hai, lekin movie ka impact **strong aur long-lasting** hai.
+</p>
+
+<!-- IMAGE -->
+<img class="article-img" src="https://iili.io/f4TYQku.webp" alt="Anantha Movie">
+
+<h2>🎭 Acting & Performance</h2>
+<p>
+Actors ne subtle aur realistic acting ki hai. Koi overacting nahi, sab kuch story ke mood ke hisaab se perfectly fit baithta hai.
+</p>
+
+<h2>🎥 Direction & Cinematography</h2>
+<p>
+Direction aur visuals movie ka strong point hain. Har frame thoughtfully compose kiya gaya hai.
+</p>
+
+<h2>💡 Movie Ka Message</h2>
+<div class="highlight">
+✨ Har insaan apni life ke answers khud hi dhoondhta hai.
+</div>
+
+<p>
+Anantha hume sikhati hai ki zindagi ek journey hai, aur har journey ka apna meaning hota hai.
+</p>
+
+<!-- DOWNLOAD BUTTON -->
+<div class="download-box">
+    <h2>⬇️ Download Movie</h2>
+    <p>Download start karne ke liye niche button dabaye. Pehle 10 seconds ka timer complete hoga.</p>
+    <button id="downloadBtn" onclick="handleDownload()">Download Now</button>
+    <div id="timer"></div>
+</div>
+
+<h2>⭐ Final Verdict</h2>
+<p>
+Anantha ek **niche audience** ke liye movie hai. Agar tumhe deep, meaningful aur slow-burn films pasand hain, to ye movie tumhe zaroor achhi lagegi.
+</p>
+
+</div>
+
+<script>
+let countdown=10,timerStarted=false,unlocked=false;
+function handleDownload(){
+ if(unlocked){window.location.href="download.html";return;}
+ if(timerStarted) return;
+ timerStarted=true;
+ const btn=document.getElementById("downloadBtn");
+ const timer=document.getElementById("timer");
+ btn.disabled=true;
+ const i=setInterval(()=>{
+   timer.innerText="Please wait "+countdown+" seconds...";
+   countdown--;
+   if(countdown<0){
+     clearInterval(i);
+     timer.innerText="Timer complete! Ab Download pe click karo.";
+     btn.disabled=false;unlocked=true;btn.innerText="Click to Download";
+   }
+ },1000);
+}
+</script>
+
+</body>
+</html>
