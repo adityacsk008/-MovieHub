@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>Kantara Movie Review - Moviex.live</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    background:#0f172a;
+    color:white;
+    font-family: Arial, sans-serif;
+    line-height:1.8;
+}
+header{
+    padding:15px;
+    background:#020617;
+    border-bottom:1px solid #1e293b;
+    font-size:22px;
+    font-weight:bold;
+    color:#38bdf8;
+}
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:15px;
+}
+h1{
+    font-size:28px;
+    margin-bottom:5px;
+}
+.subtitle{
+    color:#cbd5f5;
+    margin-bottom:20px;
+}
+h2{
+    margin-top:25px;
+    color:#38bdf8;
+}
+.article-img{
+    width:100%;
+    max-width:800px;
+    margin:25px auto;
+    display:block;
+    border-radius:10px;
+}
+.download-box{
+    text-align:center;
+    margin:35px 0;
+    padding:20px;
+    border:1px dashed #38bdf8;
+    border-radius:10px;
+}
+#downloadBtn{
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:8px;
+    background:#38bdf8;
+    color:#020617;
+    cursor:pointer;
+}
+#downloadBtn:disabled{
+    background:gray;
+    cursor:not-allowed;
+}
+#timer{
+    margin-top:10px;
+    font-size:18px;
+    color:#facc15;
+}
+.highlight{
+    background:#020617;
+    padding:15px;
+    border-left:4px solid #38bdf8;
+    margin:20px 0;
+    border-radius:6px;
+}
+</style>
+</head>
+<body>
+
+<header>Moviex.live</header>
+
+<div class="container">
+
+<h1>Kantara Movie Review: Ek Raw, Powerful Aur Rooted Cinematic Experience</h1>
+<div class="subtitle">Action, Culture, Tradition aur Spiritual Power ka Zabardast Combination – Full Honest Review</div>
+
+<p>
+Kantara sirf ek movie nahi hai, balki ek **experience** hai. Ye film hume Indian roots, tradition aur folklore se connect kar deti hai. Agar tum mass + content wali movies pasand karte ho, to Kantara tumhare liye perfect hai.
+</p>
+
+<div class="highlight">
+🔥 <b>Short Me:</b> Kantara = Goosebumps, Power, Culture aur Solid Storytelling ka dhamaka.
+</div>
+
+<h2>📖 Story Kis Baare Me Hai?</h2>
+
+<p>
+Kantara ki story ek chhote se coastal village ke around ghoomti hai jahan tradition, faith aur jungle law sab kuch control karta hai. Hero ek carefree aur rebel type ka banda hota hai, lekin dheere-dheere wo apni **roots aur destiny** ko samajhne lagta hai.
+</p>
+
+<p>
+Story me mythology, local beliefs aur modern conflict ka bahut hi strong mix hai jo movie ko **unique aur engaging** bana deta hai.
+</p>
+
+<!-- SINGLE IMAGE -->
+<img class="article-img" src="https://iili.io/f4TARcu.webp" alt="Kantara Movie">
+
+<h2>🎭 Acting & Performance</h2>
+
+<p>
+Is movie ka sabse bada hero hai **Rishab Shetty**. Unki acting next level hai, especially climax me jo performance hai wo pure goosebumps deta hai. Supporting cast bhi apna kaam perfectly karti hai.
+</p>
+
+<h2>🎥 Direction & Cinematography</h2>
+
+<p>
+Direction aur cinematography dono hi **top-class** hain. Forest visuals, village setup aur ritual scenes bahut hi powerful aur authentic lagte hain. Har frame me effort dikhta hai.
+</p>
+
+<h2>🎵 Music & Background Score</h2>
+
+<p>
+Background score movie ki jaan hai. Jab bhi intense ya spiritual scene aata hai, music us scene ko **10x powerful** bana deta hai. Sound design bhi outstanding hai.
+</p>
+
+<h2>💡 Movie Ka Message</h2>
+
+<div class="highlight">
+✨ Nature, tradition aur roots ka respect karna hi asli power hai.
+</div>
+
+<p>
+Kantara hume ye yaad dilati hai ki hum apni modern life me apni roots ko bhool rahe hain, aur jab tak hum apni zameen aur culture ka respect nahi karenge, tab tak balance nahi aayega.
+</p>
+
+<!-- DOWNLOAD BUTTON -->
+<div class="download-box">
+    <h2>⬇️ Download Movie</h2>
+    <p>Download start karne ke liye niche button dabaye. Pehle 10 seconds ka timer complete hoga.</p>
+    <button id="downloadBtn" onclick="handleDownload()">Download Now</button>
+    <div id="timer"></div>
+</div>
+
+<h2>⭐ Final Verdict</h2>
+
+<p>
+Kantara ek **must watch movie** hai, especially agar tumhe powerful story, strong visuals aur rooted Indian cinema pasand hai. Ye movie entertainment ke saath-saath ek **deep impact** bhi chhod ke jaati hai.
+</p>
+
+</div>
+
+<script>
+let countdown = 10;
+let timerStarted = false;
+let unlocked = false;
+
+function handleDownload(){
+    if(unlocked){
+        window.location.href = "download.html";
+        return;
+    }
+
+    if(timerStarted) return;
+
+    timerStarted = true;
+    const btn = document.getElementById("downloadBtn");
+    const timerText = document.getElementById("timer");
+
+    btn.disabled = true;
+
+    const interval = setInterval(()=>{
+        timerText.innerText = "Please wait " + countdown + " seconds...";
+        countdown--;
+
+        if(countdown < 0){
+            clearInterval(interval);
+            timerText.innerText = "Timer complete! Ab Download pe click karo.";
+            btn.disabled = false;
+            unlocked = true;
+            btn.innerText = "Click to Download";
+        }
+    },1000);
+}
+</script>
+
+</body>
+</html>
