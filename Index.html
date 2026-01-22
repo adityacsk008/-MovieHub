@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Moviex.live</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            color: white;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background: #020617;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .container {
+            padding: 15px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card {
+            background: #020617;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .thumb {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #111;
+        }
+
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .title {
+            padding: 8px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Moviex.live</div>
+</header>
+
+<div class="container">
+    <div class="grid">
+
+        <!-- MOVIES -->
+
+        <a href="movie.html?movie=1"><div class="card"><div class="thumb"><img src="https://iili.io/f4TAaAx.webp"></div><div class="title">Movie 1</div></div></a>
+
+        <a href="movie.html?movie=2"><div class="card"><div class="thumb"><img src="https://iili.io/f4TAY9j.webp"></div><div class="title">Movie 2</div></div></a>
+
+        <a href="movie.html?movie=3"><div class="card"><div class="thumb"><img src="https://iili.io/f4TARcu.webp"></div><div class="title">Movie 3</div></div></a>
+
+        <a href="movie.html?movie=4"><div class="card"><div class="thumb"><img src="https://iili.io/f4TYPr7.webp"></div><div class="title">Movie 4</div></div></a>
+
+        <a href="movie.html?movie=5"><div class="card"><div class="thumb"><img src="https://iili.io/f4TR1ef.webp"></div><div class="title">Movie 5</div></div></a>
+
+        <a href="movie.html?movie=6"><div class="card"><div class="thumb"><img src="https://iili.io/f4TAcwQ.webp"></div><div class="title">Movie 6</div></div></a>
+
+        <a href="movie.html?movie=7"><div class="card"><div class="thumb"><img src="https://iili.io/f4TYs29.jpg"></div><div class="title">Movie 7</div></div></a>
+
+        <a href="movie.html?movie=8"><div class="card"><div class="thumb"><img src="https://iili.io/f4Tad21.webp"></div><div class="title">Movie 8</div></div></a>
+
+        <a href="movie.html?movie=9"><div class="card"><div class="thumb"><img src="https://iili.io/f4TYmLQ.webp"></div><div class="title">Movie 9</div></div></a>
+
+        <a href="movie.html?movie=10"><div class="card"><div class="thumb"><img src="https://iili.io/f4TRj19.jpg"></div><div class="title">Movie 10</div></div></a>
+
+        <a href="movie.html?movie=11"><div class="card"><div class="thumb"><img src="https://iili.io/f4TYZmb.webp"></div><div class="title">Movie 11</div></div></a>
+
+        <a href="movie.html?movie=12"><div class="card"><div class="thumb"><img src="https://iili.io/f4TYDIj.webp"></div><div class="title">Movie 12</div></div></a>
+
+        <a href="movie.html?movie=13"><div class="card"><div class="thumb"><img src="https://iili.io/f4TYQku.webp"></div><div class="title">Movie 13</div></div></a>
+
+        <a href="movie.html?movie=14"><div class="card"><div class="thumb"><img src="https://iili.io/f4TY4B2.webp"></div><div class="title">Movie 14</div></div></a>
+
+    </div>
+</div>
+
+</body>
+</html>
