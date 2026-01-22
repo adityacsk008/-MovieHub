@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>Jana Nagyan Movie Review - Moviex.live</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{margin:0;background:#0f172a;color:white;font-family:Arial;line-height:1.8;}
+header{padding:15px;background:#020617;border-bottom:1px solid #1e293b;font-size:22px;font-weight:bold;color:#38bdf8;}
+.container{max-width:900px;margin:auto;padding:15px;}
+h1{font-size:28px;}
+.subtitle{color:#cbd5f5;margin-bottom:20px;}
+h2{margin-top:25px;color:#38bdf8;}
+.article-img{width:100%;max-width:800px;margin:25px auto;display:block;border-radius:10px;}
+.download-box{text-align:center;margin:35px 0;padding:20px;border:1px dashed #38bdf8;border-radius:10px;}
+#downloadBtn{padding:12px 25px;font-size:18px;border:none;border-radius:8px;background:#38bdf8;color:#020617;cursor:pointer;}
+#downloadBtn:disabled{background:gray;}
+#timer{margin-top:10px;font-size:18px;color:#facc15;}
+.highlight{background:#020617;padding:15px;border-left:4px solid #38bdf8;margin:20px 0;border-radius:6px;}
+</style>
+</head>
+<body>
+
+<header>Moviex.live</header>
+<div class="container">
+
+<h1>Jana Nagyan Movie Review: Society, System Aur Truth Ka Bold Reflection</h1>
+<div class="subtitle">Serious, Thought-Provoking aur Message-Oriented Cinema – Full Honest Review</div>
+
+<p>
+Jana Nagyan ek **content-driven movie** hai jo sirf entertainment ke liye nahi, balki society ke issues ko highlight karne ke liye bani hai. Ye movie viewer ko sochne par majboor kar deti hai.
+</p>
+
+<div class="highlight">
+🧠 <b>Short Me:</b> Jana Nagyan = Strong Message + Reality + Serious Storytelling
+</div>
+
+<h2>📖 Story Kis Baare Me Hai?</h2>
+<p>
+Is movie ki story common logon, system aur power ke beech ke conflict ko dikhati hai. Kaise sach bolne wala insaan system ke liye problem ban jaata hai, aur kaise society uske saath react karti hai — ye sab movie ka main theme hai.
+</p>
+
+<p>
+Story slow-burn hai, lekin impact **deep aur meaningful** chhod kar jaati hai.
+</p>
+
+<!-- IMAGE -->
+<img class="article-img" src="https://iili.io/f4TRj19.jpg" alt="Jana Nagyan Movie">
+
+<h2>🎭 Acting & Performance</h2>
+<p>
+Actors ne realistic performance di hai. Koi overacting nahi, sab kuch grounded aur natural lagta hai jo movie ko aur believable bana deta hai.
+</p>
+
+<h2>🎥 Direction & Presentation</h2>
+<p>
+Director ne story ko simple aur honest tarike se present kiya hai. Movie flashy nahi hai, balki **content pe focus** karti hai.
+</p>
+
+<h2>💡 Movie Ka Message</h2>
+<div class="highlight">
+✨ Sach aur awareness hi society ko change kar sakte hain.
+</div>
+
+<p>
+Jana Nagyan hume ye yaad dilati hai ki agar log sawal poochna band kar den, to system kabhi improve nahi hoga.
+</p>
+
+<!-- DOWNLOAD BUTTON -->
+<div class="download-box">
+    <h2>⬇️ Download Movie</h2>
+    <p>Download start karne ke liye niche button dabaye. Pehle 10 seconds ka timer complete hoga.</p>
+    <button id="downloadBtn" onclick="handleDownload()">Download Now</button>
+    <div id="timer"></div>
+</div>
+
+<h2>⭐ Final Verdict</h2>
+<p>
+Jana Nagyan ek **one-time watch serious movie** hai, especially un logon ke liye jo meaningful aur message-based cinema pasand karte hain.
+</p>
+
+</div>
+
+<script>
+let countdown=10,timerStarted=false,unlocked=false;
+function handleDownload(){
+ if(unlocked){window.location.href="download.html";return;}
+ if(timerStarted) return;
+ timerStarted=true;
+ const btn=document.getElementById("downloadBtn");
+ const timer=document.getElementById("timer");
+ btn.disabled=true;
+ const i=setInterval(()=>{
+   timer.innerText="Please wait "+countdown+" seconds...";
+   countdown--;
+   if(countdown<0){
+     clearInterval(i);
+     timer.innerText="Timer complete! Ab Download pe click karo.";
+     btn.disabled=false;unlocked=true;btn.innerText="Click to Download";
+   }
+ },1000);
+}
+</script>
+
+</body>
+</html>
