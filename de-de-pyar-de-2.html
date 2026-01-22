@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>De De Pyar De 2 Movie Review - Moviex.live</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{margin:0;background:#0f172a;color:white;font-family:Arial;line-height:1.8;}
+header{padding:15px;background:#020617;border-bottom:1px solid #1e293b;font-size:22px;font-weight:bold;color:#38bdf8;}
+.container{max-width:900px;margin:auto;padding:15px;}
+h1{font-size:28px;}
+.subtitle{color:#cbd5f5;margin-bottom:20px;}
+h2{margin-top:25px;color:#38bdf8;}
+.article-img{width:100%;max-width:800px;margin:25px auto;display:block;border-radius:10px;}
+.download-box{text-align:center;margin:35px 0;padding:20px;border:1px dashed #38bdf8;border-radius:10px;}
+#downloadBtn{padding:12px 25px;font-size:18px;border:none;border-radius:8px;background:#38bdf8;color:#020617;cursor:pointer;}
+#downloadBtn:disabled{background:gray;}
+#timer{margin-top:10px;font-size:18px;color:#facc15;}
+</style>
+</head>
+<body>
+
+<header>Moviex.live</header>
+<div class="container">
+
+<h1>De De Pyar De 2 Movie Review: Comedy, Romance Aur Confusion Ka Full Package</h1>
+<div class="subtitle">Light-hearted, Funny aur Entertaining Sequel – Full Review</div>
+
+<p>
+De De Pyar De 2 ek fun-filled romantic comedy hai jo relationship, age-gap aur family drama ko funny way me dikhati hai.
+</p>
+
+<img class="article-img" src="https://iili.io/f4TR1ef.webp">
+
+<h2>⭐ Final Verdict</h2>
+<p>
+Ye movie ek **time-pass, feel-good entertainer** hai jo family ke saath dekhi ja sakti hai.
+</p>
+
+<div class="download-box">
+<button id="downloadBtn" onclick="handleDownload()">Download Now</button>
+<div id="timer"></div>
+</div>
+
+</div>
+
+<script>
+let countdown=10,timerStarted=false,unlocked=false;
+function handleDownload(){
+ if(unlocked){window.location.href="download.html";return;}
+ if(timerStarted) return;
+ timerStarted=true;
+ const btn=document.getElementById("downloadBtn");
+ const timer=document.getElementById("timer");
+ btn.disabled=true;
+ const i=setInterval(()=>{
+   timer.innerText="Please wait "+countdown+" seconds...";
+   countdown--;
+   if(countdown<0){
+     clearInterval(i);
+     timer.innerText="Timer complete! Ab Download pe click karo.";
+     btn.disabled=false;unlocked=true;btn.innerText="Click to Download";
+   }
+ },1000);
+}
+</script>
+
+</body>
+</html>
